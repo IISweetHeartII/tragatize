@@ -27,7 +27,13 @@ export async function POST(req: Request): Promise<Response> {
     `원하는 손님: ${(body?.audience ?? "").trim().slice(0, 300) || "(미입력)"}`,
   ].join("\n");
   try {
-    const script = extractJson<LiveScript>(await ask(SYSTEM, prompt, 3000));
+    let script: LiveScript;
+    try {
+      script = extractJson<LiveScript>(await ask(SYSTEM, prompt, 6000));
+    } catch {
+      // 모델 출력이 잘리거나 JSON 이 깨지면 한 번만 다시 시도한다.
+      script = extractJson<LiveScript>(await ask(SYSTEM, `${prompt}\n\n반드시 올바른 JSON 하나만, 대사 안에 큰따옴표를 쓰지 마세요.`, 6000));
+    }
     return Response.json({ script });
   } catch (err) {
     console.error("script failed", err);
