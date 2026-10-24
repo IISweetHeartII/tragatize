@@ -23,6 +23,8 @@
 - Next.js App Router(`src/app`), Tailwind v4, TypeScript. 패키지 매니저는 `pnpm`.
 - AI 호출은 서버에서만 한다. `src/lib/ai.ts` 의 `ask()` 를 쓰고, 브라우저에 키를 넘기지 않는다.
 - 모델은 `ANTHROPIC_MODEL` 환경변수(기본 `claude-opus-5-5`).
+- 전화는 ClawOps(`src/lib/clawops.ts`): 번호 070-5276-7530 ↔ 에이전트 `tragatize`(gpt-live-1). 발신은 `dial()`, 통화별 지시문은 4000자 이하.
+- ClawOps API 는 국외 IP 를 막는다 → 함수 지역은 서울 고정(`vercel.json` 의 `icn1`). 바꾸지 않는다.
 - 가입·로그인을 만들지 않는다. 심사위원은 링크를 열고 바로 써 봐야 한다.
 
 ## 구현
