@@ -32,6 +32,25 @@ export const TARGET_FLAGS: Record<Locale, string> = {
   th: "🇹🇭",
 };
 
+// AI 지시문에 쓰는 언어 이름(모델이 헷갈리지 않게 영어로)
+export const LANGUAGE_FOR_AI: Record<Locale, string> = {
+  ko: "Korean",
+  en: "English (US)",
+  ja: "Japanese",
+  "zh-CN": "Simplified Chinese (mainland China)",
+  "zh-TW": "Traditional Chinese (Taiwan)",
+  vi: "Vietnamese",
+  th: "Thai",
+};
+
+// API 요청의 lang·targets 를 검사한다. 잘못된 값은 버리고, 손님 언어가 없으면 사장님 언어 하나.
+export function parseLanguages(lang: unknown, targets: unknown): { lang: Locale; targets: Locale[] } {
+  const owner = typeof lang === "string" && isLocale(lang) ? lang : DEFAULT_LOCALE;
+  const list = Array.isArray(targets) ? targets.filter((x): x is Locale => typeof x === "string" && isLocale(x)) : [];
+  const uniq = [...new Set(list)];
+  return { lang: owner, targets: uniq.length ? uniq : [owner] };
+}
+
 export const OG_LOCALE: Record<Locale, string> = {
   ko: "ko_KR",
   en: "en_US",
