@@ -4,7 +4,7 @@ import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset, type Plan } from "@/lib/demo";
 import type { StudioText } from "@/lib/dict";
-import { fill, type Locale } from "@/lib/i18n";
+import { LOCALES, TARGET_FLAGS, fill, type Locale } from "@/lib/i18n";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
   AI_STEP_COUNT,
@@ -36,6 +36,11 @@ const DEMO_MS: Record<Plan, number[]> = {
   lite: [3000, 2500, 2500, 3000, 2000],
   premium: [3000, 4000, 3000, 2000],
 };
+
+// 손님 나라 기본값: 화면 언어 + 한국·미국·일본·중국 중에서 4개
+function defaultTargets(locale: Locale): Locale[] {
+  return [...new Set<Locale>([locale, "ko", "en", "ja", "zh-CN"])].slice(0, 4);
+}
 
 function fmt(sec: number): string {
   const s = Math.max(0, Math.round(sec));
@@ -101,6 +106,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
   const [product, setProduct] = useState("");
   const [store, setStore] = useState("");
   const [audience, setAudience] = useState("");
+  const [targets, setTargets] = useState<Locale[]>(() => defaultTargets(locale));
   const [script, setScript] = useState<LiveScript | null>(null);
   const [scriptBusy, setScriptBusy] = useState(false);
 
@@ -242,6 +248,11 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
     setError(locale === "ko" && msg ? msg : t.failed);
   }
 
+  // 손님 나라는 하나 이상 남긴다.
+  function toggleTarget(l: Locale) {
+    setTargets((xs) => (xs.includes(l) ? (xs.length > 1 ? xs.filter((x) => x !== l) : xs) : LOCALES.filter((x) => x === l || xs.includes(x))));
+  }
+
   function fillExample(i: number) {
     const e = t.examples[i];
     setProduct(e.product);
@@ -254,7 +265,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
     setScriptBusy(true);
     setError(null);
     try {
-      const { script } = await postJson<{ script: LiveScript }>("/api/script", { product, store, audience });
+      const { script } = await postJson<{ script: LiveScript }>("/api/script", { product, store, audience, lang: locale, targets });
       setScript(script);
     } catch (err) {
       showError(err);
@@ -283,7 +294,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
       analyzeStartedAt.current = Date.now();
       setElapsed(0);
       setStage("analyzing");
-      const { highlights } = await postJson<{ highlights: Highlight[] }>("/api/highlights", { url: blob.url });
+      const { highlights } = await postJson<{ highlights: Highlight[] }>("/api/highlights", { url: blob.url, lang: locale, targets });
       setHighlights(highlights);
       setStage("done");
       scrollTo("step-shorts");
@@ -374,6 +385,26 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
               <input value={audience} onChange={(e) => setAudience(e.target.value)} placeholder={t.audiencePlaceholder} className={input} />
             </label>
           </div>
+          <fieldset>
+            <legend className="text-sm text-muted">{t.targetsLabel}</legend>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {LOCALES.map((l) => {
+                const on = targets.includes(l);
+                return (
+                  <button
+                    key={l}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => toggleTarget(l)}
+                    className={"min-h-11 rounded-full border px-3 text-sm " + (on ? "border-foreground bg-foreground text-background" : "border-line text-muted hover:border-foreground")}
+                  >
+                    {TARGET_FLAGS[l]} {t.countries[l]}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="mt-1 text-xs text-muted">{t.targetsHint}</p>
+          </fieldset>
           <button disabled={scriptBusy || !product.trim()} className={primary}>
             {scriptBusy ? t.scriptBusy : t.scriptCta}
           </button>
