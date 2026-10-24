@@ -6,6 +6,7 @@ import { DEMO_PRESETS, type DemoPreset } from "@/lib/demo";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
   NO_DECO,
+  PhoneStep,
   VideoOverlays,
   decoFor,
   type Deco,
@@ -112,8 +113,8 @@ export function StudioClient() {
   const [error, setError] = useState<string | null>(null);
 
   // 시연용 단계(전화·꾸미기·SNS) 상태
-  const [phone] = useState<string | null>(null);
-  const [deco] = useState<Deco>(NO_DECO);
+  const [phone, setPhone] = useState<string | null>(null);
+  const [deco, setDeco] = useState<Deco>(NO_DECO);
 
   // 분석 중 경과 시간(실제 진행률이 없으므로 시간만 정직하게 보여 준다)
   // 시작 시각은 분석에 들어갈 때(onFile) 기록하고, effect 는 1초 타이머만 돈다.
@@ -242,10 +243,11 @@ export function StudioClient() {
     script ? "done" : "active",
     busy ? "active" : videoUrl ? "done" : script ? "active" : "todo",
     highlights.length > 0 ? "done" : "todo",
-    "todo",
+    phone ? "done" : "todo",
     "todo",
     "todo",
   ];
+  const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? null;
   const shortDeco = decoFor("short", deco, phone);
 
   return (
@@ -406,6 +408,13 @@ export function StudioClient() {
             </div>
           </>
         )}
+      </Step>
+
+      <Step id="step-phone" n={4} title="전화 응대 (선택)">
+        <PhoneStep product={product} presetQa={presetQa} phone={phone} onPhone={(n) => {
+          setPhone(n);
+          if (n) setDeco((d) => ({ ...d, phone: true }));
+        }} />
       </Step>
 
       <Step id="step-sns" n={6} title="SNS 에 올리기">
