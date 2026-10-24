@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Tragatize — From Korea to the World",
-    "description": "One product is all it takes to promote and sell. AI scripts, AI promo videos, short-form clips, social posting, and AI phone orders: promo on autopilot for small businesses.",
+    "description": "One product is all it takes to promote your shop and answer customer calls. AI scripts, AI promo videos, short-form clips, social posting, and AI phone answering: promo automation built for small shops.",
     "studioTitle": "Studio",
-    "studioDescription": "Get a script, then upload your own video or have AI make one. We cut it into short-form clips, post them to social media, and even take phone orders."
+    "studioDescription": "Get a script, then upload a video or make one with AI. We'll cut it into short-form clips and post them to social, and AI will answer your phone inquiries."
   },
   "countries": {
     "ko": "Korea",
@@ -33,14 +33,14 @@
     }
   },
   "landing": {
-    "badge": "Short-form promo for small shops · AI promo videos · AI phone orders",
+    "badge": "Short-form promo for small shops · AI promo videos · AI phone answering",
     "heroLine1": "One product.",
-    "heroLine2": "Promo and orders, done.",
-    "heroSub": "Whether you film it or AI makes it, we find the moments that make people want to buy, cut them into short-form clips, add your QR code and phone number, and post them to social media. When viewers call, an AI salesperson picks up.",
+    "heroLine2": "Promo and customer calls, handled.",
+    "heroSub": "Whether you shot it yourself or AI made it, we find the moments that make people want to buy. Then we cut them into short-form clips, add your QR code and phone number, and post them to social. When viewers call, an AI phone assistant picks up and answers their questions.",
     "ctaSample": "See a sample now",
     "ctaTry": "Try with my product",
     "ctaNote": "No sign-up. See results in 15 seconds.",
-    "callLead": "Call now · AI salesperson “Tije” will answer (한국어·English·日本語)",
+    "callLead": "Call now · AI phone assistant “Tije” will pick up (한국어·English·日本語)",
     "callCta": "Call →",
     "demoLabel": "87-second demo · Turn the sound on",
     "painsEyebrow": "The problem",
@@ -63,7 +63,7 @@
       }
     ],
     "stepsEyebrow": "How it works",
-    "stepsTitle": "From script to order calls, all in one place",
+    "stepsTitle": "From script to phone calls, all in one place",
     "optional": "Optional",
     "steps": [
       {
@@ -80,11 +80,11 @@
       },
       {
         "title": "Phone answering",
-        "body": "Write answers to common questions and get your shop's own 070 number. Calls are answered by AI salesperson “Tije.”"
+        "body": "Write answers to common questions, and you'll get your shop's own 070 number. AI phone assistant “Tije” handles phone inquiries."
       },
       {
         "title": "Add QR & number",
-        "body": "Add a QR code for your product site and your order phone number to your long and short videos."
+        "body": "Add your product page QR code and inquiry phone number to your long-form and short-form videos."
       },
       {
         "title": "Post to social",
@@ -107,8 +107,8 @@
         "body": "With Premium, just pick a template and upload photos. AI makes a promo video from your script with your own face avatar, an AI persona of your choice, or just your product."
       },
       {
-        "title": "Calls to the number in your clips go to AI salesperson “Tije”",
-        "body": "When viewers call the number in your short, Tije takes the order in their language and even texts an order confirmation. You just run your shop."
+        "title": "Calls to the number in your shorts go to AI phone assistant “Tije”",
+        "body": "When viewers call the number in your short, Tije answers in their language. It handles questions about products, prices, and location, then tells callers where to buy. You just focus on running your shop."
       }
     ],
     "resultEyebrow": "Sample result",
@@ -131,7 +131,7 @@
           "Hooks, captions, and hashtags in 7 languages",
           "QR code, product site, and phone number on your videos",
           "Post straight to Instagram, YouTube, and TikTok",
-          "Your shop's 070 number + 100 min of AI salesperson calls"
+          "Your shop's own 070 number + 100 min of AI assistant calls"
         ]
       },
       {
@@ -143,8 +143,7 @@
           "Everything in Lite",
           "2 AI promo videos per month (your face avatar, AI persona, or product only)",
           "12 short-form conversions per month",
-          "300 min of multilingual calls with AI salesperson “Tije”",
-          "Order confirmation texts"
+          "300 min of multilingual calls with AI phone assistant “Tije”"
         ]
       }
     ],
@@ -158,7 +157,7 @@
       },
       {
         "q": "I don't speak English. Can I still serve foreign customers?",
-        "a": "Yes. AI writes your short-form hooks and captions in your customers' languages, and AI salesperson Tije takes phone orders in their language. You just check everything in your own language."
+        "a": "AI writes your short-form hooks and captions in your customers' language, and AI phone assistant Tije answers calls in the caller's language. You can review everything in Korean."
       },
       {
         "q": "Which languages are supported?",
@@ -174,7 +173,11 @@
       },
       {
         "q": "How do I start phone answering?",
-        "a": "Write down common customer questions and answers (AI can draft them for you), and you'll get your shop's own 070 number. Put it in your videos, and AI salesperson Tije answers the calls."
+        "a": "Write down common customer questions and answers (AI drafts them for you), and you'll get a dedicated 070 number for your shop. Put that number in your videos, and AI phone assistant Tije will handle phone inquiries."
+      },
+      {
+        "q": "Does it take orders and payments too?",
+        "a": "No. Orders and payments stay with your current Smart Store or physical store. Tije answers phone inquiries and tells customers where they can buy (purchase link or store location)."
       },
       {
         "q": "Does it post to Instagram and YouTube automatically?",
@@ -230,7 +233,7 @@
       "Design",
       "Social"
     ],
-    "title": "From promo to orders with one product",
+    "title": "From promo to phone answering, all with one product",
     "subtitle": "Get a script → Prep your video (film it or AI) → AI shorts → Phone answering → Add QR & number → Post to social",
     "samplesLabel": "See a sample now",
     "sampleSelected": "Selected",
@@ -327,12 +330,12 @@
       "priceQ": "How much is it?",
       "priceA": "{name} is {price}.",
       "productFallback": "This product",
-      "orderQ": "How do I order?",
-      "orderA": "Just tell us what you'd like and we'll text you an order confirmation. Please reply with your address by text.",
+      "buyQ": "Where can I buy it?",
+      "buyA": "You can buy it right away from the QR code in the video or the link in our profile.",
       "hoursQ": "What are your hours and location?"
     },
-    "phoneToggle": "Turn on phone answering by AI salesperson “Tije”",
-    "phoneOff": "Turn it on to write answers to common questions and get your shop's own 070 number. AI answers calls from viewers and takes their orders.",
+    "phoneToggle": "Turn on phone answering by AI assistant “Tije”",
+    "phoneOff": "Once it's on, write answers to common customer questions and get your shop's own 070 number. AI will answer calls from customers who saw your shorts.",
     "phoneLangs": "Answers in your customers' languages",
     "qaLabel": "Q&A list (AI answers exactly like this)",
     "drafting": "Drafting…",
@@ -343,14 +346,14 @@
     "myNumber": "Your shop's phone number",
     "numberNote": "This is a demo number. Call it for real and AI Tije will answer.",
     "callTry": "Try calling →",
-    "qaCount": "Your AI salesperson will use {n} questions.",
+    "qaCount": "Your AI phone assistant will be built from {n} questions.",
     "qaEmpty": "Please fill in at least one question and answer.",
     "issuing": "Getting your number…",
     "issueCta": "Get a 070 number",
     "qrToggle": "Add QR code (your product site)",
     "siteLabel": "Product site URL",
     "sitePlaceholder": "https://myshop.com",
-    "phoneOverlayToggle": "Add phone order number",
+    "phoneOverlayToggle": "Add inquiry phone number",
     "phoneFirst": "Available once you get a number in Step 4.",
     "targetVideos": "Apply to",
     "shortsTarget": "3 shorts",

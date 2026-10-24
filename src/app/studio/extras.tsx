@@ -203,7 +203,7 @@ function draftQa(product: string, d: StudioText["qaDraft"]): QA[] {
   const price = rest.join(", ");
   return [
     { q: d.priceQ, a: price ? fill(d.priceA, { name: name || d.productFallback, price }) : "" },
-    { q: d.orderQ, a: d.orderA },
+    { q: d.buyQ, a: d.buyA },
     { q: d.hoursQ, a: "" },
   ];
 }

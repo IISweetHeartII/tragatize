@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Tragatize — Từ Hàn Quốc ra thế giới",
-    "description": "Chỉ cần một sản phẩm là xong cả quảng bá lẫn đơn hàng. Kịch bản AI, video quảng cáo AI, video ngắn, đăng SNS và nhận đơn qua điện thoại bằng AI: tự động hóa quảng bá cho chủ cửa hàng nhỏ.",
+    "description": "Chỉ cần một sản phẩm là xong cả quảng bá lẫn chăm sóc khách. Kịch bản AI, video quảng bá AI, video ngắn, đăng mạng xã hội và trả lời điện thoại bằng AI: tự động hóa quảng bá cho tiểu thương.",
     "studioTitle": "Studio",
-    "studioDescription": "Nhận kịch bản, tải video lên hoặc để AI tạo, rồi cắt thành video ngắn, đăng lên SNS và nhận cả đơn qua điện thoại."
+    "studioDescription": "Nhận kịch bản, tải video lên hoặc tạo bằng AI, cắt thành video ngắn để đăng mạng xã hội. Cuộc gọi hỏi đáp đã có AI nghe máy."
   },
   "countries": {
     "ko": "Hàn Quốc",
@@ -33,14 +33,14 @@
     }
   },
   "landing": {
-    "badge": "Video ngắn quảng bá cho cửa hàng nhỏ · Video quảng cáo AI · Nhận đơn qua điện thoại bằng AI",
+    "badge": "Video ngắn quảng bá cho tiểu thương · Video quảng bá AI · Trả lời điện thoại bằng AI",
     "heroLine1": "Chỉ cần một sản phẩm,",
-    "heroLine2": "xong cả quảng bá lẫn đơn hàng.",
-    "heroSub": "Dù là video bạn tự quay hay video do AI tạo, chúng tôi chọn ra “khoảnh khắc khiến khách muốn mua”, cắt thành video ngắn, chèn QR và số điện thoại rồi đăng lên SNS. Khách xem video gọi đến sẽ có nhân viên bán hàng AI nghe máy.",
+    "heroLine2": "Xong cả quảng bá lẫn chăm sóc khách.",
+    "heroSub": "Dù là video tự quay hay video do AI tạo, chúng tôi chọn ra “khoảnh khắc khiến khách muốn mua”, cắt thành video ngắn, chèn mã QR và số điện thoại rồi đăng lên mạng xã hội. Khi khách xem video và gọi đến, trợ lý điện thoại AI sẽ nghe máy và giải đáp thắc mắc.",
     "ctaSample": "Xem ngay bằng mẫu",
     "ctaTry": "Thử với sản phẩm của tôi",
     "ctaNote": "Không cần đăng ký, xem kết quả trong 15 giây.",
-    "callLead": "Gọi thử ngay · Nhân viên bán hàng AI “Tije” sẽ nghe máy (한국어·English·日本語)",
+    "callLead": "Gọi thử ngay · Trợ lý điện thoại AI “Tije” sẽ nghe máy (한국어·English·日本語)",
     "callCta": "Gọi →",
     "demoLabel": "Demo 87 giây · Hãy bật tiếng",
     "painsEyebrow": "Vấn đề",
@@ -63,7 +63,7 @@
       }
     ],
     "stepsEyebrow": "Cách hoạt động",
-    "stepsTitle": "Từ kịch bản đến cuộc gọi đặt hàng, tất cả ở một nơi",
+    "stepsTitle": "Từ kịch bản đến trả lời điện thoại, tất cả ở một nơi",
     "optional": "Tùy chọn",
     "steps": [
       {
@@ -80,11 +80,11 @@
       },
       {
         "title": "Nghe điện thoại",
-        "body": "Nhập câu trả lời cho các câu hỏi thường gặp là bạn có số 070 riêng cho cửa hàng. Nhân viên bán hàng AI “Tije” sẽ nghe máy."
+        "body": "Điền câu trả lời cho các câu hỏi thường gặp là bạn có ngay số 070 cho cửa hàng. Trợ lý điện thoại AI “Tije” sẽ nghe các cuộc gọi hỏi đáp."
       },
       {
         "title": "Chèn QR · số điện thoại",
-        "body": "Chèn QR trang sản phẩm và số điện thoại đặt hàng vào video dài lẫn video ngắn."
+        "body": "Chèn mã QR dẫn đến trang sản phẩm và số điện thoại hỏi đáp vào video dài và video ngắn."
       },
       {
         "title": "Đăng SNS",
@@ -107,8 +107,8 @@
         "body": "Với Premium, chỉ cần chọn mẫu và tải ảnh lên. AI tạo video quảng cáo theo kịch bản bằng avatar khuôn mặt của bạn, persona AI bạn thích, hoặc chỉ với sản phẩm."
       },
       {
-        "title": "Gọi số trong video ngắn là gặp nhân viên bán hàng AI “Tije”",
-        "body": "Khách xem video gọi đến số in trong video ngắn, Tije sẽ nhận đơn bằng ngôn ngữ của khách và gửi cả tin nhắn xác nhận đơn. Bạn chỉ cần lo bán hàng."
+        "title": "Gọi số trong video ngắn là gặp trợ lý điện thoại AI “Tije”",
+        "body": "Khi khách xem video và gọi số ghi trong video ngắn, Tije sẽ trả lời bằng ngôn ngữ của khách các câu hỏi về sản phẩm, giá, địa chỉ và chỉ cho khách nơi mua hàng. Bạn chỉ việc tập trung bán hàng."
       }
     ],
     "resultEyebrow": "Ví dụ kết quả",
@@ -131,7 +131,7 @@
           "Câu mở đầu thu hút, chú thích, hashtag bằng 7 ngôn ngữ",
           "Chèn QR, trang sản phẩm, số điện thoại vào video",
           "Đăng ngay lên Instagram, YouTube, TikTok",
-          "Số 070 riêng cho cửa hàng + 100 phút gọi với nhân viên bán hàng AI"
+          "Số 070 riêng cho cửa hàng + 100 phút gọi với trợ lý điện thoại AI"
         ]
       },
       {
@@ -143,8 +143,7 @@
           "Toàn bộ tính năng của Lite",
           "2 video quảng cáo AI / tháng (avatar khuôn mặt, persona AI, chỉ sản phẩm)",
           "Chuyển thành video ngắn 12 video / tháng",
-          "300 phút gọi đa ngôn ngữ với nhân viên bán hàng AI “Tije”",
-          "Tin nhắn xác nhận đơn hàng"
+          "300 phút gọi đa ngôn ngữ với trợ lý điện thoại AI “Tije”"
         ]
       }
     ],
@@ -158,7 +157,7 @@
       },
       {
         "q": "Không biết tiếng Anh có đón khách nước ngoài được không?",
-        "a": "AI viết câu mở đầu và chú thích video ngắn bằng ngôn ngữ của khách, còn đơn qua điện thoại do nhân viên bán hàng AI Tije nhận bằng ngôn ngữ của khách. Bạn chỉ cần kiểm tra bằng ngôn ngữ của mình."
+        "a": "AI sẽ viết câu mở đầu thu hút và chú thích cho video ngắn bằng ngôn ngữ của khách hàng, còn trợ lý điện thoại AI Tije sẽ nghe các cuộc gọi hỏi đáp bằng ngôn ngữ của khách. Bạn chỉ cần kiểm tra lại bằng tiếng Hàn."
       },
       {
         "q": "Hỗ trợ những ngôn ngữ nào?",
@@ -174,7 +173,11 @@
       },
       {
         "q": "Bắt đầu nghe điện thoại thế nào?",
-        "a": "Nhập các câu hỏi khách hay hỏi và câu trả lời (AI viết nháp giúp bạn) là bạn có số 070 riêng cho cửa hàng. Chèn số này vào video, nhân viên bán hàng AI Tije sẽ nghe máy."
+        "a": "Điền các câu hỏi khách hay hỏi kèm câu trả lời (AI sẽ viết bản nháp giúp bạn) là bạn có ngay số 070 riêng cho cửa hàng. Chèn số này vào video, trợ lý điện thoại AI Tije sẽ nghe các cuộc gọi hỏi đáp."
+      },
+      {
+        "q": "Tije có nhận đặt hàng và thanh toán không?",
+        "a": "Không. Đặt hàng và thanh toán vẫn diễn ra như hiện tại trên Smart Store hoặc tại cửa hàng của bạn. Tije trả lời các cuộc gọi hỏi đáp và chỉ cho khách nơi mua hàng (link mua hàng, địa chỉ cửa hàng)."
       },
       {
         "q": "Có tự động đăng lên Instagram, YouTube không?",
@@ -230,7 +233,7 @@
       "Trang trí",
       "SNS"
     ],
-    "title": "Một sản phẩm, từ quảng bá đến đơn hàng",
+    "title": "Từ quảng bá đến trả lời điện thoại, chỉ với một sản phẩm",
     "subtitle": "Nhận kịch bản → Chuẩn bị video (tự quay · AI tạo) → Video ngắn AI → Nghe điện thoại → Chèn QR · số → Đăng SNS",
     "samplesLabel": "Xem ngay bằng mẫu",
     "sampleSelected": "Đã chọn",
@@ -327,12 +330,12 @@
       "priceQ": "Giá bao nhiêu vậy?",
       "priceA": "{name} có giá {price}.",
       "productFallback": "Sản phẩm",
-      "orderQ": "Đặt hàng thế nào?",
-      "orderA": "Bạn cho biết sản phẩm muốn mua, chúng tôi sẽ gửi tin nhắn xác nhận đơn. Vui lòng trả lời tin nhắn kèm địa chỉ.",
+      "buyQ": "Mua ở đâu vậy?",
+      "buyA": "Bạn có thể mua ngay qua mã QR trong video hoặc link trên trang cá nhân.",
       "hoursQ": "Giờ mở cửa và địa chỉ ở đâu?"
     },
-    "phoneToggle": "Bật nghe điện thoại bằng nhân viên bán hàng AI “Tije”",
-    "phoneOff": "Khi bật, bạn nhập câu trả lời cho các câu hỏi thường gặp và nhận số 070 riêng cho cửa hàng. AI sẽ nghe máy khi khách xem video ngắn gọi đến và nhận luôn đơn hàng.",
+    "phoneToggle": "Bật trả lời điện thoại bằng trợ lý AI “Tije”",
+    "phoneOff": "Khi bật, bạn sẽ điền câu trả lời cho các câu hỏi thường gặp và nhận số 070 riêng cho cửa hàng. AI sẽ thay bạn nghe máy và trả lời khi khách xem video ngắn rồi gọi đến.",
     "phoneLangs": "Trả lời bằng ngôn ngữ của khách",
     "qaLabel": "Danh sách hỏi đáp (AI sẽ trả lời đúng như vậy)",
     "drafting": "Đang viết nháp…",
@@ -343,14 +346,14 @@
     "myNumber": "Số điện thoại cửa hàng",
     "numberNote": "Đây là số demo. Gọi thử là AI Tije sẽ nghe máy.",
     "callTry": "Gọi thử →",
-    "qaCount": "Tạo nhân viên bán hàng AI với {n} câu hỏi.",
+    "qaCount": "Tạo trợ lý điện thoại AI từ {n} câu hỏi.",
     "qaEmpty": "Vui lòng điền ít nhất một cặp hỏi đáp.",
     "issuing": "Đang cấp số…",
     "issueCta": "Nhận số 070",
     "qrToggle": "Chèn mã QR (trang sản phẩm của tôi)",
     "siteLabel": "Địa chỉ trang sản phẩm",
     "sitePlaceholder": "https://myshop.com",
-    "phoneOverlayToggle": "Chèn số điện thoại đặt hàng",
+    "phoneOverlayToggle": "Chèn số điện thoại hỏi đáp",
     "phoneFirst": "Nhận số ở bước 4 là có thể bật.",
     "targetVideos": "Video được chèn",
     "shortsTarget": "3 video ngắn",
