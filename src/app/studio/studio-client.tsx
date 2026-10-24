@@ -3,8 +3,13 @@
 import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset } from "@/lib/demo";
-import { ORDER_PHONE } from "@/lib/site";
 import type { Highlight, LiveScript } from "@/lib/types";
+import {
+  NO_DECO,
+  VideoOverlays,
+  decoFor,
+  type Deco,
+} from "./extras";
 
 const input =
   "mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 outline-none focus:border-foreground";
@@ -105,6 +110,10 @@ export function StudioClient() {
   const [isDemo, setIsDemo] = useState(false);
   const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // 시연용 단계(전화·꾸미기·SNS) 상태
+  const [phone] = useState<string | null>(null);
+  const [deco] = useState<Deco>(NO_DECO);
 
   // 분석 중 경과 시간(실제 진행률이 없으므로 시간만 정직하게 보여 준다)
   // 시작 시각은 분석에 들어갈 때(onFile) 기록하고, effect 는 1초 타이머만 돈다.
@@ -235,6 +244,7 @@ export function StudioClient() {
     highlights.length > 0 ? "done" : "todo",
     "soon",
   ];
+  const shortDeco = decoFor("short", deco, phone);
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-16 sm:px-6">
@@ -389,7 +399,7 @@ export function StudioClient() {
             )}
             <div className="grid gap-4 sm:grid-cols-3">
               {highlights.map((h, i) => (
-                <ShortCard key={`${videoUrl}-${i}`} h={h} src={videoUrl!} />
+                <ShortCard key={`${videoUrl}-${i}`} h={h} src={videoUrl!} phone={shortDeco.phone} qrUrl={shortDeco.qrUrl} />
               ))}
             </div>
           </>
@@ -411,7 +421,7 @@ export function StudioClient() {
   );
 }
 
-function ShortCard({ h, src }: { h: Highlight; src: string }) {
+function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone: string | null; qrUrl: string | null }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -428,7 +438,8 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
   }
 
   async function copy() {
-    await navigator.clipboard.writeText(`${h.hook}\n${h.hookEn}\n\n${h.caption}\n\n📞 전화 주문 · Call to order ${ORDER_PHONE}\n\n${h.hashtags.join(" ")}`);
+    const extra = [phone && `📞 전화 주문 · Call to order ${phone}`, qrUrl && `🔗 ${qrUrl}`].filter(Boolean).join("\n");
+    await navigator.clipboard.writeText(`${h.hook}\n${h.hookEn}\n\n${h.caption}${extra ? `\n\n${extra}` : ""}\n\n${h.hashtags.join(" ")}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
@@ -457,10 +468,7 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
             <span className="flex size-14 items-center justify-center rounded-full bg-white/90 text-xl text-black">▶</span>
           </span>
         )}
-        <span className="absolute inset-x-3 bottom-12 rounded-lg bg-accent px-3 py-2 text-white">
-          <span className="block text-xs opacity-90">📞 전화 주문 · Call to order</span>
-          <span className="block font-mono text-base font-semibold">{ORDER_PHONE}</span>
-        </span>
+        <VideoOverlays phone={phone} qrUrl={qrUrl} belowHook />
         <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2 py-1 font-mono text-xs text-white">
           {fmt(h.start)}–{fmt(h.end)} · {Math.round(h.end - h.start)}초
         </span>
