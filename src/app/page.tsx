@@ -18,10 +18,12 @@ const PAINS = [
 ];
 
 const STEPS = [
-  { title: "대본", body: "상품과 가격만 적으면 AI 가 구간별 대사·화면 지시가 담긴 라이브 대본을 써요." },
-  { title: "촬영", body: "휴대폰 카메라 하나로 대본대로 찍어요. 1~2분이면 충분해요." },
-  { title: "숏폼", body: "AI 가 받아쓰고 «사고 싶어지는 순간» 3개를 골라 한·영 후킹 문구를 붙여요." },
-  { title: "업로드", body: "마음에 드는 숏폼의 캡션·해시태그를 복사해 릴스·쇼츠에 올려요." },
+  { title: "대본", optional: false, body: "상품과 가격만 적으면 AI 가 구간별 대사·화면 지시가 담긴 홍보 대본을 써요." },
+  { title: "영상", optional: false, body: "Lite 는 휴대폰으로 대본대로 찍어 올려요. Premium 은 촬영 없이 AI 가 홍보 영상을 만들어요." },
+  { title: "숏폼", optional: false, body: "AI 가 «사고 싶어지는 순간» 3개를 골라 자르고 한·영 후킹 문구·캡션을 붙여요." },
+  { title: "전화 응대", optional: true, body: "자주 묻는 질문의 답을 적으면 내 가게 070 번호가 나와요. 전화는 AI 판매원 «티제» 가 받아요." },
+  { title: "QR·번호 넣기", optional: true, body: "롱폼·숏폼에 내 제품 사이트 QR 과 전화 주문 번호를 넣어요." },
+  { title: "SNS 업로드", optional: true, body: "연결한 인스타그램·유튜브·틱톡에 한 번에 올려요. 캡션에 제품 링크도 넣어요." },
 ];
 
 const EDGES = [
@@ -153,7 +155,7 @@ export default function Home() {
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">
-        <SectionTitle eyebrow="작동 방식" title="4단계, 방송 1시간이면 충분해요" />
+        <SectionTitle eyebrow="작동 방식" title="대본부터 주문 전화까지 한 곳에서" />
         <ol className="mt-8 grid gap-3 sm:grid-cols-2">
           {STEPS.map((s, i) => (
             <li key={s.title} className="flex gap-4 rounded-xl border border-line p-5">
@@ -161,7 +163,10 @@ export default function Home() {
                 {i + 1}
               </span>
               <div>
-                <p className="font-semibold">{s.title}</p>
+                <p className="flex flex-wrap items-center gap-2 font-semibold">
+                  {s.title}
+                  {s.optional && <span className="rounded-full border border-line px-2 py-0.5 text-xs font-normal text-muted">선택</span>}
+                </p>
                 <p className="mt-1 text-sm leading-relaxed text-muted">{s.body}</p>
               </div>
             </li>
