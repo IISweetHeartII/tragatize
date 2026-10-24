@@ -1,0 +1,560 @@
+{
+  "food": {
+    "highlights": [
+      {
+        "en": {
+          "hook": "Handmade by our manager",
+          "caption": "Today's star is the Cry Cheeseburger, made by our manager himself! We even kept the honest bit where all I could do was pretend to eat it 😂 Trusting the editors on this one.",
+          "why": "It pairs the care of a burger handmade by the manager with an honest, funny 'pretend eating' moment, which makes viewers curious and warms them up to the shop."
+        },
+        "ja": {
+          "hook": "マネージャー手作りバーガー",
+          "caption": "今日の主役は、マネージャーさんが手作りしてくれたCry Cheeseburger！食べるフリしかできない切なさまで正直に撮りました😂 編集はおまかせします。",
+          "why": "マネージャー手作りという心のこもったポイントと「食べるフリ」の正直な笑いが合わさり、視聴者の興味と親しみを引き出せるシーンです。"
+        },
+        "zh-CN": {
+          "hook": "经理亲手做的汉堡",
+          "caption": "今天的主角是经理亲手做的Cry Cheeseburger！只能假装吃的遗憾也老老实实拍下来了😂 剪辑就交给你们啦。",
+          "why": "这一段既有经理亲手制作的用心，又有“假装吃”的真实笑点，能激发观众的好奇心和亲切感。"
+        },
+        "zh-TW": {
+          "hook": "經理親手做的漢堡",
+          "caption": "今天的主角是經理親手做的Cry Cheeseburger！只能假裝吃的遺憾也老實拍下來了😂 剪輯就交給你們囉。",
+          "why": "這段同時有經理親手製作的用心和「假裝吃」的真實笑點，能引起觀眾的好奇與親切感。"
+        },
+        "vi": {
+          "hook": "Burger do quản lý tự tay làm",
+          "caption": "Nhân vật chính hôm nay là Cry Cheeseburger do chính quản lý tự tay làm! Cả nỗi tiếc nuối vì chỉ được giả vờ ăn cũng được ghi lại thật thà 😂 Phần dựng phim xin nhờ cả vào đội edit.",
+          "why": "Cảnh này kết hợp sự chăm chút của chiếc burger do quản lý tự tay làm với khoảnh khắc 'giả vờ ăn' hài hước, chân thật, giúp khơi gợi sự tò mò và thiện cảm của người xem."
+        },
+        "th": {
+          "hook": "เบอร์เกอร์ฝีมือผู้จัดการ",
+          "caption": "พระเอกของวันนี้คือ Cry Cheeseburger ที่ผู้จัดการลงมือทำเองกับมือ! ขอเก็บความเสียดายที่ทำได้แค่แกล้งกินไว้แบบจริงใจด้วย 😂 เรื่องตัดต่อขอฝากด้วยนะ",
+          "why": "ฉากนี้มีทั้งความใส่ใจของเบอร์เกอร์ที่ผู้จัดการทำเองและมุก 'แกล้งกิน' แบบจริงใจ ช่วยดึงความอยากรู้และความรู้สึกเป็นกันเองจากผู้ชม"
+        }
+      },
+      {
+        "en": {
+          "hook": "One minute in… do I keep going?",
+          "caption": "Mid heartfelt speech: \"It's only been one minute, do I need to keep going?\" 🤣 And the closer: \"Enjoy your meal!\" Cheering on your day with the Cry Cheeseburger.",
+          "why": "The contrast between a serious speech and a candid filming comment gets a laugh, and the 'Enjoy your meal' that follows keeps people watching to the end and leaves a good impression of the brand."
+        },
+        "ja": {
+          "hook": "まだ1分…続けます？",
+          "caption": "急に感動スピーチを始めたと思ったら「まだ1分しか撮ってないけど、もっとやるんですか？」🤣 最後はしっかり「おいしく食べてね！」で締め。Cry Cheeseburgerと一緒に、今日も応援しています。",
+          "why": "真剣なスピーチと撮影中の正直な一言のギャップが笑いを生み、「おいしく食べてね」で締めることで最後まで見てもらえ、ブランドへの好感も残ります。"
+        },
+        "zh-CN": {
+          "hook": "才拍一分钟，还要继续？",
+          "caption": "突然开始感人演讲，结果冒出一句“才拍了一分钟，还要继续吗？”🤣 最后还不忘收尾：“好好享用吧！”Cry Cheeseburger陪你一起，为你的今天加油。",
+          "why": "认真演讲和直白的拍摄吐槽形成反差笑点，再接上“好好享用”，能让观众看到最后，并对品牌留下好感。"
+        },
+        "zh-TW": {
+          "hook": "才拍一分鐘，還要繼續？",
+          "caption": "突然開始感人演講，結果冒出一句「才拍一分鐘，還要繼續嗎？」🤣 最後還是用「好好享用喔！」收尾。Cry Cheeseburger陪你一起，為你的今天加油。",
+          "why": "認真演講和直白的拍攝吐槽形成反差笑點，再接上「好好享用」，能讓觀眾看到最後，也對品牌留下好感。"
+        },
+        "vi": {
+          "hook": "Mới quay 1 phút… quay tiếp hả?",
+          "caption": "Đang phát biểu cảm động bỗng hỏi: \"Mới quay được một phút, phải nói tiếp nữa hả?\" 🤣 Rồi chốt lại: \"Chúc mọi người ăn ngon nhé!\" Cùng Cry Cheeseburger tiếp sức cho ngày hôm nay của bạn.",
+          "why": "Sự tương phản giữa bài phát biểu nghiêm túc và câu nói thật thà khi quay tạo điểm cười, tiếp nối bằng lời 'chúc ăn ngon' giúp người xem xem đến cuối và để lại thiện cảm với thương hiệu."
+        },
+        "th": {
+          "hook": "ถ่ายไป 1 นาที ต้องต่ออีกไหม?",
+          "caption": "อยู่ดีๆ ก็พูดซึ้ง แล้วถามว่า \"เพิ่งถ่ายไปนาทีเดียว ต้องพูดต่ออีกเหรอ?\" 🤣 ปิดท้ายด้วย \"ทานให้อร่อยนะ!\" ขอเป็นกำลังใจให้วันนี้ของทุกคนไปพร้อมกับ Cry Cheeseburger",
+          "why": "ความตัดกันระหว่างสปีชจริงจังกับคำพูดตรงๆ ระหว่างถ่ายสร้างเสียงหัวเราะ แล้วตามด้วย 'ทานให้อร่อยนะ' ทำให้คนดูจนจบและรู้สึกดีกับแบรนด์"
+        }
+      },
+      {
+        "en": {
+          "hook": "A cheese bomb burger for ₩5,000?",
+          "caption": "The Cry Cheeseburger is loaded with serious cheese and serious tomato 🍔 One look at the cross-section and you'll get it. The expected price is just around ₩5,000, so dig in and enjoy!",
+          "why": "It shows the cheese and tomato up close and mentions the ₩5,000 price, making it the scene most likely to make viewers want to buy."
+        },
+        "ja": {
+          "hook": "チーズ爆弾バーガーが₩5,000？",
+          "caption": "チーズもトマトもハンパないCry Cheeseburger🍔 断面を見ればすぐわかるはず。予想価格はたったの₩5,000前後だそうなので、ぜひおいしく食べてみてください！",
+          "why": "チーズとトマトをしっかり見せたうえで₩5,000という価格も出てくるので、いちばん「買いたい」気持ちが高まるシーンです。"
+        },
+        "zh-CN": {
+          "hook": "芝士爆浆汉堡只要₩5,000？",
+          "caption": "芝士超夸张、番茄也超给力的Cry Cheeseburger🍔 看一眼切面就懂了。预计价格只要₩5,000左右，快来尝尝吧！",
+          "why": "直接展示芝士和番茄，再加上₩5,000的价格，是最能激发购买欲的一幕。"
+        },
+        "zh-TW": {
+          "hook": "起司爆量漢堡只要₩5,000？",
+          "caption": "起司超狂、番茄也超猛的Cry Cheeseburger🍔 看一眼切面就懂了。預估價格只要₩5,000左右，快來好好享用吧！",
+          "why": "直接秀出起司和番茄，再加上₩5,000的價格，是最能引起購買慾的一幕。"
+        },
+        "vi": {
+          "hook": "Burger bom phô mai chỉ ₩5,000?",
+          "caption": "Cry Cheeseburger phô mai ngập tràn, cà chua cũng đỉnh không kém 🍔 Nhìn mặt cắt là hiểu ngay. Giá dự kiến chỉ khoảng ₩5,000 thôi, thưởng thức ngon miệng nhé!",
+          "why": "Cảnh này cho thấy rõ phô mai và cà chua, lại nhắc đến mức giá ₩5,000, nên là cảnh khiến người xem muốn mua nhất."
+        },
+        "th": {
+          "hook": "เบอร์เกอร์ชีสระเบิด แค่ ₩5,000?",
+          "caption": "Cry Cheeseburger ชีสจัดเต็ม มะเขือเทศก็ไม่ธรรมดา 🍔 ดูหน้าตัดแล้วจะเข้าใจทันที ราคาคาดว่าแค่ประมาณ ₩5,000 เท่านั้น ลองไปทานให้อร่อยกันนะ!",
+          "why": "ฉากนี้โชว์ชีสและมะเขือเทศให้เห็นชัดๆ พร้อมบอกราคา ₩5,000 จึงเป็นฉากที่กระตุ้นความอยากซื้อได้มากที่สุด"
+        }
+      }
+    ],
+    "qa": {
+      "en": [
+        {
+          "q": "How much is it?",
+          "a": "The Cry Cheeseburger is ₩5,000 each."
+        },
+        {
+          "q": "Where are you located?",
+          "a": "We're near Gangnam Station. We'll text you a map with your order confirmation."
+        },
+        {
+          "q": "Do you offer takeout?",
+          "a": "Yes, we do takeout. Just order by phone and come pick it up."
+        }
+      ],
+      "ja": [
+        {
+          "q": "値段はいくらですか？",
+          "a": "Cry Cheeseburgerは1個₩5,000です。"
+        },
+        {
+          "q": "お店はどこですか？",
+          "a": "江南駅の近くです。注文確認のメッセージで地図をお送りします。"
+        },
+        {
+          "q": "テイクアウトできますか？",
+          "a": "はい、できます。お電話でご注文のうえ、受け取りにお越しください。"
+        }
+      ],
+      "zh-CN": [
+        {
+          "q": "多少钱？",
+          "a": "Cry Cheeseburger一个₩5,000。"
+        },
+        {
+          "q": "店在哪里？",
+          "a": "在江南站附近。我们会通过订单确认短信把地图发给您。"
+        },
+        {
+          "q": "可以打包吗？",
+          "a": "可以打包。电话下单后到店自取就行。"
+        }
+      ],
+      "zh-TW": [
+        {
+          "q": "價格多少？",
+          "a": "Cry Cheeseburger一個₩5,000。"
+        },
+        {
+          "q": "店在哪裡？",
+          "a": "在江南站附近。我們會用訂單確認簡訊傳地圖給您。"
+        },
+        {
+          "q": "可以外帶嗎？",
+          "a": "可以外帶。打電話訂餐後來店取餐就可以了。"
+        }
+      ],
+      "vi": [
+        {
+          "q": "Giá bao nhiêu vậy?",
+          "a": "Cry Cheeseburger giá ₩5,000 một cái."
+        },
+        {
+          "q": "Quán ở đâu vậy?",
+          "a": "Quán ở gần ga Gangnam. Chúng tôi sẽ gửi bản đồ qua tin nhắn xác nhận đơn hàng."
+        },
+        {
+          "q": "Có mua mang về được không?",
+          "a": "Có, mua mang về được. Bạn gọi điện đặt món rồi đến lấy là được."
+        }
+      ],
+      "th": [
+        {
+          "q": "ราคาเท่าไหร่?",
+          "a": "Cry Cheeseburger ราคาชิ้นละ ₩5,000"
+        },
+        {
+          "q": "ร้านอยู่ที่ไหน?",
+          "a": "อยู่ใกล้สถานีคังนัม เราจะส่งแผนที่ไปทางข้อความยืนยันคำสั่งซื้อ"
+        },
+        {
+          "q": "สั่งกลับบ้านได้ไหม?",
+          "a": "ได้ สั่งกลับบ้านได้ โทรสั่งแล้วมารับที่ร้านได้เลย"
+        }
+      ]
+    }
+  },
+  "beauty": {
+    "highlights": [
+      {
+        "en": {
+          "hook": "My BF keeps stealing my mist",
+          "caption": "Is it just me, or does your boyfriend secretly use your mist too? 😂 If you've ever wondered about something between a water mist and a cream, meet the cream mist: UIQ Biome Barrier Cream Mist.",
+          "why": "A relatable couple moment grabs attention from the very first second and gets the product name and concept across in one go."
+        },
+        "ja": {
+          "hook": "彼氏が私のミストこっそり使う",
+          "caption": "彼氏が私のミストをこっそり使うの、私だけじゃないよね？😂 ウォーターミストとクリームの間が気になっていた方へ。クリームミスト「UIQ Biome Barrier Cream Mist」をご紹介します。",
+          "why": "誰もが共感できるカップルあるあるで最初の1秒から目を引き、商品名とコンセプトまで一気に伝えられるオープニングです。"
+        },
+        "zh-CN": {
+          "hook": "男朋友偷用我的喷雾",
+          "caption": "男朋友偷偷用我的喷雾，不止我一个人遇到吧？😂 好奇介于水喷雾和面霜之间是什么感觉？给大家介绍这款乳霜喷雾：UIQ Biome Barrier Cream Mist。",
+          "why": "用人人都有共鸣的情侣小插曲，从第1秒就抓住目光，同时一次性传达产品名和概念的开场。"
+        },
+        "zh-TW": {
+          "hook": "男友偷用我的噴霧",
+          "caption": "男友偷偷用我的噴霧，不是只有我遇過吧？😂 好奇介於水噴霧和乳霜之間是什麼感覺嗎？跟大家介紹這款乳霜噴霧：UIQ Biome Barrier Cream Mist。",
+          "why": "用大家都有共鳴的情侶日常，從第一秒就抓住目光，還能一次帶出產品名稱與概念的開場。"
+        },
+        "vi": {
+          "hook": "Người yêu lén xài xịt khoáng của mình",
+          "caption": "Người yêu lén xài xịt khoáng của mình, đâu phải chỉ mình mình gặp đúng không? 😂 Dành cho ai tò mò về thứ nằm giữa xịt khoáng và kem dưỡng: xịt kem UIQ Biome Barrier Cream Mist.",
+          "why": "Một tình huống cặp đôi ai cũng đồng cảm giúp giữ chân người xem ngay từ giây đầu tiên, đồng thời truyền tải luôn tên sản phẩm và ý tưởng."
+        },
+        "th": {
+          "hook": "แฟนแอบใช้สเปรย์ของฉัน",
+          "caption": "แฟนแอบใช้สเปรย์ของเรา ไม่ได้เจออยู่คนเดียวใช่มั้ย? 😂 ใครอยากรู้ว่าอะไรที่อยู่ระหว่างสเปรย์น้ำกับครีมเป็นยังไง ขอแนะนำครีมมิสต์ UIQ Biome Barrier Cream Mist",
+          "why": "ฉากคู่รักที่ใครดูก็อิน ช่วยดึงความสนใจตั้งแต่วินาทีแรก และสื่อทั้งชื่อสินค้าและคอนเซปต์ได้ในคราวเดียว"
+        }
+      },
+      {
+        "en": {
+          "hook": "Watch what happens on spray",
+          "caption": "Here's my review of the cream mist, sprayed straight onto my face 💧 On my skin it felt hydrating, not sticky. Everyone's skin is different, so take this as just my experience! I bought two and slipped one into my BF's pouch 🎁",
+          "why": "It shows real use with an honest review plus the 'BF's pouch' tip, which naturally builds buying interest. I cut the roughly 12 seconds of silence at the start. I also left out the price and phone-offer info at the end, because it could mislead viewers once that offer is over."
+        },
+        "ja": {
+          "hook": "シュッとした瞬間これ？",
+          "caption": "顔に直接スプレーしてみたクリームミストのレビューです💧 私の肌ではベタつかず、しっとりしました。感じ方は肌によって違うので参考程度に見てくださいね！2個買って、1個は彼氏のポーチにこっそり🎁",
+          "why": "実際の使用シーンに正直な使用感レビューと「彼氏のポーチ」の小ワザが続き、自然に購買意欲を高めます。冒頭の約12秒の無音部分はカットしました。後半の価格・電話特典の案内も、時間が経つと誤って伝わる可能性があるため入れていません。"
+        },
+        "zh-CN": {
+          "hook": "一喷上脸是这感觉？",
+          "caption": "直接往脸上喷的乳霜喷雾使用心得💧 以我的肤质来说，不黏腻又很滋润。每个人肤质感受不同，仅供参考哦！买了两瓶，一瓶偷偷塞进男朋友的化妆包🎁",
+          "why": "真实使用画面配上真诚的使用感分享，再接上“塞进男友化妆包”的小妙招，自然激发购买欲。已剪掉开头约12秒的无声片段。结尾的价格和电话优惠说明过后观看容易造成误解，所以也没有放进去。"
+        },
+        "zh-TW": {
+          "hook": "一噴上臉是這感覺？",
+          "caption": "直接往臉上噴的乳霜噴霧心得💧 以我的膚質來說，不黏膩又很保濕。每個人膚況不同，參考就好喔！買了兩瓶，一瓶偷偷塞進男友的化妝包🎁",
+          "why": "真實使用畫面搭配真誠的使用心得，再接上「塞進男友化妝包」的小撇步，自然提升購買慾。已剪掉開頭約12秒的無聲片段。結尾的價格與電話優惠說明事後觀看容易造成誤解，所以也沒有放進去。"
+        },
+        "vi": {
+          "hook": "Xịt lên cái là thấy liền?",
+          "caption": "Review xịt kem xịt thẳng lên mặt 💧 Với da mình thì không bết dính mà còn ẩm mượt. Mỗi làn da cảm nhận khác nhau nên mọi người chỉ tham khảo thôi nha! Mua hai chai, một chai nhét vào túi của người yêu 🎁",
+          "why": "Cảnh dùng thực tế kèm review chân thật và mẹo 'nhét vào túi người yêu' giúp khơi gợi mong muốn mua hàng một cách tự nhiên. Mình đã cắt khoảng 12 giây im lặng ở đầu. Phần giá và ưu đãi qua điện thoại ở cuối cũng được bỏ ra vì có thể gây hiểu nhầm khi xem lại sau này."
+        },
+        "th": {
+          "hook": "ฉีดปุ๊บ รู้สึกงี้เลย?",
+          "caption": "รีวิวครีมมิสต์ ฉีดลงหน้าตรงๆ 💧 สำหรับผิวเรา ไม่เหนอะหนะแต่ชุ่มชื้น ผิวแต่ละคนรู้สึกต่างกัน ดูไว้เป็นข้อมูลนะ! ซื้อสองขวด อีกขวดแอบใส่กระเป๋าแฟน 🎁",
+          "why": "ฉากใช้งานจริงพร้อมรีวิวแบบตรงไปตรงมา และทริค 'ใส่กระเป๋าแฟน' ช่วยกระตุ้นให้อยากซื้ออย่างเป็นธรรมชาติ ตัดช่วงเงียบประมาณ 12 วินาทีตอนต้นออก และไม่ใส่ข้อมูลราคาและสิทธิพิเศษทางโทรศัพท์ช่วงท้าย เพราะอาจสื่อสารผิดเมื่อมีคนดูคลิปภายหลัง"
+        }
+      },
+      {
+        "en": {
+          "hook": "Can guys use this too?",
+          "caption": "The #1 question in the comments: 'Can guys use this too?' 🙋‍♂️ I answered based on the product info. If your skin is sensitive, be sure to patch test on your inner arm first!",
+          "why": "It answers a question viewers actually have and includes patch-test advice, which builds trust and can bring in male buyers too. The closing line 'tap the link now for live deals' won't make sense once the live has ended and people watch it as a short, so I recommend fixing it with captions or an edit."
+        },
+        "ja": {
+          "hook": "男性の肌にも使える？",
+          "caption": "コメントで一番多かった質問「男性の肌にも使えますか？」🙋‍♂️ 商品案内に基づいてお答えしました。敏感肌の方は必ず腕の内側で先にテストしてくださいね！",
+          "why": "視聴者が実際に気になる質問に答え、パッチテストの案内まで含めることで信頼感を高め、男性の購入層にも広げられるシーンです。最後の「今リンクを押すとライブ特典」という一言は、ライブ終了後にショート動画として見ると合わないため、字幕や編集で対応することをおすすめします。"
+        },
+        "zh-CN": {
+          "hook": "男生皮肤也能用吗？",
+          "caption": "评论区问得最多的问题：“男生皮肤也能用吗？”🙋‍♂️ 我按照产品说明回答啦。如果是敏感肌，一定要先在手臂内侧做个测试哦！",
+          "why": "回答观众真正关心的问题，还附上局部测试提醒，能提升信任感，也能把购买人群扩展到男性。结尾那句“现在点链接享直播福利”在直播结束后作为短视频观看时已不适用，建议用字幕或剪辑处理。"
+        },
+        "zh-TW": {
+          "hook": "男生也能用嗎？",
+          "caption": "留言區最多人問的問題：「男生的皮膚也能用嗎？」🙋‍♂️ 我依照產品說明回答囉。如果是敏感肌，記得先在手臂內側測試一下！",
+          "why": "回答觀眾真正好奇的問題，還附上局部測試提醒，能提升信任感，也能把客群擴大到男性。結尾那句「現在點連結享直播優惠」在直播結束後當短影音觀看時已不適用，建議用字幕或剪輯處理。"
+        },
+        "vi": {
+          "hook": "Con trai dùng được không?",
+          "caption": "Câu hỏi được hỏi nhiều nhất trong bình luận: 'Da con trai có dùng được không?' 🙋‍♂️ Mình đã trả lời dựa trên thông tin sản phẩm. Nếu da nhạy cảm, nhớ thử trước ở mặt trong cánh tay nha!",
+          "why": "Cảnh này trả lời đúng câu hỏi người xem thật sự thắc mắc, kèm hướng dẫn thử trước trên da, giúp tăng độ tin cậy và mở rộng sang nhóm khách nam. Câu 'bấm link ngay để nhận ưu đãi livestream' ở cuối sẽ không còn phù hợp khi xem dưới dạng video ngắn sau khi livestream kết thúc, nên bạn nên xử lý bằng phụ đề hoặc cắt ghép."
+        },
+        "th": {
+          "hook": "ผู้ชายใช้ได้มั้ย?",
+          "caption": "คำถามที่เจอบ่อยสุดในคอมเมนต์ 'ผิวผู้ชายใช้ได้มั้ย?' 🙋‍♂️ ตอบตามข้อมูลสินค้าเลย ใครผิวแพ้ง่าย อย่าลืมทดสอบที่ท้องแขนด้านในก่อนนะ!",
+          "why": "ฉากนี้ตอบคำถามที่ผู้ชมอยากรู้จริงๆ พร้อมแนะนำให้ทดสอบผิวก่อน ช่วยเพิ่มความน่าเชื่อถือและขยายกลุ่มลูกค้าผู้ชายได้ ประโยค 'กดลิงก์ตอนนี้รับสิทธิพิเศษไลฟ์' ตอนท้ายจะไม่เหมาะเมื่อดูเป็นคลิปสั้นหลังไลฟ์จบแล้ว แนะนำให้แก้ด้วยซับไตเติลหรือตัดต่อ"
+        }
+      }
+    ],
+    "qa": {
+      "en": [
+        {
+          "q": "Is it really buy one, get one free?",
+          "a": "Yes! With today's live special, you get two for the price of one."
+        },
+        {
+          "q": "Can guys use it too?",
+          "a": "Yes, anyone can use it regardless of gender. If your skin is sensitive, please test it on your inner arm first."
+        },
+        {
+          "q": "Do you ship internationally?",
+          "a": "Reply to your order confirmation text with your address, and we'll let you know which shipping options are available."
+        }
+      ],
+      "ja": [
+        {
+          "q": "1+1で合ってますか？",
+          "a": "はい、本日のライブ特価で1個の価格で2個です。"
+        },
+        {
+          "q": "男性も使えますか？",
+          "a": "性別に関係なくお使いいただけます。敏感肌の方は腕の内側で先にテストしてください。"
+        },
+        {
+          "q": "海外配送もできますか？",
+          "a": "注文確認のメッセージに住所を送っていただければ、可能な方法をご案内します。"
+        }
+      ],
+      "zh-CN": [
+        {
+          "q": "是买一送一吗？",
+          "a": "是的，今天直播特价，一瓶的价格买两瓶。"
+        },
+        {
+          "q": "男生也能用吗？",
+          "a": "不分性别都可以用。敏感肌请先在手臂内侧测试。"
+        },
+        {
+          "q": "可以寄海外吗？",
+          "a": "请在订单确认短信里回复您的地址，我们会告诉您可行的寄送方式。"
+        }
+      ],
+      "zh-TW": [
+        {
+          "q": "真的是買一送一嗎？",
+          "a": "是的，今天直播特價，一瓶的價格就有兩瓶。"
+        },
+        {
+          "q": "男生也能用嗎？",
+          "a": "不分性別都可以使用。敏感肌請先在手臂內側測試。"
+        },
+        {
+          "q": "可以寄送海外嗎？",
+          "a": "請回覆訂單確認簡訊並附上地址，我們會告訴您可行的寄送方式。"
+        }
+      ],
+      "vi": [
+        {
+          "q": "Có đúng là mua 1 tặng 1 không?",
+          "a": "Đúng rồi, ưu đãi livestream hôm nay: mua một chai được hai chai."
+        },
+        {
+          "q": "Nam dùng được không?",
+          "a": "Dùng được, không phân biệt giới tính. Nếu da nhạy cảm, bạn vui lòng thử trước ở mặt trong cánh tay."
+        },
+        {
+          "q": "Có giao hàng quốc tế không?",
+          "a": "Bạn gửi địa chỉ qua tin nhắn xác nhận đơn hàng, shop sẽ hướng dẫn cách giao phù hợp."
+        }
+      ],
+      "th": [
+        {
+          "q": "ซื้อ 1 แถม 1 จริงมั้ย?",
+          "a": "ใช่ค่ะ ราคาพิเศษไลฟ์วันนี้ จ่ายราคาเดียวได้สองชิ้น"
+        },
+        {
+          "q": "ผู้ชายใช้ได้มั้ย?",
+          "a": "ใช้ได้ทุกเพศค่ะ ถ้าผิวแพ้ง่าย กรุณาทดสอบที่ท้องแขนด้านในก่อน"
+        },
+        {
+          "q": "ส่งต่างประเทศได้มั้ย?",
+          "a": "ส่งที่อยู่มาทางข้อความยืนยันคำสั่งซื้อ แล้วเราจะแจ้งวิธีจัดส่งที่ทำได้ให้ค่ะ"
+        }
+      ]
+    }
+  },
+  "book": {
+    "highlights": [
+      {
+        "en": {
+          "hook": "Do you know your parents' younger days?",
+          "caption": "Photos stay with us, but the stories inside them slowly fade. Doran, an AI story companion, calls your parents directly and warmly asks them about those days.",
+          "why": "It opens with a question that hits home for everyone, then introduces the product right away, holding viewers from the very first second to the end."
+        },
+        "ja": {
+          "hook": "親の若い頃、知ってる？",
+          "caption": "写真は残っても、そこにある物語は少しずつ薄れていきます。AIのお話し相手ドランが、ご両親に直接お電話して、あの頃のお話をやさしくうかがいます。",
+          "why": "誰もがドキッとする問いかけで心をつかみ、すぐに商品紹介へつなげることで、最初の1秒から最後まで視聴を引き留めるオープニングです。"
+        },
+        "zh-CN": {
+          "hook": "你了解爸妈年轻时的样子吗？",
+          "caption": "照片还在，照片里的故事却渐渐模糊。AI聊天伙伴Doran会亲自给爸妈打电话，温柔地请他们聊聊那些年的故事。",
+          "why": "先用一个人人都会心头一紧的问题触动情绪，再马上介绍产品，从第一秒起就牢牢抓住观众，让他们一直看到最后。"
+        },
+        "zh-TW": {
+          "hook": "你知道爸媽年輕時的樣子嗎？",
+          "caption": "照片留下了，裡面的故事卻慢慢模糊。AI 故事夥伴 Doran 會親自打電話給爸媽，溫柔地請他們聊聊那些年的故事。",
+          "why": "先用一個人人都會心頭一震的問題觸動情緒，再立刻介紹產品，從第一秒起就抓住觀眾，讓他們一路看到最後。"
+        },
+        "vi": {
+          "hook": "Bạn có biết thời trẻ của bố mẹ?",
+          "caption": "Ảnh thì vẫn còn đó, nhưng những câu chuyện bên trong cứ dần phai nhạt. Người bạn kể chuyện AI Doran sẽ trực tiếp gọi điện cho bố mẹ và nhẹ nhàng hỏi han về những năm tháng ấy.",
+          "why": "Video mở đầu bằng một câu hỏi khiến ai cũng chột dạ để chạm đến cảm xúc. Sau đó sản phẩm được giới thiệu ngay, giúp giữ chân người xem từ giây đầu tiên đến cuối."
+        },
+        "th": {
+          "hook": "รู้จักพ่อแม่ตอนหนุ่มสาวไหม?",
+          "caption": "รูปถ่ายยังอยู่ แต่เรื่องราวในนั้นค่อยๆ เลือนหายไป Doran เพื่อนเล่าเรื่อง AI จะโทรหาคุณพ่อคุณแม่โดยตรง และชวนคุยถึงเรื่องราวในวันวานอย่างอบอุ่น",
+          "why": "เปิดด้วยคำถามที่ใครฟังก็สะอึกเพื่อแตะอารมณ์ แล้วแนะนำสินค้าทันที ช่วยดึงคนดูไว้ได้ตั้งแต่วินาทีแรกจนจบ"
+        }
+      },
+      {
+        "en": {
+          "hook": "Just a phone call becomes a memoir",
+          "caption": "The day they got their first paycheck, the day they got married. Your parents just chat comfortably on the phone. No app to install, no typing, and a one-of-a-kind memoir book is made.",
+          "why": "This is the key explainer section. It shows how easy it is (no app, no typing) and what you get (a real book) at the same time, which lowers the barrier to buying."
+        },
+        "ja": {
+          "hook": "電話だけで自分史が完成",
+          "caption": "初めてお給料をもらった日、結婚した日。ご両親は気軽にお電話でお話しするだけ。アプリのインストールも文字入力もいらず、世界にひとつだけの自分史の本ができあがります。",
+          "why": "「アプリも入力も不要」という手軽さと「本として残る」という成果を一度に見せ、購入のハードルを下げる核心の説明パートです。"
+        },
+        "zh-CN": {
+          "hook": "打个电话，自传就写好了",
+          "caption": "第一次领工资的那天，结婚的那天。爸妈只要轻松打个电话聊聊就好。不用装App，也不用打字，就能做出一本世界上独一无二的自传。",
+          "why": "这是核心介绍段落，同时展示了“不用App、不用打字”的简单和“做成一本书”的成果，能有效降低购买门槛。"
+        },
+        "zh-TW": {
+          "hook": "講講電話，自傳就完成",
+          "caption": "第一次領薪水的那天、結婚的那天。爸媽只要輕鬆講講電話就好。不用裝 App，也不用打字，就能做出一本世界上獨一無二的自傳。",
+          "why": "這是核心介紹段落，同時呈現「不用 App、不用打字」的簡單和「做成一本書」的成果，能有效降低購買門檻。"
+        },
+        "vi": {
+          "hook": "Chỉ cần gọi điện là có hồi ký",
+          "caption": "Ngày nhận đồng lương đầu tiên, ngày cưới. Bố mẹ chỉ cần thoải mái trò chuyện qua điện thoại. Không cần cài app, không cần gõ chữ, một cuốn hồi ký có một không hai sẽ ra đời.",
+          "why": "Đây là phần giới thiệu cốt lõi. Nó cho thấy cùng lúc sự dễ dàng (không cần app, không cần gõ chữ) và thành quả (được lưu lại thành sách), giúp hạ rào cản mua hàng."
+        },
+        "th": {
+          "hook": "แค่คุยโทรศัพท์ ก็ได้หนังสือชีวประวัติ",
+          "caption": "วันที่ได้เงินเดือนแรก วันแต่งงาน คุณพ่อคุณแม่แค่คุยโทรศัพท์สบายๆ ไม่ต้องลงแอป ไม่ต้องพิมพ์ ก็ได้หนังสืออัตชีวประวัติที่มีเล่มเดียวในโลก",
+          "why": "เป็นช่วงอธิบายหลักที่โชว์ทั้งความง่าย (ไม่ต้องลงแอป ไม่ต้องพิมพ์) และผลลัพธ์ (ได้เป็นหนังสือ) ในคราวเดียว ช่วยลดกำแพงการตัดสินใจซื้อ"
+        }
+      },
+      {
+        "en": {
+          "hook": "A book that becomes your family treasure",
+          "caption": "Your parents' life story, with the whole family gathered around turning the pages together. Before it's too late, preserve the stories they told in their own voice with withby. Call the number below the video and our AI will take your order.",
+          "why": "A warm scene of the family reading together leads into the urgency of 'before it's too late' and then how to order, so the ending turns viewers straight into buyers."
+        },
+        "ja": {
+          "hook": "わが家の宝物になる一冊",
+          "caption": "家族みんなで囲んでページをめくる、ご両親の人生の物語。手遅れになる前に、ご両親がご自身の声で語ってくれたお話をwithbyで残しませんか。動画下の番号にお電話いただくと、AIがご注文を承ります。",
+          "why": "家族で本をめくる温かい場面に「手遅れになる前に」という切迫感と注文方法まで続き、そのまま購入につながる締めくくりです。"
+        },
+        "zh-CN": {
+          "hook": "一本会成为传家宝的书",
+          "caption": "全家人围坐在一起，一页页翻看爸妈的人生故事。趁还来得及，用withby把爸妈亲口讲述的故事留下来吧。拨打视频下方的电话，AI就会为您下单。",
+          "why": "全家一起翻书的温馨画面，加上“趁还来得及”的紧迫感和下单方式，让结尾直接带动购买。"
+        },
+        "zh-TW": {
+          "hook": "會成為家中寶物的一本書",
+          "caption": "全家圍坐在一起，一頁頁翻看爸媽的人生故事。趁還來得及，用 withby 把爸媽親口說的故事留下來吧。撥打影片下方的電話，AI 就會幫你下單。",
+          "why": "全家一起翻書的溫馨畫面，加上「趁還來得及」的緊迫感和下單方式，讓結尾直接帶動購買。"
+        },
+        "vi": {
+          "hook": "Cuốn sách thành báu vật gia đình",
+          "caption": "Cả nhà quây quần cùng lật xem câu chuyện cuộc đời của bố mẹ. Trước khi quá muộn, hãy cùng withby lưu giữ những câu chuyện chính bố mẹ kể bằng giọng của mình. Gọi số điện thoại bên dưới video, AI sẽ nhận đơn cho bạn.",
+          "why": "Cảnh cả nhà ấm áp cùng lật sách được nối tiếp bởi sự cấp bách 'trước khi quá muộn' và cách đặt hàng, tạo nên phần kết dẫn thẳng đến quyết định mua."
+        },
+        "th": {
+          "hook": "หนังสือที่จะเป็นสมบัติของบ้าน",
+          "caption": "เรื่องราวชีวิตของคุณพ่อคุณแม่ ที่ทั้งครอบครัวล้อมวงเปิดอ่านด้วยกัน ก่อนจะสายเกินไป เก็บเรื่องเล่าจากเสียงของท่านไว้กับ withby โทรตามเบอร์ใต้คลิป แล้ว AI จะรับออเดอร์ให้ทันที",
+          "why": "ฉากอบอุ่นที่ครอบครัวเปิดหนังสือด้วยกันต่อด้วยความเร่งด่วนว่า 'ก่อนจะสายเกินไป' และวิธีสั่งซื้อ ทำให้ตอนจบพาคนดูไปสู่การซื้อได้ทันที"
+        }
+      }
+    ],
+    "qa": {
+      "en": [
+        {
+          "q": "What do my parents need to do?",
+          "a": "Our AI story companion calls them at a set time, and they just chat comfortably."
+        },
+        {
+          "q": "How long does the book take?",
+          "a": "Once all the stories are gathered, we turn them into text and illustrations and send you the finished book."
+        },
+        {
+          "q": "How much is it?",
+          "a": "The parent memoir book is ₩88,000."
+        }
+      ],
+      "ja": [
+        {
+          "q": "親は何をすればいいですか？",
+          "a": "決まった時間にAIのお話し相手からお電話しますので、気軽にお話しいただくだけで大丈夫です。"
+        },
+        {
+          "q": "本はどのくらいでできますか？",
+          "a": "お話がすべて集まったら、文章と絵でまとめて本にしてお届けします。"
+        },
+        {
+          "q": "価格はいくらですか？",
+          "a": "ご両親の自分史の本は₩88,000です。"
+        }
+      ],
+      "zh-CN": [
+        {
+          "q": "爸妈需要做什么？",
+          "a": "AI聊天伙伴会在约定时间打电话过去，爸妈只要轻松聊天就好。"
+        },
+        {
+          "q": "做成书需要多久？",
+          "a": "故事都收集齐后，我们会配上文字和插图编成书寄给您。"
+        },
+        {
+          "q": "价格是多少？",
+          "a": "父母自传书售价₩88,000。"
+        }
+      ],
+      "zh-TW": [
+        {
+          "q": "爸媽需要做什麼？",
+          "a": "AI 故事夥伴會在約定時間打電話過去，爸媽只要輕鬆聊天就好。"
+        },
+        {
+          "q": "做成書要多久？",
+          "a": "故事都蒐集完成後，我們會用文字和插圖編成書寄給你。"
+        },
+        {
+          "q": "價格多少？",
+          "a": "爸媽自傳書售價 ₩88,000。"
+        }
+      ],
+      "vi": [
+        {
+          "q": "Bố mẹ cần làm gì?",
+          "a": "Người bạn kể chuyện AI sẽ gọi điện vào giờ đã hẹn, bố mẹ chỉ cần thoải mái trò chuyện thôi."
+        },
+        {
+          "q": "Làm sách mất bao lâu?",
+          "a": "Khi đã thu thập đủ câu chuyện, chúng tôi sẽ biên soạn thành sách có chữ và tranh minh họa rồi gửi đến bạn."
+        },
+        {
+          "q": "Giá bao nhiêu?",
+          "a": "Sách hồi ký của bố mẹ có giá ₩88,000."
+        }
+      ],
+      "th": [
+        {
+          "q": "คุณพ่อคุณแม่ต้องทำอะไรบ้าง?",
+          "a": "เพื่อนเล่าเรื่อง AI จะโทรไปตามเวลาที่นัดไว้ ท่านแค่คุยสบายๆ ก็พอ"
+        },
+        {
+          "q": "ทำหนังสือใช้เวลานานแค่ไหน?",
+          "a": "เมื่อรวบรวมเรื่องราวครบแล้ว เราจะเรียบเรียงเป็นเนื้อหาและภาพประกอบ แล้วจัดส่งเป็นหนังสือให้"
+        },
+        {
+          "q": "ราคาเท่าไหร่?",
+          "a": "หนังสืออัตชีวประวัติของคุณพ่อคุณแม่ราคา ₩88,000"
+        }
+      ]
+    }
+  }
+}

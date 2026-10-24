@@ -1,6 +1,8 @@
 // 데모 모드용 «실제 AI 실행 결과». 2026-10-24 팀원이 찍은 샘플 라이브(크라이 치즈버거, 약 1분 40초)를
 // 배포된 /api/script·/api/highlights 에 그대로 돌린 응답이다(화면에 «샘플 결과» 라고 표시).
+import type { Locale } from "@/lib/i18n";
 import type { Highlight, LiveScript } from "@/lib/types";
+import SAMPLE_I18N from "./demo-i18n.json";
 
 export type Plan = "lite" | "premium";
 export type QA = { q: string; a: string };
@@ -15,6 +17,7 @@ export type DemoPreset = {
   script: LiveScript | null;
   highlights: Highlight[];
   qa: QA[]; // 전화 응대 단계에 미리 채우는 질문·답변
+  qaI18n?: Partial<Record<Locale, QA[]>>; // 화면 언어별 Q&A(번역)
 };
 
 const BURGER_PRODUCT = "크라이 치즈버거, 5천 원";
@@ -335,7 +338,19 @@ const WITHBY_HIGHLIGHTS: Highlight[] = [
 ];
 
 // 카테고리별 샘플 라이브. videoUrl 이 빈 칸은 «촬영 중» 으로 보인다(팀이 찍어 올리면 결과를 붙여 넣는다).
-export const DEMO_PRESETS: DemoPreset[] = [
+// 샘플 결과(한국어 원문)에 다른 6개 언어 후킹·캡션·이유와 Q&A 번역을 붙인다(src/lib/demo-i18n.json).
+type SampleI18n = { highlights: Record<string, { hook: string; caption: string; why: string }>[]; qa: Record<string, QA[]> };
+function withI18n(preset: DemoPreset): DemoPreset {
+  const tr = (SAMPLE_I18N as Record<string, SampleI18n>)[preset.id];
+  if (!tr) return preset;
+  return {
+    ...preset,
+    highlights: preset.highlights.map((h, i) => ({ ...h, i18n: tr.highlights[i] as Highlight["i18n"] })),
+    qaI18n: tr.qa as DemoPreset["qaI18n"],
+  };
+}
+
+const PRESETS: DemoPreset[] = [
   {
     id: "food", plan: "lite", category: "Lite · 직접 촬영", title: "강남 수제버거 사장님", product: BURGER_PRODUCT, videoUrl: BURGER_VIDEO_URL, script: BURGER_SCRIPT, highlights: BURGER_HIGHLIGHTS,
     qa: [
@@ -361,3 +376,5 @@ export const DEMO_PRESETS: DemoPreset[] = [
     ],
   },
 ];
+
+export const DEMO_PRESETS: DemoPreset[] = PRESETS.map(withI18n);
