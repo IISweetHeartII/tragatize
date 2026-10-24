@@ -6,7 +6,7 @@ import QRCode from "qrcode";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { QA } from "@/lib/demo";
 import type { StudioText } from "@/lib/dict";
-import { fill } from "@/lib/i18n";
+import { TARGET_FLAGS, fill, type Locale } from "@/lib/i18n";
 import { ORDER_PHONE } from "@/lib/site";
 
 export type Deco = { qr: boolean; url: string; phone: boolean; long: boolean; short: boolean };
@@ -210,11 +210,13 @@ function draftQa(product: string, d: StudioText["qaDraft"]): QA[] {
 
 export function PhoneStep({
   product,
+  targets,
   presetQa,
   phone,
   onPhone,
 }: {
   product: string;
+  targets: Locale[]; // 손님 나라 — 티제가 이 언어들로 응대한다
   presetQa: QA[] | null;
   phone: string | null;
   onPhone: (n: string | null) => void;
@@ -255,6 +257,10 @@ export function PhoneStep({
         <p className="text-sm text-muted">{t.phoneOff}</p>
       ) : (
         <>
+          <p className="text-sm">
+            <span className="mr-2 tracking-widest">{targets.map((l) => TARGET_FLAGS[l]).join(" ")}</span>
+            <span className="text-muted">{t.phoneLangs}</span>
+          </p>
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-sm text-muted">{t.qaLabel}</p>
             <button type="button" onClick={draft} disabled={drafting} className="min-h-11 rounded-full border border-line px-4 text-sm hover:border-foreground disabled:opacity-40">

@@ -561,7 +561,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
       </Step>
 
       <Step id="step-phone" n={4} title={t.steps.phone}>
-        <PhoneStep product={product} presetQa={presetQa} phone={phone} onPhone={(n) => {
+        <PhoneStep product={product} targets={targets} presetQa={presetQa} phone={phone} onPhone={(n) => {
           setPhone(n);
           if (n) setDeco((d) => ({ ...d, phone: true }));
         }} />
