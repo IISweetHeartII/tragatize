@@ -58,7 +58,8 @@ async function sendInfo({ product, language, phone }: z.infer<typeof smsInput>) 
     return { content: [{ type: "text" as const, text: `없는 상품이에요. 가능한 상품: ${PRODUCTS.map((x) => x.name).join(", ")}` }], isError: true };
   }
   try {
-    await sendSms(to, infoSms(language, p), `info-${to}-${p.id}-${new Date().toISOString().slice(0, 13)}`);
+    // 중복 방지 키는 분 단위 — 시간 단위였을 땐 같은 시간대 두 번째 통화부터 문자가 조용히 생략됐다
+    await sendSms(to, infoSms(language, p), `info-${to}-${p.id}-${new Date().toISOString().slice(0, 16)}`);
     return {
       content: [
         { type: "text" as const, text: `문자를 보냈어요(${p.name}, 받는 번호 끝자리 ${to.slice(-4)}). 손님에게 «끝자리 ${to.slice(-4)} 번호로 살 수 있는 곳을 문자로 보내 드렸다» 고 말하세요. 주문·주소는 받지 않아요.` },
@@ -95,7 +96,7 @@ const handler = createMcpHandler((server) => {
     {
       title: "살 곳 안내 문자 보내기",
       description:
-        "손님이 사고 싶다고 하거나 어디서 사는지·위치를 물으면, 동의를 받고 부른다. 상품 이름·가격과 살 수 있는 곳(구매 링크·매장 위치)을 문자로 보낸다. 주문·결제·주소는 받지 않는다. phone 을 비우면 지금 전화를 건 번호로 보낸다(번호를 묻지 않는다). 결과에 받는 번호 끝자리 4개가 온다.",
+        "손님이 사고 싶다고 하거나 어디서 사는지·위치를 물으면 바로 부른다. 상품 이름·가격과 살 수 있는 곳(구매 링크·매장 위치)을 문자로 보낸다. 주문·결제·주소는 받지 않는다. phone 을 비우면 지금 전화를 건 번호로 보낸다(번호를 묻지 않는다). 결과에 받는 번호 끝자리 4개가 온다.",
       inputSchema: smsInput,
     },
     sendInfo,
