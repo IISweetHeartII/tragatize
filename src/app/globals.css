@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+  /* 기기가 다크 모드여도 흰 화면으로 고정한다(데모 영상·녹화본과 같은 화면). */
+  color-scheme: light;
   --background: #fbfaf8;
   --foreground: #16130f;
   --muted: #6f675d;
@@ -16,16 +18,6 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0e0c0a;
-    --foreground: #f3efe9;
-    --muted: #9b9389;
-    --line: #2a2520;
-    --accent: #ff6369;
-  }
 }
 
 body {
