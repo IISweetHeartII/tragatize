@@ -106,11 +106,11 @@
         },
         {
           "q": "Where are you located?",
-          "a": "We're near Gangnam Station. We'll text you a map with your order confirmation."
+          "a": "We're near Gangnam Station. Search “Cry Cheeseburger” in your map app."
         },
         {
           "q": "Do you offer takeout?",
-          "a": "Yes, we do takeout. Just order by phone and come pick it up."
+          "a": "Yes, we do takeout. Order at the counter and we'll pack it right away."
         }
       ],
       "ja": [
@@ -120,11 +120,11 @@
         },
         {
           "q": "お店はどこですか？",
-          "a": "江南駅の近くです。注文確認のメッセージで地図をお送りします。"
+          "a": "江南駅の近くです。地図アプリで「Cry Cheeseburger」と検索してください。"
         },
         {
           "q": "テイクアウトできますか？",
-          "a": "はい、できます。お電話でご注文のうえ、受け取りにお越しください。"
+          "a": "はい、お持ち帰りできます。店頭でご注文いただければすぐにお包みします。"
         }
       ],
       "zh-CN": [
@@ -134,11 +134,11 @@
         },
         {
           "q": "店在哪里？",
-          "a": "在江南站附近。我们会通过订单确认短信把地图发给您。"
+          "a": "在江南站附近。请在地图App里搜索“Cry Cheeseburger”。"
         },
         {
           "q": "可以打包吗？",
-          "a": "可以打包。电话下单后到店自取就行。"
+          "a": "可以打包。到店点餐后马上为您打包。"
         }
       ],
       "zh-TW": [
@@ -148,11 +148,11 @@
         },
         {
           "q": "店在哪裡？",
-          "a": "在江南站附近。我們會用訂單確認簡訊傳地圖給您。"
+          "a": "在江南站附近。請在地圖App搜尋「Cry Cheeseburger」。"
         },
         {
           "q": "可以外帶嗎？",
-          "a": "可以外帶。打電話訂餐後來店取餐就可以了。"
+          "a": "可以外帶。到店點餐後馬上幫您打包。"
         }
       ],
       "vi": [
@@ -162,11 +162,11 @@
         },
         {
           "q": "Quán ở đâu vậy?",
-          "a": "Quán ở gần ga Gangnam. Chúng tôi sẽ gửi bản đồ qua tin nhắn xác nhận đơn hàng."
+          "a": "Quán ở gần ga Gangnam. Bạn tìm “Cry Cheeseburger” trên ứng dụng bản đồ nhé."
         },
         {
           "q": "Có mua mang về được không?",
-          "a": "Có, mua mang về được. Bạn gọi điện đặt món rồi đến lấy là được."
+          "a": "Có, mua mang về được. Bạn gọi món tại quán, quán sẽ gói ngay."
         }
       ],
       "th": [
@@ -176,11 +176,11 @@
         },
         {
           "q": "ร้านอยู่ที่ไหน?",
-          "a": "อยู่ใกล้สถานีคังนัม เราจะส่งแผนที่ไปทางข้อความยืนยันคำสั่งซื้อ"
+          "a": "อยู่ใกล้สถานีคังนัม ค้นหา “Cry Cheeseburger” ในแอปแผนที่ได้เลย"
         },
         {
           "q": "สั่งกลับบ้านได้ไหม?",
-          "a": "ได้ สั่งกลับบ้านได้ โทรสั่งแล้วมารับที่ร้านได้เลย"
+          "a": "ได้ สั่งกลับบ้านได้ สั่งที่หน้าร้านแล้วเราจะห่อให้ทันที"
         }
       ]
     }
@@ -296,7 +296,7 @@
         },
         {
           "q": "Do you ship internationally?",
-          "a": "Reply to your order confirmation text with your address, and we'll let you know which shipping options are available."
+          "a": "You can check which countries we ship to on the product page — scan the QR in the video to open it."
         }
       ],
       "ja": [
@@ -310,7 +310,7 @@
         },
         {
           "q": "海外配送もできますか？",
-          "a": "注文確認のメッセージに住所を送っていただければ、可能な方法をご案内します。"
+          "a": "配送できる国は購入ページでご確認いただけます。動画のQRからすぐ開けます。"
         }
       ],
       "zh-CN": [
@@ -324,7 +324,7 @@
         },
         {
           "q": "可以寄海外吗？",
-          "a": "请在订单确认短信里回复您的地址，我们会告诉您可行的寄送方式。"
+          "a": "可在购买页面查看可配送的国家，扫视频里的二维码就能直接打开。"
         }
       ],
       "zh-TW": [
@@ -338,7 +338,7 @@
         },
         {
           "q": "可以寄送海外嗎？",
-          "a": "請回覆訂單確認簡訊並附上地址，我們會告訴您可行的寄送方式。"
+          "a": "可配送的國家請在購買頁面確認，掃影片裡的 QR 碼就能直接打開。"
         }
       ],
       "vi": [
@@ -352,7 +352,7 @@
         },
         {
           "q": "Có giao hàng quốc tế không?",
-          "a": "Bạn gửi địa chỉ qua tin nhắn xác nhận đơn hàng, shop sẽ hướng dẫn cách giao phù hợp."
+          "a": "Bạn xem các nước được giao hàng trên trang mua hàng nhé — quét mã QR trong video là vào được ngay."
         }
       ],
       "th": [
@@ -366,7 +366,7 @@
         },
         {
           "q": "ส่งต่างประเทศได้มั้ย?",
-          "a": "ส่งที่อยู่มาทางข้อความยืนยันคำสั่งซื้อ แล้วเราจะแจ้งวิธีจัดส่งที่ทำได้ให้ค่ะ"
+          "a": "ดูประเทศที่จัดส่งได้ในหน้าสินค้า สแกน QR ในวิดีโอเพื่อเปิดได้ทันที"
         }
       ]
     }
