@@ -6,7 +6,7 @@ export const KDH = {
   nameEn: "Deokhwan Kim",
   title: "AI Native Engineer",
   org: "퍼플페퍼",
-  photo: "https://github.com/IISweetHeartII.png?size=400",
+  photo: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/team/kdh-rcxg2cRBFdK1v7MnN9QVmSJnrVAPl3.jpg",
   github: "https://github.com/IISweetHeartII",
   site: "https://log8.kr",
 };
