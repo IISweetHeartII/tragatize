@@ -88,7 +88,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
               <p className="inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white/85 backdrop-blur">
                 {d.badge}
               </p>
-              <h1 className="font-display mt-6 text-[13vw] leading-[0.98] sm:text-7xl lg:text-[5rem]">
+              <h1 className="font-display mt-6 text-[9.5vw] leading-[1.15] sm:text-6xl lg:text-[4.25rem]">
                 <span className="block text-balance text-white/55">{d.heroLine1}</span>
                 <span className="block text-balance">{d.heroLine2}</span>
               </h1>
@@ -146,7 +146,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
         >
           <span>
             <span className="block text-sm text-muted">{d.callLead}</span>
-            <span className="font-display mt-2 block text-4xl text-accent sm:text-5xl">{ORDER_PHONE}</span>
+            <span className="font-display mt-2 block text-3xl text-accent sm:text-4xl">{ORDER_PHONE}</span>
           </span>
           <span className="flex min-h-12 w-fit items-center rounded-full bg-accent px-6 font-semibold text-white">{d.callCta}</span>
         </a>
@@ -164,7 +164,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
           {d.pains.map((p, i) => (
             <li key={p.label} className={"p-6 sm:p-8 " + (i > 0 ? "border-t border-line sm:border-t-0 sm:border-l" : "")}>
               <p className="text-sm font-medium text-muted">{p.label}</p>
-              <p className="font-display mt-3 text-5xl leading-none sm:text-6xl">{p.value}</p>
+              <p className="font-display mt-3 text-4xl leading-tight sm:text-5xl">{p.value}</p>
               <p className="mt-4 text-sm leading-relaxed text-muted">{p.body}</p>
             </li>
           ))}
@@ -175,7 +175,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
       <section className={wrap + " pb-16 sm:pb-24"}>
         <div className="text-center">
           <Eyebrow>{d.edgesEyebrow}</Eyebrow>
-          <h2 className="font-display mx-auto mt-6 max-w-5xl text-balance text-[13vw] leading-[0.95] sm:text-7xl lg:text-8xl">{d.edgesTitle}</h2>
+          <h2 className="font-display mx-auto mt-6 max-w-4xl text-balance text-[9vw] leading-[1.15] sm:text-5xl lg:text-6xl">{d.edgesTitle}</h2>
         </div>
         <ul className="mt-12 grid overflow-hidden rounded-[24px] bg-white ring-1 ring-line md:grid-cols-2">
           {d.edges.map((e, i) => (
@@ -204,7 +204,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
           {d.steps.map((s, i) => (
             <li key={s.title} className="bg-white p-6 sm:p-8">
               <div className="flex items-center justify-between gap-3">
-                <span className="font-display text-4xl leading-none">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-3xl leading-none text-muted">{String(i + 1).padStart(2, "0")}</span>
                 {OPTIONAL_STEPS[i] && <span className="rounded-full border border-line px-2.5 py-0.5 text-xs text-muted">{d.optional}</span>}
               </div>
               <p className="mt-6 text-lg font-semibold">{s.title}</p>
@@ -277,7 +277,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
                   {meta.main && <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-semibold text-white">{d.recommended}</span>}
                 </p>
                 <p className={"mt-1 text-sm " + (meta.main ? "text-background/70" : "text-muted")}>{p.tagline}</p>
-                <p className="font-display mt-6 whitespace-nowrap text-5xl leading-none">{p.price}</p>
+                <p className="font-display mt-6 whitespace-nowrap text-4xl leading-none">{p.price}</p>
                 <p className={"mt-2 text-sm " + (meta.main ? "text-background/60" : "text-muted")}>{p.priceNote}</p>
                 <ul className={"mt-6 mb-8 space-y-2 border-t pt-6 text-sm " + (meta.main ? "border-background/15" : "border-line")}>
                   {p.items.map((item) => (
@@ -327,7 +327,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
       <section className="px-2 pb-2 sm:px-3 sm:pb-3">
         <div className="rounded-[28px] bg-[#120f0c] text-white">
           <div className={wrap + " py-16 text-center sm:py-24"}>
-            <h2 className="font-display text-[13vw] leading-[0.95] sm:text-7xl lg:text-8xl">
+            <h2 className="font-display text-[9vw] leading-[1.15] sm:text-5xl lg:text-6xl">
               <span className="block text-balance text-white/45">{d.closingLine1}</span>
               <span className="block text-balance">{d.closingLine2}</span>
             </h2>

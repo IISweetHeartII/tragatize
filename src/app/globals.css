@@ -18,21 +18,12 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-anton), var(--font-bhs), "Apple SD Gothic Neo", system-ui, sans-serif;
 }
 
-/* 랜딩 큰 제목: 영문은 Anton 대문자, 한글은 Black Han Sans. 그 밖의 언어는 시스템 굵은 서체 */
+/* 랜딩 큰 제목: 본문과 같은 서체를 굵게, 자간만 좁힌다(읽기 쉽게) */
 .font-display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: -0.005em;
-}
-:lang(ja) .font-display,
-:lang(zh) .font-display,
-:lang(th) .font-display {
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.035em;
 }
 
 @keyframes marquee {
@@ -53,7 +44,7 @@ body {
   -webkit-text-size-adjust: 100%;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), "Apple SD Gothic Neo", "Pretendard", system-ui, sans-serif;
+  font-family: var(--font-geist-sans), var(--font-noto-kr), "Apple SD Gothic Neo", "Pretendard", system-ui, sans-serif;
 }
 
 /* 일본어·중국어·태국어는 띄어쓰기로 줄을 나누지 않아 keep-all 이면 글이 넘친다 → 기본 줄바꿈 */

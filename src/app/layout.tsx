@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Black_Han_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Sans_KR } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -14,9 +14,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 랜딩 큰 제목용 압축 대문자 서체(영문 Anton, 한글 Black Han Sans). 본문은 Geist 그대로.
-const anton = Anton({ variable: "--font-anton", weight: "400", subsets: ["latin", "latin-ext", "vietnamese"] });
-const blackHanSans = Black_Han_Sans({ variable: "--font-bhs", weight: "400", subsets: ["latin"], preload: false });
+// 한글은 Noto Sans KR(가변 굵기) — 기기마다 다른 기본 한글 서체 대신 같은 모양으로 보이게
+const notoKr = Noto_Sans_KR({ variable: "--font-noto-kr", subsets: ["latin"], preload: false });
 
 // 아이콘·OG 이미지 <link>/<meta> 는 파일 규칙(app/icon.tsx · apple-icon.tsx · opengraph-image.tsx)이 만든다.
 export const metadata: Metadata = {
@@ -51,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${blackHanSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoKr.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SiteHeader />
