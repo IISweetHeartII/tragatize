@@ -4,7 +4,7 @@ import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset, type Plan } from "@/lib/demo";
 import type { StudioText } from "@/lib/dict";
-import { LOCALES, TARGET_FLAGS, fill, type Locale } from "@/lib/i18n";
+import { LOCALES, TARGET_FLAGS, fill, hasHighlightText, highlightText, highlightWhy, type Locale } from "@/lib/i18n";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
   AI_STEP_COUNT,
@@ -107,6 +107,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
   const [store, setStore] = useState("");
   const [audience, setAudience] = useState("");
   const [targets, setTargets] = useState<Locale[]>(() => defaultTargets(locale));
+  const [shortsLang, setShortsLang] = useState<Locale>(locale);
   const [script, setScript] = useState<LiveScript | null>(null);
   const [scriptBusy, setScriptBusy] = useState(false);
 
@@ -317,6 +318,9 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
   const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? (videoUrl && videoUrl === AI_SAMPLE?.videoUrl ? AI_SAMPLE.qa : null);
   const shortDeco = decoFor("short", deco, phone);
   const siteUrl = decoFor("long", { ...deco, long: true }, null).qrUrl;
+  // 숏폼 카드 언어: 고른 손님 나라 중 문구가 있는 언어만
+  const shortLangs = targets.filter((l) => highlights.some((h) => hasHighlightText(h, l)));
+  const activeLang = shortLangs.includes(shortsLang) ? shortsLang : (shortLangs[0] ?? locale);
   const sampleTitle = (p: DemoPreset) => t.samples[p.id as keyof StudioText["samples"]]?.title ?? p.title;
 
   return (
@@ -531,9 +535,25 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
                 {t.sampleResult}
               </p>
             )}
+            {shortLangs.length > 1 && (
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                <span className="text-sm text-muted">{t.shortsLang}</span>
+                {shortLangs.map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    aria-pressed={l === activeLang}
+                    onClick={() => setShortsLang(l)}
+                    className={"min-h-11 rounded-full border px-3 text-sm " + (l === activeLang ? "border-foreground bg-foreground text-background" : "border-line text-muted hover:border-foreground")}
+                  >
+                    {TARGET_FLAGS[l]} {t.countries[l]}
+                  </button>
+                ))}
+              </div>
+            )}
             <div className="grid gap-4 sm:grid-cols-3">
               {highlights.map((h, i) => (
-                <ShortCard key={`${videoUrl}-${i}`} h={h} src={videoUrl!} phone={shortDeco.phone} qrUrl={shortDeco.qrUrl} />
+                <ShortCard key={`${videoUrl}-${i}`} h={h} src={videoUrl!} lang={activeLang} ownerLang={locale} phone={shortDeco.phone} qrUrl={shortDeco.qrUrl} />
               ))}
             </div>
           </>
@@ -559,8 +579,25 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
   );
 }
 
-function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone: string | null; qrUrl: string | null }) {
+function ShortCard({
+  h,
+  src,
+  lang,
+  ownerLang,
+  phone,
+  qrUrl,
+}: {
+  h: Highlight;
+  src: string;
+  lang: Locale; // 손님에게 보일 후킹·캡션 언어
+  ownerLang: Locale; // 화면(사장님) 언어
+  phone: string | null;
+  qrUrl: string | null;
+}) {
   const t = useT();
+  const { hook, caption } = highlightText(h, lang);
+  // 후킹 아래 작은 줄: 손님 언어면 사장님 언어 뜻을, 같으면 영어를 보여 준다.
+  const sub = lang !== ownerLang ? highlightText(h, ownerLang).hook : ownerLang !== "en" ? h.hookEn : "";
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -577,8 +614,8 @@ function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone:
   }
 
   async function copy() {
-    const extra = [phone && `📞 전화 주문 · Call to order ${phone}`, qrUrl && `🔗 ${qrUrl}`].filter(Boolean).join("\n");
-    await navigator.clipboard.writeText(`${h.hook}\n${h.hookEn}\n\n${h.caption}${extra ? `\n\n${extra}` : ""}\n\n${h.hashtags.join(" ")}`);
+    const extra = [phone && `📞 ${phone}`, qrUrl && `🔗 ${qrUrl}`].filter(Boolean).join("\n");
+    await navigator.clipboard.writeText(`${hook}\n\n${caption}${extra ? `\n\n${extra}` : ""}\n\n${h.hashtags.join(" ")}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
@@ -599,8 +636,8 @@ function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone:
           }}
         />
         <span className="absolute inset-x-3 top-3 rounded-lg bg-black/60 px-3 py-2 text-base font-semibold text-white">
-          {h.hook}
-          <span className="block text-xs font-normal opacity-80">{h.hookEn}</span>
+          {hook}
+          {sub && <span className="block text-xs font-normal opacity-80">{sub}</span>}
         </span>
         {!playing && (
           <span className="absolute inset-0 flex items-center justify-center">
@@ -615,9 +652,9 @@ function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone:
       <div className="space-y-2 p-3 text-sm">
         <p className="font-medium">
           <span className="mr-1 text-accent">{t.why}</span>
-          {h.why}
+          {highlightWhy(h, ownerLang)}
         </p>
-        <p className="leading-relaxed">{h.caption}</p>
+        <p className="leading-relaxed">{caption}</p>
         <p className="text-muted">{h.hashtags.join(" ")}</p>
         <button onClick={copy} className="min-h-11 w-full rounded-lg border border-line hover:border-foreground">
           {copied ? t.copied : t.copy}
