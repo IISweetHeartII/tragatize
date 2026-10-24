@@ -43,6 +43,16 @@ export async function getCall(callId: string): Promise<CallStatus> {
   return { callId: d.callId, status: d.status, duration: d.duration ?? null, hangupCause: d.hangupCause ?? null };
 }
 
+// 같은 070 번호로 문자를 보낸다. 본문이 한글 45자를 넘으면 ClawOps 가 LMS 로 자동 전환한다.
+export async function sendSms(to: string, body: string, idempotencyKey?: string): Promise<{ messageId?: string; status?: string }> {
+  return call("POST", "/messages", {
+    To: to.replace(/[^\d+]/g, ""),
+    From: env("CLAWOPS_NUMBER"),
+    Body: body,
+    ...(idempotencyKey ? { IdempotencyKey: idempotencyKey } : {}),
+  });
+}
+
 export type DialInput = {
   to: string; // 받는 번호, 숫자만 (예: 01012345678)
   instruction: string; // 이번 통화에만 붙는 지시문, 4000자 이하
