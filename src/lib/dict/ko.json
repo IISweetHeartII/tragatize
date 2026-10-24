@@ -21,7 +21,7 @@
   "samples": {
     "food": { "title": "강남 수제버거 사장님", "product": "크라이 치즈버거, 5천 원" },
     "beauty": { "title": "커플 크림 미스트 라이브", "product": "유아이큐 바이옴 베리어 크림 미스트 1+1, 5천 원" },
-    "book": { "title": "withby 부모님 자서전 책", "product": "부모님 자서전 책, 8만 8천 원" }
+    "knit": { "title": "성수 니트 가디건", "product": "성수 니트 가디건, 3만 9천 원" }
   },
   "landing": {
     "badge": "소상공인 숏폼 홍보 · AI 홍보 영상 · AI 전화 응대",

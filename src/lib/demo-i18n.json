@@ -371,188 +371,188 @@
       ]
     }
   },
-  "book": {
+  "knit": {
     "highlights": [
       {
         "en": {
-          "hook": "Do you know your parents' younger days?",
-          "caption": "Photos stay with us, but the stories inside them slowly fade. Doran, an AI story companion, calls your parents directly and warmly asks them about those days.",
-          "why": "It opens with a question that hits home for everyone, then introduces the product right away, holding viewers from the very first second to the end."
+          "hook": "Made by hand in Seoul's Seongsu",
+          "caption": "Not from a factory. We make every piece ourselves in Seongsu. Put it on and it feels like a warm hug.",
+          "why": "The trust of 'we made it ourselves' and the 'feels like a hug' fit come out together, so this is where wanting to buy kicks in first."
         },
         "ja": {
-          "hook": "親の若い頃、知ってる？",
-          "caption": "写真は残っても、そこにある物語は少しずつ薄れていきます。AIのお話し相手ドランが、ご両親に直接お電話して、あの頃のお話をやさしくうかがいます。",
-          "why": "誰もがドキッとする問いかけで心をつかみ、すぐに商品紹介へつなげることで、最初の1秒から最後まで視聴を引き留めるオープニングです。"
+          "hook": "ソウル・聖水の手づくり服",
+          "caption": "工場ではなく、聖水（ソンス）の自分たちの手で作りました。着た瞬間、ぎゅっと包まれるような着心地です。",
+          "why": "「自分たちで作った」という信頼と「包まれるような」着心地が一度に伝わり、真っ先に欲しくなるシーンです。"
         },
         "zh-CN": {
-          "hook": "你了解爸妈年轻时的样子吗？",
-          "caption": "照片还在，照片里的故事却渐渐模糊。AI聊天伙伴Doran会亲自给爸妈打电话，温柔地请他们聊聊那些年的故事。",
-          "why": "先用一个人人都会心头一紧的问题触动情绪，再马上介绍产品，从第一秒起就牢牢抓住观众，让他们一直看到最后。"
+          "hook": "首尔圣水洞亲手做的衣服",
+          "caption": "不是工厂货，是我们在圣水洞亲手做的。一穿上就像被温柔抱住，真的要上身才懂！",
+          "why": "“亲手制作”的信赖感和“像被抱住”的穿着感一次呈现，是最先让人想买的画面。"
         },
         "zh-TW": {
-          "hook": "你知道爸媽年輕時的樣子嗎？",
-          "caption": "照片留下了，裡面的故事卻慢慢模糊。AI 故事夥伴 Doran 會親自打電話給爸媽，溫柔地請他們聊聊那些年的故事。",
-          "why": "先用一個人人都會心頭一震的問題觸動情緒，再立刻介紹產品，從第一秒起就抓住觀眾，讓他們一路看到最後。"
+          "hook": "首爾聖水洞手作服飾",
+          "caption": "不是工廠量產，是我們在聖水洞親手做的。一穿上就像被暖暖抱住，真的要穿過才知道！",
+          "why": "「親手製作」的信賴感和「像被抱住」的穿著感一次呈現，是最先讓人想買的畫面。"
         },
         "vi": {
-          "hook": "Bạn có biết thời trẻ của bố mẹ?",
-          "caption": "Ảnh thì vẫn còn đó, nhưng những câu chuyện bên trong cứ dần phai nhạt. Người bạn kể chuyện AI Doran sẽ trực tiếp gọi điện cho bố mẹ và nhẹ nhàng hỏi han về những năm tháng ấy.",
-          "why": "Video mở đầu bằng một câu hỏi khiến ai cũng chột dạ để chạm đến cảm xúc. Sau đó sản phẩm được giới thiệu ngay, giúp giữ chân người xem từ giây đầu tiên đến cuối."
+          "hook": "Đồ tự tay may tại Seongsu, Seoul",
+          "caption": "Không phải hàng xưởng, tụi mình tự tay làm tại Seongsu. Mặc vào cảm giác như được ôm trọn, phải thử mới biết!",
+          "why": "Niềm tin 'tự tay làm' và cảm giác mặc 'như được ôm' xuất hiện cùng lúc, nên đây là cảnh khiến người xem muốn mua trước tiên."
         },
         "th": {
-          "hook": "รู้จักพ่อแม่ตอนหนุ่มสาวไหม?",
-          "caption": "รูปถ่ายยังอยู่ แต่เรื่องราวในนั้นค่อยๆ เลือนหายไป Doran เพื่อนเล่าเรื่อง AI จะโทรหาคุณพ่อคุณแม่โดยตรง และชวนคุยถึงเรื่องราวในวันวานอย่างอบอุ่น",
-          "why": "เปิดด้วยคำถามที่ใครฟังก็สะอึกเพื่อแตะอารมณ์ แล้วแนะนำสินค้าทันที ช่วยดึงคนดูไว้ได้ตั้งแต่วินาทีแรกจนจบ"
+          "hook": "เสื้อทำมือจากซองซู โซล",
+          "caption": "ไม่ใช่งานโรงงาน เราทำเองทุกตัวที่ย่านซองซู ใส่แล้วรู้สึกเหมือนโดนกอดอุ่น ๆ ต้องลองเองถึงจะรู้",
+          "why": "ทั้งความเชื่อใจว่า 'ทำเอง' และสัมผัสตอนใส่ที่ 'เหมือนโดนกอด' มาพร้อมกัน จึงเป็นฉากที่ทำให้อยากซื้อเป็นอันดับแรก"
         }
       },
       {
         "en": {
-          "hook": "Just a phone call becomes a memoir",
-          "caption": "The day they got their first paycheck, the day they got married. Your parents just chat comfortably on the phone. No app to install, no typing, and a one-of-a-kind memoir book is made.",
-          "why": "This is the key explainer section. It shows how easy it is (no app, no typing) and what you get (a real book) at the same time, which lowers the barrier to buying."
+          "hook": "3 colors. Which one's yours?",
+          "caption": "We made it in just three colors. Which one is calling your name? Drop your pick in the comments!",
+          "why": "She asks viewers directly, which invites comments, and the fun of picking a color leads to a purchase."
         },
         "ja": {
-          "hook": "電話だけで自分史が完成",
-          "caption": "初めてお給料をもらった日、結婚した日。ご両親は気軽にお電話でお話しするだけ。アプリのインストールも文字入力もいらず、世界にひとつだけの自分史の本ができあがります。",
-          "why": "「アプリも入力も不要」という手軽さと「本として残る」という成果を一度に見せ、購入のハードルを下げる核心の説明パートです。"
+          "hook": "全3色、あなたはどれ派？",
+          "caption": "カラーは厳選の3色だけ。どの色が好きですか？コメントで教えてください！",
+          "why": "視聴者に直接問いかけるのでコメントが集まりやすく、色を選ぶ楽しさが購入につながります。"
         },
         "zh-CN": {
-          "hook": "打个电话，自传就写好了",
-          "caption": "第一次领工资的那天，结婚的那天。爸妈只要轻松打个电话聊聊就好。不用装App，也不用打字，就能做出一本世界上独一无二的自传。",
-          "why": "这是核心介绍段落，同时展示了“不用App、不用打字”的简单和“做成一本书”的成果，能有效降低购买门槛。"
+          "hook": "三种颜色，你选哪个？",
+          "caption": "只做了三种颜色，你最喜欢哪一个？评论区告诉我！",
+          "why": "直接向观众提问，容易引来评论，挑颜色的乐趣也会带动购买。"
         },
         "zh-TW": {
-          "hook": "講講電話，自傳就完成",
-          "caption": "第一次領薪水的那天、結婚的那天。爸媽只要輕鬆講講電話就好。不用裝 App，也不用打字，就能做出一本世界上獨一無二的自傳。",
-          "why": "這是核心介紹段落，同時呈現「不用 App、不用打字」的簡單和「做成一本書」的成果，能有效降低購買門檻。"
+          "hook": "三種顏色，你是哪一派？",
+          "caption": "只做了三個顏色，你最喜歡哪一個？留言告訴我們！",
+          "why": "直接向觀眾提問，容易引來留言，挑顏色的樂趣也會帶動購買。"
         },
         "vi": {
-          "hook": "Chỉ cần gọi điện là có hồi ký",
-          "caption": "Ngày nhận đồng lương đầu tiên, ngày cưới. Bố mẹ chỉ cần thoải mái trò chuyện qua điện thoại. Không cần cài app, không cần gõ chữ, một cuốn hồi ký có một không hai sẽ ra đời.",
-          "why": "Đây là phần giới thiệu cốt lõi. Nó cho thấy cùng lúc sự dễ dàng (không cần app, không cần gõ chữ) và thành quả (được lưu lại thành sách), giúp hạ rào cản mua hàng."
+          "hook": "3 màu, bạn chọn màu nào?",
+          "caption": "Chỉ có đúng 3 màu thôi. Bạn thích màu nào nhất? Comment cho tụi mình biết nhé!",
+          "why": "Cảnh hỏi thẳng người xem nên dễ có bình luận, và niềm vui chọn màu dẫn tới mua hàng."
         },
         "th": {
-          "hook": "แค่คุยโทรศัพท์ ก็ได้หนังสือชีวประวัติ",
-          "caption": "วันที่ได้เงินเดือนแรก วันแต่งงาน คุณพ่อคุณแม่แค่คุยโทรศัพท์สบายๆ ไม่ต้องลงแอป ไม่ต้องพิมพ์ ก็ได้หนังสืออัตชีวประวัติที่มีเล่มเดียวในโลก",
-          "why": "เป็นช่วงอธิบายหลักที่โชว์ทั้งความง่าย (ไม่ต้องลงแอป ไม่ต้องพิมพ์) และผลลัพธ์ (ได้เป็นหนังสือ) ในคราวเดียว ช่วยลดกำแพงการตัดสินใจซื้อ"
+          "hook": "มี 3 สี คุณเลือกสีไหน?",
+          "caption": "เราทำมาแค่ 3 สีเท่านั้น ชอบสีไหนที่สุด? คอมเมนต์บอกเราหน่อย!",
+          "why": "เป็นฉากที่ถามผู้ชมตรง ๆ จึงได้คอมเมนต์ง่าย และความสนุกในการเลือกสีนำไปสู่การซื้อ"
         }
       },
       {
         "en": {
-          "hook": "A book that becomes your family treasure",
-          "caption": "Your parents' life story, with the whole family gathered around turning the pages together. Before it's too late, preserve the stories they told in their own voice with withby. Call the number below the video and our AI will take your order.",
-          "why": "A warm scene of the family reading together leads into the urgency of 'before it's too late' and then how to order, so the ending turns viewers straight into buyers."
+          "hook": "Only ₩39,000 (about $28)",
+          "caption": "Handmade in Seongsu for just ₩39,000. Don't overthink it. See you in Seongsu!",
+          "why": "The price line flows straight into 'See you in Seongsu', a closing scene that makes people want to come buy right away."
         },
         "ja": {
-          "hook": "わが家の宝物になる一冊",
-          "caption": "家族みんなで囲んでページをめくる、ご両親の人生の物語。手遅れになる前に、ご両親がご自身の声で語ってくれたお話をwithbyで残しませんか。動画下の番号にお電話いただくと、AIがご注文を承ります。",
-          "why": "家族で本をめくる温かい場面に「手遅れになる前に」という切迫感と注文方法まで続き、そのまま購入につながる締めくくりです。"
+          "hook": "たったの39,000ウォン",
+          "caption": "聖水の手づくり服が、たったの39,000ウォン。ソウル旅行のお土産にも。聖水で会いましょう！",
+          "why": "価格のひと言から「聖水で会いましょう」へと続き、すぐ買いに行きたくなる締めくくりのシーンです。"
         },
         "zh-CN": {
-          "hook": "一本会成为传家宝的书",
-          "caption": "全家人围坐在一起，一页页翻看爸妈的人生故事。趁还来得及，用withby把爸妈亲口讲述的故事留下来吧。拨打视频下方的电话，AI就会为您下单。",
-          "why": "全家一起翻书的温馨画面，加上“趁还来得及”的紧迫感和下单方式，让结尾直接带动购买。"
+          "hook": "只要39,000韩元",
+          "caption": "圣水洞手作衣服只要39,000韩元！来首尔别错过，圣水洞见！",
+          "why": "一句价格紧接着“圣水洞见”，是让人想马上去买的收尾画面。"
         },
         "zh-TW": {
-          "hook": "會成為家中寶物的一本書",
-          "caption": "全家圍坐在一起，一頁頁翻看爸媽的人生故事。趁還來得及，用 withby 把爸媽親口說的故事留下來吧。撥打影片下方的電話，AI 就會幫你下單。",
-          "why": "全家一起翻書的溫馨畫面，加上「趁還來得及」的緊迫感和下單方式，讓結尾直接帶動購買。"
+          "hook": "只要韓幣39,000",
+          "caption": "聖水洞手作衣服只要韓幣39,000！來首爾必逛，我們聖水洞見！",
+          "why": "一句價格緊接著「聖水洞見」，是讓人想馬上去買的收尾畫面。"
         },
         "vi": {
-          "hook": "Cuốn sách thành báu vật gia đình",
-          "caption": "Cả nhà quây quần cùng lật xem câu chuyện cuộc đời của bố mẹ. Trước khi quá muộn, hãy cùng withby lưu giữ những câu chuyện chính bố mẹ kể bằng giọng của mình. Gọi số điện thoại bên dưới video, AI sẽ nhận đơn cho bạn.",
-          "why": "Cảnh cả nhà ấm áp cùng lật sách được nối tiếp bởi sự cấp bách 'trước khi quá muộn' và cách đặt hàng, tạo nên phần kết dẫn thẳng đến quyết định mua."
+          "hook": "Chỉ 39.000 won",
+          "caption": "Đồ handmade tại Seongsu chỉ 39.000 won thôi! Đi Seoul nhớ ghé, hẹn gặp ở Seongsu nhé!",
+          "why": "Câu nói về giá nối liền với 'Hẹn gặp ở Seongsu', là cảnh kết khiến người xem muốn đến mua ngay."
         },
         "th": {
-          "hook": "หนังสือที่จะเป็นสมบัติของบ้าน",
-          "caption": "เรื่องราวชีวิตของคุณพ่อคุณแม่ ที่ทั้งครอบครัวล้อมวงเปิดอ่านด้วยกัน ก่อนจะสายเกินไป เก็บเรื่องเล่าจากเสียงของท่านไว้กับ withby โทรตามเบอร์ใต้คลิป แล้ว AI จะรับออเดอร์ให้ทันที",
-          "why": "ฉากอบอุ่นที่ครอบครัวเปิดหนังสือด้วยกันต่อด้วยความเร่งด่วนว่า 'ก่อนจะสายเกินไป' และวิธีสั่งซื้อ ทำให้ตอนจบพาคนดูไปสู่การซื้อได้ทันที"
+          "hook": "แค่ 39,000 วอน",
+          "caption": "เสื้อทำมือจากซองซูแค่ 39,000 วอน! มาเที่ยวโซลอย่าลืมแวะ เจอกันที่ซองซูนะ!",
+          "why": "ประโยคเรื่องราคาต่อด้วย 'เจอกันที่ซองซู' เป็นฉากปิดที่ทำให้อยากมาซื้อทันที"
         }
       }
     ],
     "qa": {
       "en": [
         {
-          "q": "What do my parents need to do?",
-          "a": "Our AI story companion calls them at a set time, and they just chat comfortably."
+          "q": "What colors are there?",
+          "a": "Three: cream, charcoal, and sage."
         },
         {
-          "q": "How long does the book take?",
-          "a": "Once all the stories are gathered, we turn them into text and illustrations and send you the finished book."
+          "q": "What sizes do you have?",
+          "a": "It's one roomy size that fits most people comfortably."
         },
         {
           "q": "How much is it?",
-          "a": "The parent memoir book is ₩88,000."
+          "a": "The Seongsu knit cardigan is ₩39,000."
         }
       ],
       "ja": [
         {
-          "q": "親は何をすればいいですか？",
-          "a": "決まった時間にAIのお話し相手からお電話しますので、気軽にお話しいただくだけで大丈夫です。"
+          "q": "色は何がありますか？",
+          "a": "クリーム、チャコール、セージの3色です。"
         },
         {
-          "q": "本はどのくらいでできますか？",
-          "a": "お話がすべて集まったら、文章と絵でまとめて本にしてお届けします。"
+          "q": "サイズはどうなっていますか？",
+          "a": "ゆったりしたフリーサイズなので、ほとんどの方に楽に着ていただけます。"
         },
         {
-          "q": "価格はいくらですか？",
-          "a": "ご両親の自分史の本は₩88,000です。"
+          "q": "値段はいくらですか？",
+          "a": "聖水ニットカーディガンは39,000ウォンです。"
         }
       ],
       "zh-CN": [
         {
-          "q": "爸妈需要做什么？",
-          "a": "AI聊天伙伴会在约定时间打电话过去，爸妈只要轻松聊天就好。"
+          "q": "有哪些颜色？",
+          "a": "有奶油色、炭灰色、鼠尾草绿三种。"
         },
         {
-          "q": "做成书需要多久？",
-          "a": "故事都收集齐后，我们会配上文字和插图编成书寄给您。"
+          "q": "尺码怎么选？",
+          "a": "是宽松的均码，大多数人穿都很舒服。"
         },
         {
-          "q": "价格是多少？",
-          "a": "父母自传书售价₩88,000。"
+          "q": "多少钱？",
+          "a": "圣水针织开衫39,000韩元。"
         }
       ],
       "zh-TW": [
         {
-          "q": "爸媽需要做什麼？",
-          "a": "AI 故事夥伴會在約定時間打電話過去，爸媽只要輕鬆聊天就好。"
+          "q": "有哪些顏色？",
+          "a": "有奶油色、炭灰色、鼠尾草綠三種。"
         },
         {
-          "q": "做成書要多久？",
-          "a": "故事都蒐集完成後，我們會用文字和插圖編成書寄給你。"
+          "q": "尺寸怎麼選？",
+          "a": "是寬鬆的單一尺寸，大多數人穿都很舒服。"
         },
         {
-          "q": "價格多少？",
-          "a": "爸媽自傳書售價 ₩88,000。"
+          "q": "多少錢？",
+          "a": "聖水針織開襟衫韓幣39,000。"
         }
       ],
       "vi": [
         {
-          "q": "Bố mẹ cần làm gì?",
-          "a": "Người bạn kể chuyện AI sẽ gọi điện vào giờ đã hẹn, bố mẹ chỉ cần thoải mái trò chuyện thôi."
+          "q": "Có những màu nào?",
+          "a": "Có ba màu: kem, xám than và xanh xô thơm."
         },
         {
-          "q": "Làm sách mất bao lâu?",
-          "a": "Khi đã thu thập đủ câu chuyện, chúng tôi sẽ biên soạn thành sách có chữ và tranh minh họa rồi gửi đến bạn."
+          "q": "Size thế nào ạ?",
+          "a": "Áo một size dáng rộng nên hầu hết mọi người đều mặc thoải mái."
         },
         {
-          "q": "Giá bao nhiêu?",
-          "a": "Sách hồi ký của bố mẹ có giá ₩88,000."
+          "q": "Giá bao nhiêu ạ?",
+          "a": "Áo cardigan len Seongsu giá 39.000 won."
         }
       ],
       "th": [
         {
-          "q": "คุณพ่อคุณแม่ต้องทำอะไรบ้าง?",
-          "a": "เพื่อนเล่าเรื่อง AI จะโทรไปตามเวลาที่นัดไว้ ท่านแค่คุยสบายๆ ก็พอ"
+          "q": "มีสีอะไรบ้าง?",
+          "a": "มีสามสี ครีม ชาร์โคล และเซจ"
         },
         {
-          "q": "ทำหนังสือใช้เวลานานแค่ไหน?",
-          "a": "เมื่อรวบรวมเรื่องราวครบแล้ว เราจะเรียบเรียงเป็นเนื้อหาและภาพประกอบ แล้วจัดส่งเป็นหนังสือให้"
+          "q": "ไซซ์เป็นยังไง?",
+          "a": "เป็นฟรีไซซ์ทรงหลวม ใส่สบายได้เกือบทุกคน"
         },
         {
           "q": "ราคาเท่าไหร่?",
-          "a": "หนังสืออัตชีวประวัติของคุณพ่อคุณแม่ราคา ₩88,000"
+          "a": "คาร์ดิแกนไหมพรมซองซูราคา 39,000 วอน"
         }
       ]
     }
