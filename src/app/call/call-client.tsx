@@ -55,7 +55,7 @@ export function CallClient() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-xl flex-1 px-6 py-10">
+    <main className="mx-auto w-full max-w-xl flex-1 px-4 sm:px-6 py-10">
       <h1 className="text-2xl font-semibold">AI 가 전화를 걸어요</h1>
       <p className="mt-2 text-muted">번호를 넣으면 070-5276-7530 에서 AI 가 전화합니다.</p>
 

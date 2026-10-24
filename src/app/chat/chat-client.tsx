@@ -41,7 +41,7 @@ export function ChatClient() {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-6 py-6">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 sm:px-6 py-6">
       <div className="flex-1 space-y-3 pb-4">
         {messages.length === 0 && (
           <p className="pt-16 text-center text-muted">무엇이든 물어보세요. Claude 가 답합니다.</p>
@@ -62,7 +62,7 @@ export function ChatClient() {
         {error && <p className="text-sm text-accent">{error}</p>}
         <div ref={endRef} />
       </div>
-      <form onSubmit={send} className="sticky bottom-0 flex gap-2 bg-background py-3">
+      <form onSubmit={send} className="sticky bottom-0 flex gap-2 bg-background pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}

@@ -8,7 +8,7 @@ const LINKS = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-10 border-b border-line bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex h-14 w-full max-w-3xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-14 w-full max-w-3xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="font-semibold tracking-tight">
           Tragatize
         </Link>

@@ -2,9 +2,11 @@ const MEMBERS = ["김해청", "김덕환", "김성재", "윤정민"];
 
 export default function Home() {
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-between px-6 py-12 sm:py-20">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-between px-4 sm:px-6 py-12 sm:py-20">
       <header className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-muted">
-        <span>Ambition for Korea · 2026.10.24</span>
+        <span>
+          <span className="hidden sm:inline">Ambition for Korea · </span>2026.10.24
+        </span>
         <span className="flex items-center gap-2">
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
