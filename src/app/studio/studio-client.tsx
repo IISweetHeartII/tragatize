@@ -298,9 +298,9 @@ export function StudioClient() {
                   (active ? "border-foreground bg-line/40" : "border-line hover:border-foreground")
                 }
               >
-                <span className="block font-mono text-xs text-muted">{p.category}</span>
+                <span className={"block font-mono text-xs " + (p.plan === "premium" ? "text-accent" : "text-muted")}>{p.category}</span>
                 <span className="block font-medium">{p.title}</span>
-                <span className="block text-sm text-muted">{ready ? (active ? "선택됨" : "▶ 눌러서 보기") : "샘플 촬영 중"}</span>
+                <span className="block text-sm text-muted">{ready ? (active ? "선택됨" : "▶ 눌러서 보기") : "샘플 준비 중"}</span>
               </button>
             );
           })}
