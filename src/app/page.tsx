@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DEMO_PRESETS } from "@/lib/demo";
-import { ORDER_PHONE } from "@/lib/site";
+import { DEMO_VIDEO, ORDER_PHONE } from "@/lib/site";
 
 const MEMBERS = ["김해청", "김덕환", "김성재", "윤정민"];
 
@@ -125,6 +125,18 @@ export default function Home() {
           </span>
           <span className="shrink-0 text-sm font-medium">걸기 →</span>
         </a>
+      </section>
+
+      <section className="pb-12 sm:pb-16">
+        <p className="mb-3 font-mono text-xs text-accent">76초 데모</p>
+        <video
+          src={DEMO_VIDEO.src}
+          poster={DEMO_VIDEO.poster}
+          controls
+          playsInline
+          preload="none"
+          className="aspect-video w-full rounded-xl border border-line bg-foreground"
+        />
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">
