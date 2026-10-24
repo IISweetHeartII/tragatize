@@ -95,16 +95,16 @@ export default function Home() {
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 sm:px-6">
       <section className="py-12 sm:py-20">
         <p className="mb-4 inline-block rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
-          소상공인 라이브 커머스 · AI 숏폼 · AI 전화 주문
+          소상공인 숏폼 홍보 · AI 홍보 영상 · AI 전화 주문
         </p>
         <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
-          라이브 한 번이면,
+          상품 하나면,
           <br />
           홍보도 주문도 끝.
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-          AI 가 대본을 쓰고, 찍은 영상에서 «사고 싶어지는 순간» 을 골라 한·영 숏폼으로 만들어요. 영상을 본 손님의
-          전화는 AI 판매원이 받아요.
+          직접 찍은 영상이든 AI 가 만든 영상이든, «사고 싶어지는 순간» 을 골라 숏폼으로 자르고 QR·전화번호를 넣어
+          SNS 에 올려요. 영상을 본 손님의 전화는 AI 판매원이 받아요.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link href="/studio?demo=1" className={primary}>
