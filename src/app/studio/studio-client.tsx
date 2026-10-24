@@ -5,7 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset, type Plan } from "@/lib/demo";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
+  AI_STEPS,
+  AiVideoPanel,
   DecoStep,
+  MockBadge,
   NO_DECO,
   PhoneStep,
   SnsStep,
@@ -27,6 +30,8 @@ const EXAMPLES = [
 
 const READY_PRESETS = DEMO_PRESETS.filter((p) => p.videoUrl && p.highlights.length > 0);
 const HAS_DEMO = READY_PRESETS.length > 0;
+// Premium «AI 홍보 영상 만들기» 는 시연용이라 미리 만든 AI 영상 샘플을 결과로 보여 준다.
+const AI_SAMPLE = READY_PRESETS.find((p) => p.plan === "premium") ?? null;
 
 // 샘플은 미리 계산된 실제 AI 결과를 단계별로 보여 준다(대본 3초 → 컷 편집·추천 약 10초).
 const DEMO_STEPS: Record<Plan, { label: string; ms: number }[]> = {
@@ -127,6 +132,7 @@ export function StudioClient() {
   const [phone, setPhone] = useState<string | null>(null);
   const [deco, setDeco] = useState<Deco>(NO_DECO);
   const [posted, setPosted] = useState(false);
+  const [aiProgress, setAiProgress] = useState<number | null>(null);
 
   // 분석 중 경과 시간(실제 진행률이 없으므로 시간만 정직하게 보여 준다)
   // 시작 시각은 분석에 들어갈 때(onFile) 기록하고, effect 는 1초 타이머만 돈다.
@@ -155,6 +161,7 @@ export function StudioClient() {
     setVideoUrl(null);
     setStage("idle");
     setPosted(false);
+    setAiProgress(null);
   }
 
   function runPreset(preset: DemoPreset) {
@@ -185,6 +192,35 @@ export function StudioClient() {
             scrollTo("step-shorts");
           } else {
             setDemoStep(i + 1);
+          }
+        }, at),
+      );
+    });
+  }
+
+  // Premium: 템플릿·자료를 받아 «AI 홍보 영상» 을 만드는 시연(결과는 미리 만든 AI 영상 샘플)
+  function runAiVideo() {
+    if (!AI_SAMPLE) return;
+    clearTimers();
+    setError(null);
+    resetResult();
+    setIsDemo(true);
+    setDemoId(null);
+    setAiProgress(0);
+    const ms = [1800, 2000, 3200, 2000, 2200];
+    let at = 0;
+    ms.forEach((d, i) => {
+      at += d;
+      demoTimers.current.push(
+        setTimeout(() => {
+          if (i === 3) setVideoUrl(AI_SAMPLE.videoUrl);
+          if (i === AI_STEPS.length - 1) {
+            setHighlights(AI_SAMPLE.highlights);
+            setStage("done");
+            setAiProgress(null);
+            scrollTo("step-shorts");
+          } else {
+            setAiProgress(i + 1);
           }
         }, at),
       );
@@ -262,7 +298,7 @@ export function StudioClient() {
     }
   }
 
-  const busy = stage === "uploading" || stage === "analyzing";
+  const busy = stage === "uploading" || stage === "analyzing" || aiProgress !== null;
   const decorated = (deco.qr && /^https?:\/\/\S+\.\S+/.test(deco.url)) || (deco.phone && !!phone);
   const states: StepState[] = [
     script ? "done" : "active",
@@ -272,7 +308,7 @@ export function StudioClient() {
     decorated ? "done" : "todo",
     posted ? "done" : "todo",
   ];
-  const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? null;
+  const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? (videoUrl && videoUrl === AI_SAMPLE?.videoUrl ? AI_SAMPLE.qa : null);
   const shortDeco = decoFor("short", deco, phone);
   const siteUrl = decoFor("long", { ...deco, long: true }, null).qrUrl;
 
@@ -291,7 +327,7 @@ export function StudioClient() {
             return (
               <button
                 key={p.id}
-                disabled={!ready || demoStep !== null}
+                disabled={!ready || demoStep !== null || aiProgress !== null}
                 onClick={() => runPreset(p)}
                 className={
                   "min-h-11 rounded-xl border px-4 py-3 text-left disabled:opacity-50 " +
@@ -371,55 +407,95 @@ export function StudioClient() {
         )}
       </Step>
 
-      <Step id="step-upload" n={2} title="찍은 라이브 영상 올리기">
-        <label
-          onDragOver={(e) => {
-            e.preventDefault();
-            if (!busy) setDragging(true);
-          }}
-          onDragLeave={() => setDragging(false)}
-          onDrop={(e) => {
-            e.preventDefault();
-            setDragging(false);
-            if (!busy) void onFile(e.dataTransfer.files?.[0]);
-          }}
-          className={
-            "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed px-4 py-10 text-center hover:border-foreground " +
-            (dragging ? "border-foreground bg-line/40" : "border-line")
-          }
-        >
-          <span className="font-medium">{dragging ? "여기에 놓으세요" : "영상을 끌어다 놓거나 눌러서 고르기"}</span>
-          <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지 · 2분 안팎 세로 영상 권장</span>
-          <input type="file" accept="video/*,audio/*" className="hidden" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
-        </label>
-        {stage === "uploading" && (
-          <div className="mt-4">
-            <p className="text-sm text-muted">올리는 중… {progress}%</p>
-            <div className="mt-2 h-1.5 rounded-full bg-line">
-              <div className="h-1.5 rounded-full bg-foreground transition-all" style={{ width: `${progress}%` }} />
-            </div>
-          </div>
-        )}
-        {stage === "analyzing" && (
-          <ul className="mt-4 space-y-1.5 text-sm">
-            <li>✓ 업로드</li>
-            <li className={elapsed < 20 ? "text-accent" : ""}>{elapsed < 20 ? "◉" : "✓"} 말 받아쓰는 중 (ElevenLabs)</li>
-            <li className={elapsed < 20 ? "text-muted" : "text-accent"}>{elapsed < 20 ? "○" : "◉"} 사고 싶어지는 순간 고르는 중 (Claude)</li>
-            <li className="pt-1 font-mono text-xs text-muted">{fmt(elapsed)} 경과 · 보통 30초~2분</li>
-            {HAS_DEMO && (
-              <li>
-                <button onClick={showDemo} className="text-sm underline underline-offset-4">
-                  기다리는 동안 샘플 결과 보기
-                </button>
-              </li>
+      <Step id="step-upload" n={2} title="영상 준비하기">
+        <div role="tablist" className="mb-4 grid grid-cols-2 gap-1 rounded-xl border border-line p-1">
+          {(
+            [
+              { id: "lite", title: "직접 찍어 올리기", tag: "Lite" },
+              { id: "premium", title: "AI 가 만들어 주기", tag: "Premium" },
+            ] as const
+          ).map((t) => (
+            <button
+              key={t.id}
+              role="tab"
+              aria-selected={plan === t.id}
+              disabled={busy}
+              onClick={() => setPlan(t.id)}
+              className={"min-h-11 rounded-lg px-3 py-2 text-sm font-medium " + (plan === t.id ? "bg-foreground text-background" : "text-muted hover:text-foreground")}
+            >
+              {t.title}
+              <span className={"block font-mono text-xs sm:ml-1.5 sm:inline " + (plan === t.id ? "opacity-70" : t.id === "premium" ? "text-accent" : "")}>{t.tag}</span>
+            </button>
+          ))}
+        </div>
+
+        {plan === "lite" ? (
+          <>
+            <label
+              onDragOver={(e) => {
+                e.preventDefault();
+                if (!busy) setDragging(true);
+              }}
+              onDragLeave={() => setDragging(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragging(false);
+                if (!busy) void onFile(e.dataTransfer.files?.[0]);
+              }}
+              className={
+                "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed px-4 py-10 text-center hover:border-foreground " +
+                (dragging ? "border-foreground bg-line/40" : "border-line")
+              }
+            >
+              <span className="font-medium">{dragging ? "여기에 놓으세요" : "찍은 영상을 끌어다 놓거나 눌러서 고르기"}</span>
+              <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지 · 2분 안팎 세로 영상 권장</span>
+              <input type="file" accept="video/*,audio/*" className="hidden" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
+            </label>
+            {stage === "uploading" && (
+              <div className="mt-4">
+                <p className="text-sm text-muted">올리는 중… {progress}%</p>
+                <div className="mt-2 h-1.5 rounded-full bg-line">
+                  <div className="h-1.5 rounded-full bg-foreground transition-all" style={{ width: `${progress}%` }} />
+                </div>
+              </div>
             )}
-          </ul>
+            {stage === "analyzing" && (
+              <ul className="mt-4 space-y-1.5 text-sm">
+                <li>✓ 업로드</li>
+                <li className={elapsed < 20 ? "text-accent" : ""}>{elapsed < 20 ? "◉" : "✓"} 말 받아쓰는 중 (ElevenLabs)</li>
+                <li className={elapsed < 20 ? "text-muted" : "text-accent"}>{elapsed < 20 ? "○" : "◉"} 사고 싶어지는 순간 고르는 중 (Claude)</li>
+                <li className="pt-1 font-mono text-xs text-muted">{fmt(elapsed)} 경과 · 보통 30초~2분</li>
+                {HAS_DEMO && (
+                  <li>
+                    <button onClick={showDemo} className="text-sm underline underline-offset-4">
+                      기다리는 동안 샘플 결과 보기
+                    </button>
+                  </li>
+                )}
+              </ul>
+            )}
+          </>
+        ) : (
+          <>
+            <p className="mb-4 text-sm text-muted">
+              촬영 없이 AI 가 대본대로 홍보 영상을 만들어요. <MockBadge>시연용 · 결과는 미리 만든 AI 영상</MockBadge>
+            </p>
+            <AiVideoPanel hasScript={!!script} progress={aiProgress} ready={!!videoUrl && isDemo && videoUrl === AI_SAMPLE?.videoUrl} onGenerate={runAiVideo} />
+            {videoUrl && plan === "premium" && videoUrl === AI_SAMPLE?.videoUrl && (
+              <div className="mt-5">
+                <p className="mb-2 text-sm text-muted">
+                  완성된 AI 홍보 영상 <MockBadge>«{AI_SAMPLE.title}» 샘플</MockBadge>
+                </p>
+                <video src={videoUrl} controls playsInline preload="metadata" className="aspect-[9/16] w-full max-w-xs rounded-xl bg-black" />
+              </div>
+            )}
+          </>
         )}
       </Step>
 
       <Step id="step-shorts" n={3} title="AI 가 고른 숏폼 후보">
         {highlights.length === 0 ? (
-          <p className="text-muted">영상을 올리면 여기 숏폼 후보 3개가 나와요.</p>
+          <p className="text-muted">영상이 준비되면 여기 숏폼 후보 3개가 나와요.</p>
         ) : (
           <>
             {isDemo && (
