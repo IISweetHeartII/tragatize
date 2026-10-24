@@ -320,9 +320,9 @@ export function StudioClient() {
       <Stepper states={states} />
 
       <div className="pt-8">
-        <h1 className="text-3xl font-semibold tracking-tight">라이브 한 번으로 홍보까지</h1>
-        <p className="mt-2 text-muted">대본 받기 → 카메라 하나로 찍기 → AI 가 숏폼을 골라 SNS 에 올립니다.</p>
-        <p className="mt-6 text-sm font-medium">샘플 라이브로 바로 보기</p>
+        <h1 className="text-3xl font-semibold tracking-tight">상품 하나로 홍보부터 주문까지</h1>
+        <p className="mt-2 text-muted">대본 받기 → 영상 준비(직접 찍기·AI 생성) → AI 숏폼 → 전화 응대 → QR·번호 넣기 → SNS 올리기</p>
+        <p className="mt-6 text-sm font-medium">샘플로 바로 보기</p>
         <div className="mt-2 grid gap-2 sm:grid-cols-3">
           {DEMO_PRESETS.map((p) => {
             const ready = READY_PRESETS.includes(p);
@@ -356,7 +356,7 @@ export function StudioClient() {
         {error && <p className="mt-4 rounded-xl border border-accent/40 px-4 py-3 text-sm text-accent">{error}</p>}
       </div>
 
-      <Step id="step-script" n={1} title="라이브 대본 받기">
+      <Step id="step-script" n={1} title="대본 받기">
         <div className="mb-3 flex flex-wrap gap-2">
           <span className="self-center text-sm text-muted">예시:</span>
           {EXAMPLES.map((e, i) => (
