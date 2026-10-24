@@ -101,16 +101,6 @@ const handler = createMcpHandler((server) => {
     sendInfo,
   );
 
-  // 예전 이름(ClawOps 에이전트 설정을 바꾸는 동안만 유지). 동작은 send_info_sms 와 같다.
-  server.registerTool(
-    "send_order_sms",
-    {
-      title: "살 곳 안내 문자 보내기(예전 이름)",
-      description: "send_info_sms 와 같다. 새 통화에서는 send_info_sms 를 쓴다.",
-      inputSchema: smsInput,
-    },
-    sendInfo,
-  );
 });
 
 async function guarded(req: Request): Promise<Response> {
