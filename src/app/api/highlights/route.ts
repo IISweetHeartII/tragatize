@@ -2,18 +2,10 @@ import { ask } from "@/lib/ai";
 import { extractJson } from "@/lib/json";
 import { allow, clientIp } from "@/lib/rate-limit";
 import { transcribe, type Sentence } from "@/lib/scribe";
+import type { Highlight } from "@/lib/types";
 
 export const maxDuration = 300;
 
-export type Highlight = {
-  start: number;
-  end: number;
-  hook: string;
-  hookEn: string;
-  caption: string;
-  hashtags: string[];
-  why: string;
-};
 
 const SYSTEM = `당신은 라이브 커머스 영상에서 인스타그램 릴스·유튜브 쇼츠로 자를 하이라이트를 고르는 편집자입니다.
 받아쓰기(초 단위 시각 포함)를 보고 «보는 사람이 사고 싶어지는 순간» 3개를 고르세요.
@@ -24,8 +16,9 @@ const SYSTEM = `당신은 라이브 커머스 영상에서 인스타그램 릴�
 반드시 JSON 하나만: {"highlights":[{"start":0,"end":0,"hook":"","hookEn":"","caption":"","hashtags":[],"why":""}]}`;
 
 export async function POST(req: Request): Promise<Response> {
-  if (!allow(`hl:${clientIp(req)}`, 6, 10 * 60_000)) {
-    return Response.json({ error: "10분에 6번까지만 분석할 수 있어요." }, { status: 429 });
+  // 심사장 와이파이는 여러 명이 같은 IP 라 넉넉히 둔다.
+  if (!allow(`hl:${clientIp(req)}`, 20, 10 * 60_000)) {
+    return Response.json({ error: "잠시 후 다시 시도해 주세요." }, { status: 429 });
   }
   const body = (await req.json().catch(() => null)) as { url?: string } | null;
   const url = body?.url ?? "";

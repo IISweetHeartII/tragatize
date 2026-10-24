@@ -1,24 +1,22 @@
 "use client";
 
 import { upload } from "@vercel/blob/client";
-import { useRef, useState } from "react";
-
-type Section = { name: string; minutes: number; say: string; show: string };
-type LiveScript = { title: string; target: string; sections: Section[]; tips: string[] };
-type Highlight = {
-  start: number;
-  end: number;
-  hook: string;
-  hookEn: string;
-  caption: string;
-  hashtags: string[];
-  why: string;
-};
+import { useEffect, useRef, useState } from "react";
+import { DEMO_HIGHLIGHTS, DEMO_PRODUCT, DEMO_SCRIPT, DEMO_VIDEO_URL } from "@/lib/demo";
+import type { Highlight, LiveScript } from "@/lib/types";
 
 const input =
   "mt-1 w-full rounded-xl border border-line bg-background px-4 py-3 outline-none focus:border-foreground";
 const primary =
   "w-full rounded-xl bg-foreground py-3 font-medium text-background disabled:opacity-40 sm:w-auto sm:px-6";
+
+const EXAMPLES = [
+  { product: "수제 약과 선물세트 12개입, 2만 9천 원", store: "강남역 근처 전통 디저트 가게", audience: "한국 여행 온 미국·일본 20~30대" },
+  { product: "한복 대여 2시간 + 사진 촬영, 3만 5천 원", store: "경복궁 앞 한복 대여점", audience: "서울 여행 온 동남아·중국 관광객" },
+  { product: "직접 볶은 원두 200g, 1만 8천 원", store: "성수동 로스터리 카페", audience: "국내 20~30대 홈카페족" },
+];
+
+const HAS_DEMO = Boolean(DEMO_VIDEO_URL && DEMO_HIGHLIGHTS.length > 0);
 
 function fmt(sec: number): string {
   const s = Math.max(0, Math.round(sec));
@@ -32,15 +30,52 @@ async function postJson<T>(url: string, body: unknown): Promise<T> {
   return data;
 }
 
-function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
+function Step({ id, n, title, children }: { id: string; n: number; title: string; children: React.ReactNode }) {
   return (
-    <section className="border-t border-line py-8">
+    <section id={id} className="scroll-mt-28 border-t border-line py-8">
       <h2 className="flex items-center gap-3 text-lg font-semibold">
         <span className="flex size-7 items-center justify-center rounded-full bg-foreground text-sm text-background">{n}</span>
         {title}
       </h2>
       <div className="mt-4">{children}</div>
     </section>
+  );
+}
+
+type StepState = "done" | "active" | "todo" | "soon";
+
+function Stepper({ states }: { states: StepState[] }) {
+  const labels = ["대본", "촬영·업로드", "AI 숏폼", "SNS 올리기"];
+  const ids = ["step-script", "step-upload", "step-shorts", "step-sns"];
+  return (
+    <nav className="sticky top-14 z-10 -mx-4 border-b border-line bg-background/90 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6">
+      <ol className="flex items-center justify-between gap-1">
+        {labels.map((label, i) => {
+          const s = states[i];
+          return (
+            <li key={label} className="flex-1">
+              <a href={`#${ids[i]}`} className="flex min-h-11 items-center gap-2 rounded-lg px-1 text-sm">
+                <span
+                  className={
+                    "flex size-6 shrink-0 items-center justify-center rounded-full text-xs " +
+                    (s === "done"
+                      ? "bg-foreground text-background"
+                      : s === "active"
+                        ? "border-2 border-accent text-accent"
+                        : "border border-line text-muted")
+                  }
+                >
+                  {s === "done" ? "✓" : i + 1}
+                </span>
+                <span className={(s === "active" ? "inline" : "hidden sm:inline") + (s === "todo" || s === "soon" ? " text-muted" : "")}>
+                  {label}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }
 
@@ -54,8 +89,55 @@ export function StudioClient() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [stage, setStage] = useState<"idle" | "uploading" | "analyzing" | "done">("idle");
   const [progress, setProgress] = useState(0);
+  const [elapsed, setElapsed] = useState(0);
   const [highlights, setHighlights] = useState<Highlight[]>([]);
+  const [isDemo, setIsDemo] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // 분석 중 경과 시간(실제 진행률이 없으므로 시간만 정직하게 보여 준다)
+  // 시작 시각은 분석에 들어갈 때(onFile) 기록하고, effect 는 1초 타이머만 돈다.
+  const analyzeStartedAt = useRef(0);
+  useEffect(() => {
+    if (stage !== "analyzing") return;
+    const t = setInterval(() => setElapsed(Math.floor((Date.now() - analyzeStartedAt.current) / 1000)), 1000);
+    return () => clearInterval(t);
+  }, [stage]);
+
+  function scrollTo(id: string) {
+    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }));
+  }
+
+  function showDemo() {
+    setError(null);
+    if (!HAS_DEMO) {
+      // 샘플 결과가 아직 없으면 예시 상품만 채워 대본부터 보게 한다.
+      fill(0);
+      scrollTo("step-script");
+      return;
+    }
+    setProduct(DEMO_PRODUCT);
+    setScript(DEMO_SCRIPT);
+    setVideoUrl(DEMO_VIDEO_URL);
+    setHighlights(DEMO_HIGHLIGHTS);
+    setStage("done");
+    setIsDemo(true);
+    scrollTo("step-shorts");
+  }
+
+  // 랜딩의 «샘플로 바로 보기»(/studio?demo=1) — 첫 렌더 뒤에 한 번 실행한다.
+  useEffect(() => {
+    if (new URLSearchParams(location.search).get("demo") !== "1") return;
+    const t = setTimeout(showDemo, 0);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function fill(i: number) {
+    const e = EXAMPLES[i];
+    setProduct(e.product);
+    setStore(e.store);
+    setAudience(e.audience);
+  }
 
   async function makeScript(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -75,6 +157,7 @@ export function StudioClient() {
     if (!file) return;
     setError(null);
     setHighlights([]);
+    setIsDemo(false);
     setStage("uploading");
     setProgress(0);
     try {
@@ -85,23 +168,57 @@ export function StudioClient() {
         onUploadProgress: (p) => setProgress(Math.round(p.percentage)),
       });
       setVideoUrl(blob.url);
+      analyzeStartedAt.current = Date.now();
+      setElapsed(0);
       setStage("analyzing");
       const { highlights } = await postJson<{ highlights: Highlight[] }>("/api/highlights", { url: blob.url });
       setHighlights(highlights);
       setStage("done");
+      scrollTo("step-shorts");
     } catch (err) {
       setError(err instanceof Error ? err.message : "실패했어요.");
       setStage("idle");
     }
   }
 
-  return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6">
-      <h1 className="text-3xl font-semibold tracking-tight">라이브 한 번으로 홍보까지</h1>
-      <p className="mt-2 text-muted">대본 받기 → 카메라 하나로 찍기 → AI 가 숏폼을 골라 SNS 에 올립니다.</p>
-      {error && <p className="mt-4 rounded-xl border border-accent/40 px-4 py-3 text-sm text-accent">{error}</p>}
+  const busy = stage === "uploading" || stage === "analyzing";
+  const states: StepState[] = [
+    script ? "done" : "active",
+    busy ? "active" : videoUrl ? "done" : script ? "active" : "todo",
+    highlights.length > 0 ? "done" : "todo",
+    "soon",
+  ];
 
-      <Step n={1} title="라이브 대본 받기">
+  return (
+    <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-16 sm:px-6">
+      <Stepper states={states} />
+
+      <div className="pt-8">
+        <h1 className="text-3xl font-semibold tracking-tight">라이브 한 번으로 홍보까지</h1>
+        <p className="mt-2 text-muted">대본 받기 → 카메라 하나로 찍기 → AI 가 숏폼을 골라 SNS 에 올립니다.</p>
+        <button
+          onClick={showDemo}
+          className="mt-5 flex w-full items-center justify-between gap-3 rounded-xl border border-foreground px-4 py-3 text-left sm:w-auto"
+        >
+          <span>
+            <span className="font-medium">▶ 샘플 라이브로 바로 보기</span>
+            <span className="block text-sm text-muted">
+              {HAS_DEMO ? "사장님이 찍은 라이브 예시로 결과를 바로 봐요" : "예시 상품으로 대본부터 만들어 봐요"}
+            </span>
+          </span>
+        </button>
+        {error && <p className="mt-4 rounded-xl border border-accent/40 px-4 py-3 text-sm text-accent">{error}</p>}
+      </div>
+
+      <Step id="step-script" n={1} title="라이브 대본 받기">
+        <div className="mb-3 flex flex-wrap gap-2">
+          <span className="self-center text-sm text-muted">예시:</span>
+          {EXAMPLES.map((e, i) => (
+            <button key={i} onClick={() => fill(i)} className="min-h-9 rounded-full border border-line px-3 text-sm hover:border-foreground">
+              {e.product.split(",")[0]}
+            </button>
+          ))}
+        </div>
         <form onSubmit={makeScript} className="space-y-3">
           <label className="block">
             <span className="text-sm text-muted">팔 상품</span>
@@ -118,7 +235,7 @@ export function StudioClient() {
             </label>
           </div>
           <button disabled={scriptBusy || !product.trim()} className={primary}>
-            {scriptBusy ? "대본 쓰는 중…" : "대본 만들기"}
+            {scriptBusy ? "대본 쓰는 중… (20~30초)" : "대본 만들기"}
           </button>
         </form>
         {script && (
@@ -147,30 +264,59 @@ export function StudioClient() {
         )}
       </Step>
 
-      <Step n={2} title="찍은 라이브 영상 올리기">
+      <Step id="step-upload" n={2} title="찍은 라이브 영상 올리기">
         <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-line px-4 py-10 text-center hover:border-foreground">
           <span className="font-medium">영상 파일 고르기</span>
-          <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지</span>
-          <input type="file" accept="video/*,audio/*" className="hidden" disabled={stage === "uploading" || stage === "analyzing"} onChange={(e) => onFile(e.target.files?.[0])} />
+          <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지 · 말소리가 있어야 해요</span>
+          <input type="file" accept="video/*,audio/*" className="hidden" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
         </label>
-        {stage === "uploading" && <p className="mt-3 text-sm text-muted">올리는 중… {progress}%</p>}
-        {stage === "analyzing" && <p className="mt-3 text-sm text-muted">받아쓰고 하이라이트를 고르는 중… (영상 길이에 따라 1~3분)</p>}
-      </Step>
-
-      <Step n={3} title="AI 가 고른 숏폼">
-        {highlights.length === 0 ? (
-          <p className="text-muted">영상을 올리면 여기 숏폼 후보 3개가 나와요.</p>
-        ) : (
-          <div className="grid gap-4 sm:grid-cols-3">
-            {highlights.map((h, i) => (
-              <ShortCard key={i} h={h} src={videoUrl!} />
-            ))}
+        {stage === "uploading" && (
+          <div className="mt-4">
+            <p className="text-sm text-muted">올리는 중… {progress}%</p>
+            <div className="mt-2 h-1.5 rounded-full bg-line">
+              <div className="h-1.5 rounded-full bg-foreground transition-all" style={{ width: `${progress}%` }} />
+            </div>
           </div>
+        )}
+        {stage === "analyzing" && (
+          <ul className="mt-4 space-y-1.5 text-sm">
+            <li>✓ 업로드</li>
+            <li className={elapsed < 20 ? "text-accent" : ""}>{elapsed < 20 ? "◉" : "✓"} 말 받아쓰는 중 (ElevenLabs)</li>
+            <li className={elapsed < 20 ? "text-muted" : "text-accent"}>{elapsed < 20 ? "○" : "◉"} 사고 싶어지는 순간 고르는 중 (Claude)</li>
+            <li className="pt-1 font-mono text-xs text-muted">{fmt(elapsed)} 경과 · 보통 30초~2분</li>
+          </ul>
         )}
       </Step>
 
-      <Step n={4} title="SNS 에 올리기">
-        <p className="text-muted">마음에 드는 숏폼을 골라 인스타그램 릴스·유튜브 쇼츠에 올립니다. 인스타 자동 업로드는 연결 중이에요 — 지금은 캡션을 복사해 쓸 수 있어요.</p>
+      <Step id="step-shorts" n={3} title="AI 가 고른 숏폼 후보">
+        {highlights.length === 0 ? (
+          <p className="text-muted">영상을 올리면 여기 숏폼 후보 3개가 나와요.</p>
+        ) : (
+          <>
+            {isDemo && (
+              <p className="mb-3 inline-block rounded-full border border-line px-3 py-1 text-xs text-muted">
+                샘플 결과 · 실제 AI 실행본
+              </p>
+            )}
+            <div className="grid gap-4 sm:grid-cols-3">
+              {highlights.map((h, i) => (
+                <ShortCard key={`${videoUrl}-${i}`} h={h} src={videoUrl!} />
+              ))}
+            </div>
+          </>
+        )}
+      </Step>
+
+      <Step id="step-sns" n={4} title="SNS 에 올리기">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button disabled className="rounded-xl bg-foreground px-6 py-3 font-medium text-background opacity-40">
+            인스타그램 릴스에 올리기 · 연결 중
+          </button>
+          <button disabled className="rounded-xl border border-line px-6 py-3 font-medium opacity-40">
+            유튜브 쇼츠 · 준비 중
+          </button>
+        </div>
+        <p className="mt-3 text-sm text-muted">지금은 숏폼 카드의 «캡션 복사» 로 바로 붙여 넣을 수 있어요.</p>
       </Step>
     </main>
   );
@@ -178,12 +324,17 @@ export function StudioClient() {
 
 function ShortCard({ h, src }: { h: Highlight; src: string }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  function play() {
+  function toggle() {
     const v = ref.current;
     if (!v) return;
-    v.currentTime = h.start;
+    if (!v.paused) {
+      v.pause();
+      return;
+    }
+    if (v.currentTime < h.start || v.currentTime >= h.end) v.currentTime = h.start;
     void v.play();
   }
 
@@ -195,13 +346,15 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
 
   return (
     <div className="overflow-hidden rounded-xl border border-line">
-      <button onClick={play} className="relative block aspect-[9/16] w-full bg-black text-left">
+      <button onClick={toggle} className="relative block aspect-[9/16] w-full bg-black text-left">
         <video
           ref={ref}
           src={`${src}#t=${h.start}`}
           playsInline
           preload="metadata"
           className="absolute inset-0 size-full object-cover"
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
           onTimeUpdate={(e) => {
             if (e.currentTarget.currentTime >= h.end) e.currentTarget.pause();
           }}
@@ -210,15 +363,20 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
           {h.hook}
           <span className="block text-xs font-normal opacity-80">{h.hookEn}</span>
         </span>
+        {!playing && (
+          <span className="absolute inset-0 flex items-center justify-center">
+            <span className="flex size-14 items-center justify-center rounded-full bg-white/90 text-xl text-black">▶</span>
+          </span>
+        )}
         <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2 py-1 font-mono text-xs text-white">
-          ▶ {fmt(h.start)}–{fmt(h.end)}
+          {fmt(h.start)}–{fmt(h.end)} · {Math.round(h.end - h.start)}초
         </span>
       </button>
       <div className="space-y-2 p-3 text-sm">
         <p className="text-muted">{h.why}</p>
         <p className="leading-relaxed">{h.caption}</p>
         <p className="text-muted">{h.hashtags.join(" ")}</p>
-        <button onClick={copy} className="w-full rounded-lg border border-line py-2 hover:border-foreground">
+        <button onClick={copy} className="min-h-11 w-full rounded-lg border border-line hover:border-foreground">
           {copied ? "복사됨" : "캡션 복사"}
         </button>
       </div>

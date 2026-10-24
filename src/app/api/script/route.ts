@@ -1,15 +1,10 @@
 import { ask } from "@/lib/ai";
 import { extractJson } from "@/lib/json";
 import { allow, clientIp } from "@/lib/rate-limit";
+import type { LiveScript } from "@/lib/types";
 
 export const maxDuration = 120;
 
-export type LiveScript = {
-  title: string;
-  target: string;
-  sections: { name: string; minutes: number; say: string; show: string }[];
-  tips: string[];
-};
 
 const SYSTEM = `당신은 소상공인 라이브 커머스 PD 입니다. 사장님이 카메라 한 대로 혼자 찍을 수 있는 라이브 방송 대본을 템플릿 형태로 씁니다.
 반드시 JSON 하나만 출력하세요. 형식:

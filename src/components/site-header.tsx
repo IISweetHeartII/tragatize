@@ -1,10 +1,7 @@
 import Link from "next/link";
 
-const LINKS = [
-  { href: "/studio", label: "스튜디오" },
-  { href: "/chat", label: "채팅" },
-  { href: "/call", label: "전화" },
-];
+// /chat·/call 은 연결 확인용으로 주소만 남기고 메뉴에서는 뺀다(심사 동선 집중).
+const LINKS = [{ href: "/studio", label: "스튜디오" }];
 
 export function SiteHeader() {
   return (
