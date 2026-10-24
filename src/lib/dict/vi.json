@@ -1,0 +1,393 @@
+{
+  "meta": {
+    "title": "Tragatize — Từ Hàn Quốc ra thế giới",
+    "description": "Chỉ cần một sản phẩm là xong cả quảng bá lẫn đơn hàng. Kịch bản AI, video quảng cáo AI, video ngắn, đăng SNS và nhận đơn qua điện thoại bằng AI: tự động hóa quảng bá cho chủ cửa hàng nhỏ.",
+    "studioTitle": "Studio",
+    "studioDescription": "Nhận kịch bản, tải video lên hoặc để AI tạo, rồi cắt thành video ngắn, đăng lên SNS và nhận cả đơn qua điện thoại."
+  },
+  "countries": {
+    "ko": "Hàn Quốc",
+    "en": "Mỹ",
+    "ja": "Nhật Bản",
+    "zh-CN": "Trung Quốc",
+    "zh-TW": "Đài Loan",
+    "vi": "Việt Nam",
+    "th": "Thái Lan"
+  },
+  "planTags": {
+    "lite": "Lite · Tự quay",
+    "premium": "Premium · Video quảng cáo AI"
+  },
+  "samples": {
+    "food": {
+      "title": "Chủ tiệm burger thủ công ở Gangnam",
+      "product": "Cry Cheeseburger, ₩5.000"
+    },
+    "beauty": {
+      "title": "Livestream xịt kem dưỡng Couple",
+      "product": "Xịt kem dưỡng UIQ Biome Barrier Cream Mist mua 1 tặng 1, ₩5.000"
+    },
+    "book": {
+      "title": "Sách tự truyện cha mẹ của withby",
+      "product": "Sách tự truyện của cha mẹ, ₩88.000"
+    }
+  },
+  "landing": {
+    "badge": "Video ngắn quảng bá cho cửa hàng nhỏ · Video quảng cáo AI · Nhận đơn qua điện thoại bằng AI",
+    "heroLine1": "Chỉ cần một sản phẩm,",
+    "heroLine2": "xong cả quảng bá lẫn đơn hàng.",
+    "heroSub": "Dù là video bạn tự quay hay video do AI tạo, chúng tôi chọn ra “khoảnh khắc khiến khách muốn mua”, cắt thành video ngắn, chèn QR và số điện thoại rồi đăng lên SNS. Khách xem video gọi đến sẽ có nhân viên bán hàng AI nghe máy.",
+    "ctaSample": "Xem ngay bằng mẫu",
+    "ctaTry": "Thử với sản phẩm của tôi",
+    "ctaNote": "Không cần đăng ký, xem kết quả trong 15 giây.",
+    "callLead": "Gọi thử ngay · Nhân viên bán hàng AI “Tije” sẽ nghe máy (한국어·English·日本語)",
+    "callCta": "Gọi →",
+    "demoLabel": "Demo 87 giây · Hãy bật tiếng",
+    "painsEyebrow": "Vấn đề",
+    "painsTitle": "Cần quảng bá, nhưng không có tiền cũng chẳng có thời gian",
+    "pains": [
+      {
+        "label": "Công ty marketing",
+        "value": "₩1 triệu / tháng",
+        "body": "Thuê review blog, quản lý SNS. Hiệu quả thì khó thấy."
+      },
+      {
+        "label": "Thời gian của chủ tiệm",
+        "value": "5 giờ / tuần",
+        "body": "Quay, cắt, viết nội dung, đăng bài. Thời gian bán hàng bị thu hẹp."
+      },
+      {
+        "label": "Khách nước ngoài",
+        "value": "Chỉ khách quanh khu",
+        "body": "Không ai quảng bá bằng tiếng Anh nên khách nước ngoài cứ thế đi ngang qua."
+      }
+    ],
+    "stepsEyebrow": "Cách hoạt động",
+    "stepsTitle": "Từ kịch bản đến cuộc gọi đặt hàng, tất cả ở một nơi",
+    "optional": "Tùy chọn",
+    "steps": [
+      {
+        "title": "Kịch bản",
+        "body": "Chỉ cần nhập sản phẩm và giá, AI sẽ viết kịch bản quảng cáo kèm lời thoại và chỉ dẫn hình ảnh cho từng đoạn."
+      },
+      {
+        "title": "Video",
+        "body": "Với Lite, bạn quay bằng điện thoại theo kịch bản rồi tải lên. Với Premium, AI tạo video quảng cáo mà không cần quay."
+      },
+      {
+        "title": "Video ngắn",
+        "body": "AI chọn 3 “khoảnh khắc khiến khách muốn mua”, cắt ra và thêm câu mở đầu thu hút, phụ đề bằng ngôn ngữ của khách."
+      },
+      {
+        "title": "Nghe điện thoại",
+        "body": "Nhập câu trả lời cho các câu hỏi thường gặp là bạn có số 070 riêng cho cửa hàng. Nhân viên bán hàng AI “Tije” sẽ nghe máy."
+      },
+      {
+        "title": "Chèn QR · số điện thoại",
+        "body": "Chèn QR trang sản phẩm và số điện thoại đặt hàng vào video dài lẫn video ngắn."
+      },
+      {
+        "title": "Đăng SNS",
+        "body": "Đăng một lần lên Instagram, YouTube, TikTok đã kết nối. Kèm cả link sản phẩm trong chú thích."
+      }
+    ],
+    "edgesEyebrow": "Điểm khác biệt",
+    "edgesTitle": "Không chỉ dừng lại ở việc cắt video",
+    "edges": [
+      {
+        "title": "AI giải thích vì sao chọn cảnh này",
+        "body": "Đưa ra lý do thay vì điểm số. Ví dụ “cảnh phô mai và giá xuất hiện cùng lúc, khiến khách muốn mua nhất”, để bạn hiểu và tự tin lựa chọn."
+      },
+      {
+        "title": "Câu mở đầu thu hút bằng ngôn ngữ của khách, chỉ một lần",
+        "body": "Tạo nội dung cho cùng một cảnh bằng ngôn ngữ của các nước bạn chọn: Mỹ, Nhật Bản, Trung Quốc, Đài Loan, Việt Nam, Thái Lan, Hàn Quốc. Tiếp cận ngay cả khách du lịch nước ngoài."
+      },
+      {
+        "title": "Khó quay thì AI làm thay",
+        "body": "Với Premium, chỉ cần chọn mẫu và tải ảnh lên. AI tạo video quảng cáo theo kịch bản bằng avatar khuôn mặt của bạn, persona AI bạn thích, hoặc chỉ với sản phẩm."
+      },
+      {
+        "title": "Gọi số trong video ngắn là gặp nhân viên bán hàng AI “Tije”",
+        "body": "Khách xem video gọi đến số in trong video ngắn, Tije sẽ nhận đơn bằng ngôn ngữ của khách và gửi cả tin nhắn xác nhận đơn. Bạn chỉ cần lo bán hàng."
+      }
+    ],
+    "resultEyebrow": "Ví dụ kết quả",
+    "resultTitle": "Video ngắn AI chọn từ livestream “{product}”",
+    "resultNote": "Kết quả chạy trực tiếp trên một livestream mẫu thật dài khoảng 1 phút 40 giây.",
+    "whyLabel": "Lý do AI chọn",
+    "resultCta": "Tự xem từ kịch bản đến video ngắn",
+    "pricingEyebrow": "Bảng giá",
+    "pricingTitle": "Tự quay thì Lite, không quay thì Premium",
+    "pricingNote": "Dịch vụ marketing cho cửa hàng nhỏ thường từ ₩300.000 đến ₩1.800.000 / tháng (theo báo giá công khai). Premium chỉ bằng khoảng 1/5 dịch vụ ₩1 triệu / tháng.",
+    "recommended": "Đề xuất",
+    "plans": [
+      {
+        "tagline": "Cho chủ tiệm tự quay",
+        "price": "$99 / tháng",
+        "priceNote": "Tại Hàn Quốc: ₩99.000 / tháng",
+        "cta": "Thử với video của tôi",
+        "items": [
+          "Kịch bản AI + chuyển video tự quay thành video ngắn, 4 video / tháng",
+          "Câu mở đầu thu hút, chú thích, hashtag bằng 7 ngôn ngữ",
+          "Chèn QR, trang sản phẩm, số điện thoại vào video",
+          "Đăng ngay lên Instagram, YouTube, TikTok",
+          "Số 070 riêng cho cửa hàng + 100 phút gọi với nhân viên bán hàng AI"
+        ]
+      },
+      {
+        "tagline": "AI làm, không cần quay",
+        "price": "$199 / tháng",
+        "priceNote": "Tại Hàn Quốc: ₩199.000 / tháng",
+        "cta": "Thử tạo video quảng cáo AI",
+        "items": [
+          "Toàn bộ tính năng của Lite",
+          "2 video quảng cáo AI / tháng (avatar khuôn mặt, persona AI, chỉ sản phẩm)",
+          "Chuyển thành video ngắn 12 video / tháng",
+          "300 phút gọi đa ngôn ngữ với nhân viên bán hàng AI “Tije”",
+          "Tin nhắn xác nhận đơn hàng"
+        ]
+      }
+    ],
+    "pricingFoot": "Cả hai gói đều có QR, đăng SNS và nghe điện thoại. Chỉ bật những gì bạn cần. Cuộc gọi vượt thời gian trong gói tính ₩300 / phút (nước ngoài $0.25).",
+    "faqEyebrow": "Câu hỏi thường gặp",
+    "faqTitle": "Các chủ tiệm hay hỏi",
+    "faqs": [
+      {
+        "q": "Hoàn toàn không biết dựng video có được không?",
+        "a": "Được. Chỉ cần tải video quay theo kịch bản lên, AI sẽ chép lời, chọn cảnh và thêm cả nội dung. Không cần phần mềm dựng video."
+      },
+      {
+        "q": "Không biết tiếng Anh có đón khách nước ngoài được không?",
+        "a": "AI viết câu mở đầu và chú thích video ngắn bằng ngôn ngữ của khách, còn đơn qua điện thoại do nhân viên bán hàng AI Tije nhận bằng ngôn ngữ của khách. Bạn chỉ cần kiểm tra bằng ngôn ngữ của mình."
+      },
+      {
+        "q": "Hỗ trợ những ngôn ngữ nào?",
+        "a": "Tiếng Hàn, tiếng Anh, tiếng Nhật, tiếng Trung (giản thể, phồn thể), tiếng Việt, tiếng Thái. Tạo nội dung cho khách Mỹ, Hàn Quốc, Nhật Bản, Trung Quốc, Đài Loan, Việt Nam, Thái Lan, và giao diện trang này cũng có đủ 7 ngôn ngữ đó."
+      },
+      {
+        "q": "Tôi ngại quay video thì sao?",
+        "a": "Hãy dùng Premium. Chọn mẫu và tải ảnh sản phẩm lên, AI sẽ tạo video quảng cáo theo kịch bản. Muốn dùng khuôn mặt mình thì tải thêm ảnh khuôn mặt và một video ngắn."
+      },
+      {
+        "q": "Video AI làm từ khuôn mặt tôi có ổn không?",
+        "a": "Chỉ tạo từ ảnh và video bạn đã đồng ý, và video hoàn chỉnh sẽ có nhãn “Do AI tạo”. Nếu không muốn dùng khuôn mặt, hãy chọn mẫu persona AI hoặc chỉ sản phẩm."
+      },
+      {
+        "q": "Bắt đầu nghe điện thoại thế nào?",
+        "a": "Nhập các câu hỏi khách hay hỏi và câu trả lời (AI viết nháp giúp bạn) là bạn có số 070 riêng cho cửa hàng. Chèn số này vào video, nhân viên bán hàng AI Tije sẽ nghe máy."
+      },
+      {
+        "q": "Có tự động đăng lên Instagram, YouTube không?",
+        "a": "Kết nối tài khoản là đăng một lần lên Instagram, YouTube, TikTok. Link trong chú thích Instagram không bấm được, nên khách sẽ được dẫn qua QR và số điện thoại trong video."
+      },
+      {
+        "q": "Có ràng buộc hợp đồng không?",
+        "a": "Không. Dùng theo tháng, ngừng bất cứ lúc nào. Hãy thử với mẫu và sản phẩm của bạn trước khi thanh toán."
+      }
+    ],
+    "closingLine1": "Tự quay hay không quay,",
+    "closingLine2": "cứ giao việc quảng bá cho AI.",
+    "team": "Đội ngũ Tragatize"
+  },
+  "studio": {
+    "examples": [
+      {
+        "product": "Hộp quà bánh yakgwa thủ công 12 chiếc, ₩29.000",
+        "store": "Tiệm bánh truyền thống gần ga Gangnam",
+        "audience": "Khách Mỹ, Nhật 20–30 tuổi du lịch Hàn Quốc"
+      },
+      {
+        "product": "Thuê hanbok 2 giờ + chụp ảnh, ₩35.000",
+        "store": "Tiệm thuê hanbok trước cung Gyeongbok",
+        "audience": "Du khách Đông Nam Á, Trung Quốc đến Seoul"
+      },
+      {
+        "product": "Hạt cà phê tự rang 200g, ₩18.000",
+        "store": "Quán cà phê rang xay ở Seongsu-dong",
+        "audience": "Người 20–30 tuổi thích pha cà phê tại nhà ở Hàn Quốc"
+      }
+    ],
+    "demoSteps": {
+      "lite": [
+        "Đang viết kịch bản livestream",
+        "Đang chép lời",
+        "Đang phân tích cảnh",
+        "Đang cắt ghép và đề xuất video ngắn",
+        "Đang viết phụ đề, chú thích"
+      ],
+      "premium": [
+        "Đang viết kịch bản quảng cáo",
+        "Đang tạo video quảng cáo AI",
+        "Đang cắt ghép và đề xuất video ngắn",
+        "Đang viết phụ đề, chú thích"
+      ]
+    },
+    "stepper": [
+      "Kịch bản",
+      "Video",
+      "Video ngắn",
+      "Điện thoại",
+      "Trang trí",
+      "SNS"
+    ],
+    "title": "Một sản phẩm, từ quảng bá đến đơn hàng",
+    "subtitle": "Nhận kịch bản → Chuẩn bị video (tự quay · AI tạo) → Video ngắn AI → Nghe điện thoại → Chèn QR · số → Đăng SNS",
+    "samplesLabel": "Xem ngay bằng mẫu",
+    "sampleSelected": "Đã chọn",
+    "samplePlay": "▶ Bấm để xem",
+    "sampleSoon": "Mẫu đang chuẩn bị",
+    "steps": {
+      "script": "Nhận kịch bản",
+      "video": "Chuẩn bị video",
+      "shorts": "Video ngắn AI đề xuất",
+      "phone": "Nghe điện thoại (tùy chọn)",
+      "deco": "Chèn QR · số điện thoại vào video (tùy chọn)",
+      "sns": "Đăng lên SNS (tùy chọn)"
+    },
+    "examplesLabel": "Ví dụ:",
+    "productLabel": "Sản phẩm muốn bán",
+    "productPlaceholder": "VD: Hộp quà bánh yakgwa thủ công 12 chiếc, ₩29.000",
+    "storeLabel": "Cửa hàng (tùy chọn)",
+    "storePlaceholder": "VD: Tiệm bánh gần ga Gangnam",
+    "audienceLabel": "Khách hàng mong muốn (tùy chọn)",
+    "audiencePlaceholder": "VD: Khách Mỹ, Nhật 20–30 tuổi du lịch Hàn Quốc",
+    "targetsLabel": "Quốc gia của khách (chọn nhiều)",
+    "targetsHint": "Lời thoại kịch bản, câu mở đầu và chú thích video ngắn sẽ được viết bằng ngôn ngữ của các nước đã chọn.",
+    "scriptBusy": "Đang viết kịch bản… (20–30 giây)",
+    "scriptCta": "Tạo kịch bản",
+    "viewer": "Người xem: {target}",
+    "minutes": "· {n} phút",
+    "screen": "Hình ảnh: {show}",
+    "tabLite": "Tự quay và tải lên",
+    "tabPremium": "Để AI tạo",
+    "dropHere": "Thả vào đây",
+    "dropPrompt": "Kéo thả video đã quay hoặc bấm để chọn",
+    "dropHint": "mp4 · mov · m4a, tối đa 500MB · nên dùng video dọc khoảng 2 phút",
+    "uploading": "Đang tải lên… {p}%",
+    "uploaded": "Đã tải lên",
+    "transcribing": "Đang chép lời (ElevenLabs)",
+    "picking": "Đang chọn khoảnh khắc khiến khách muốn mua (Claude)",
+    "elapsed": "Đã qua {t} · thường mất 30 giây–2 phút",
+    "waitSample": "Xem kết quả mẫu trong lúc chờ",
+    "premiumLead": "AI tạo video quảng cáo theo kịch bản, không cần quay.",
+    "premiumBadge": "Bản demo · Kết quả là video AI làm sẵn",
+    "aiDone": "Video quảng cáo AI hoàn chỉnh",
+    "aiSampleBadge": "Mẫu “{title}”",
+    "shortsEmpty": "Khi video sẵn sàng, 3 video ngắn đề xuất sẽ hiện ở đây.",
+    "sampleResult": "Kết quả mẫu · Bản chạy AI thật (tính trước)",
+    "shortsLang": "Ngôn ngữ video ngắn",
+    "why": "Vì sao chọn cảnh này?",
+    "copied": "Đã sao chép",
+    "copy": "Sao chép chú thích",
+    "seconds": "{n} giây",
+    "failed": "Có lỗi xảy ra. Vui lòng thử lại.",
+    "mock": "Bản demo",
+    "qrLabel": "Xem sản phẩm",
+    "templatesLabel": "Mẫu video quảng cáo",
+    "templates": {
+      "avatar": {
+        "title": "Avatar khuôn mặt của tôi",
+        "body": "Avatar AI tạo từ ảnh và video của bạn sẽ giới thiệu theo kịch bản.",
+        "need": "3 ảnh chính diện khuôn mặt + 1 video nói từ 10 giây trở lên, ảnh sản phẩm"
+      },
+      "persona": {
+        "title": "Persona AI",
+        "body": "Chọn người dẫn hoặc nhân vật bạn thích để giới thiệu theo kịch bản.",
+        "need": "3–5 ảnh, video sản phẩm (người dẫn là persona đã chọn)"
+      },
+      "product": {
+        "title": "Chỉ sản phẩm",
+        "body": "Tạo video quảng cáo từ ảnh, video sản phẩm, không cần người.",
+        "need": "3–5 ảnh, video sản phẩm"
+      }
+    },
+    "personaLabel": "Persona",
+    "personas": [
+      "Câu chuyện gia đình ấm áp",
+      "Nhà sáng tạo 20 tuổi thân thiện",
+      "Người dẫn bán hàng điềm tĩnh",
+      "YouTuber du lịch nước ngoài"
+    ],
+    "aiSteps": [
+      "Phân tích tài liệu đã tải",
+      "Dựng cảnh theo kịch bản",
+      "Tạo video từng cảnh",
+      "Thêm giọng nói, phụ đề",
+      "Cắt thành video ngắn"
+    ],
+    "materialsLabel": "Tải tài liệu để AI học",
+    "pickFiles": "Chọn ảnh, video",
+    "notUploaded": "Đây là bản demo nên tệp không được tải lên máy chủ.",
+    "consent": "Tôi đồng ý tạo video AI bằng khuôn mặt và giọng nói của mình. Video tạo ra sẽ có nhãn “Do AI tạo”.",
+    "scriptFirst": "Nhận kịch bản ở bước 1 thì video sẽ được tạo theo kịch bản đó.",
+    "aiBusy": "Đang tạo video quảng cáo AI…",
+    "aiAgain": "Tạo lại",
+    "aiCta": "Tạo video quảng cáo AI",
+    "qaDraft": {
+      "priceQ": "Giá bao nhiêu vậy?",
+      "priceA": "{name} có giá {price}.",
+      "productFallback": "Sản phẩm",
+      "orderQ": "Đặt hàng thế nào?",
+      "orderA": "Bạn cho biết sản phẩm muốn mua, chúng tôi sẽ gửi tin nhắn xác nhận đơn. Vui lòng trả lời tin nhắn kèm địa chỉ.",
+      "hoursQ": "Giờ mở cửa và địa chỉ ở đâu?"
+    },
+    "phoneToggle": "Bật nghe điện thoại bằng nhân viên bán hàng AI “Tije”",
+    "phoneOff": "Khi bật, bạn nhập câu trả lời cho các câu hỏi thường gặp và nhận số 070 riêng cho cửa hàng. AI sẽ nghe máy khi khách xem video ngắn gọi đến và nhận luôn đơn hàng.",
+    "phoneLangs": "Trả lời bằng ngôn ngữ của khách",
+    "qaLabel": "Danh sách hỏi đáp (AI sẽ trả lời đúng như vậy)",
+    "drafting": "Đang viết nháp…",
+    "draftCta": "✨ Tạo nháp bằng AI",
+    "qPlaceholder": "Câu hỏi của khách",
+    "aPlaceholder": "Nhập câu trả lời",
+    "addQ": "+ Thêm câu hỏi",
+    "myNumber": "Số điện thoại cửa hàng",
+    "numberNote": "Đây là số demo. Gọi thử là AI Tije sẽ nghe máy.",
+    "callTry": "Gọi thử →",
+    "qaCount": "Tạo nhân viên bán hàng AI với {n} câu hỏi.",
+    "qaEmpty": "Vui lòng điền ít nhất một cặp hỏi đáp.",
+    "issuing": "Đang cấp số…",
+    "issueCta": "Nhận số 070",
+    "qrToggle": "Chèn mã QR (trang sản phẩm của tôi)",
+    "siteLabel": "Địa chỉ trang sản phẩm",
+    "sitePlaceholder": "https://myshop.com",
+    "phoneOverlayToggle": "Chèn số điện thoại đặt hàng",
+    "phoneFirst": "Nhận số ở bước 4 là có thể bật.",
+    "targetVideos": "Video được chèn",
+    "shortsTarget": "3 video ngắn",
+    "longTarget": "Video dài (video gốc)",
+    "decoNote": "Áp dụng ngay vào thẻ video ngắn phía trên và bản xem trước video dài bên cạnh.",
+    "longPreview": "Xem trước video dài",
+    "longEmpty": "Video sẽ hiện ở đây khi sẵn sàng",
+    "channels": {
+      "instagram": {
+        "label": "Instagram Reels",
+        "short": "Instagram"
+      },
+      "youtube": {
+        "label": "YouTube Shorts · video dài",
+        "short": "YouTube"
+      },
+      "tiktok": {
+        "label": "TikTok",
+        "short": "TikTok"
+      }
+    },
+    "snsEmpty": "Khi có video ngắn, bạn có thể đăng ngay lên các kênh đã kết nối.",
+    "channelsLabel": "Kết nối kênh",
+    "connected": "✓ Đã kết nối {handle}",
+    "connecting": "Đang kết nối…",
+    "connect": "Bấm để kết nối",
+    "postItems": "Video sẽ đăng",
+    "shortItem": "Video ngắn {i} · {hook}",
+    "longItem": "Video dài (video gốc) · YouTube",
+    "linkInCaption": "Thêm link trang sản phẩm vào chú thích",
+    "linkNeedsSite": " (nhập địa chỉ ở bước 5 là có thể bật)",
+    "igNote": "Link trong chú thích Instagram không bấm được nên sẽ ghi “Xem link trong hồ sơ”. Vì vậy QR và số điện thoại trong video rất quan trọng.",
+    "connectFirst": "Vui lòng kết nối kênh trước",
+    "postCta": "Đăng {n} video",
+    "posted": "✓ Đã đăng",
+    "posting": "◉ Đang đăng",
+    "waiting": "○ Đang chờ",
+    "notReallyPosted": "Video chưa được đăng lên tài khoản thật."
+  }
+}
