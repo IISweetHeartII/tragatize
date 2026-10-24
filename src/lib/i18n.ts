@@ -58,6 +58,13 @@ export function localePath(locale: Locale, path: string): string {
   return path === "/" ? `/${locale}` : `/${locale}${path}`;
 }
 
+// 검색엔진용 언어별 주소(hreflang)
+export function languageAlternates(path: string): Record<string, string> {
+  const out: Record<string, string> = Object.fromEntries(LOCALES.map((l) => [l, localePath(l, path)]));
+  out["x-default"] = path;
+  return out;
+}
+
 export function localeFromPath(pathname: string): Locale {
   const seg = pathname.split("/")[1] ?? "";
   return isLocale(seg) && seg !== DEFAULT_LOCALE ? seg : DEFAULT_LOCALE;
