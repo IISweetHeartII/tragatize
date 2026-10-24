@@ -3,6 +3,7 @@
 import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset } from "@/lib/demo";
+import { ORDER_PHONE } from "@/lib/site";
 import type { Highlight, LiveScript } from "@/lib/types";
 
 const input =
@@ -427,7 +428,7 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
   }
 
   async function copy() {
-    await navigator.clipboard.writeText(`${h.hook}\n${h.hookEn}\n\n${h.caption}\n\n${h.hashtags.join(" ")}`);
+    await navigator.clipboard.writeText(`${h.hook}\n${h.hookEn}\n\n${h.caption}\n\n📞 전화 주문 · Call to order ${ORDER_PHONE}\n\n${h.hashtags.join(" ")}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
@@ -456,6 +457,10 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
             <span className="flex size-14 items-center justify-center rounded-full bg-white/90 text-xl text-black">▶</span>
           </span>
         )}
+        <span className="absolute inset-x-3 bottom-12 rounded-lg bg-accent px-3 py-2 text-white">
+          <span className="block text-xs opacity-90">📞 전화 주문 · Call to order</span>
+          <span className="block font-mono text-base font-semibold">{ORDER_PHONE}</span>
+        </span>
         <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2 py-1 font-mono text-xs text-white">
           {fmt(h.start)}–{fmt(h.end)} · {Math.round(h.end - h.start)}초
         </span>

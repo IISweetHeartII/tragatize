@@ -10,12 +10,19 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
-    id: "snail-cream",
-    name: "달팽이 크림 50ml",
-    nameEn: "Snail Repair Cream 50ml",
-    price: 19000,
-    pitch: "건조한 피부에 수분을 채워 주는 K-뷰티 스테디셀러 크림이에요.",
+    id: "uiq-cream-mist",
+    name: "유아이큐 바이옴 베리어 크림 미스트 1+1",
+    nameEn: "UIQ Biome Barrier Cream Mist (Buy 1 Get 1)",
+    price: 5000,
+    pitch: "물과 크림 사이, 크림을 그대로 뿌리는 미스트예요. 오늘 라이브 특가로 1+1에 채널 쿠폰까지 드려요.",
     featured: true,
+  },
+  {
+    id: "cry-cheeseburger",
+    name: "크라이 치즈버거",
+    nameEn: "Cry Cheeseburger",
+    price: 5000,
+    pitch: "매니저가 직접 만든, 치즈와 토마토를 아낌없이 넣은 수제 버거예요.",
   },
   {
     id: "life-story-book",
@@ -33,6 +40,8 @@ export function findProduct(query: string): Product | undefined {
       p.id === query ||
       p.name.replace(/\s/g, "").toLowerCase().includes(q) ||
       q.includes(p.name.replace(/\s/g, "").toLowerCase().slice(0, 4)) ||
+      (p.id === "uiq-cream-mist" && /유아이|ui|미스트|mist/i.test(query)) ||
+      (p.id === "cry-cheeseburger" && /버거|burger/i.test(query)) ||
       p.nameEn.toLowerCase().includes(query.toLowerCase()),
   );
 }
