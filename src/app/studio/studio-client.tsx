@@ -8,6 +8,7 @@ import {
   DecoStep,
   NO_DECO,
   PhoneStep,
+  SnsStep,
   VideoOverlays,
   decoFor,
   type Deco,
@@ -116,6 +117,7 @@ export function StudioClient() {
   // 시연용 단계(전화·꾸미기·SNS) 상태
   const [phone, setPhone] = useState<string | null>(null);
   const [deco, setDeco] = useState<Deco>(NO_DECO);
+  const [posted, setPosted] = useState(false);
 
   // 분석 중 경과 시간(실제 진행률이 없으므로 시간만 정직하게 보여 준다)
   // 시작 시각은 분석에 들어갈 때(onFile) 기록하고, effect 는 1초 타이머만 돈다.
@@ -247,10 +249,11 @@ export function StudioClient() {
     highlights.length > 0 ? "done" : "todo",
     phone ? "done" : "todo",
     decorated ? "done" : "todo",
-    "todo",
+    posted ? "done" : "todo",
   ];
   const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? null;
   const shortDeco = decoFor("short", deco, phone);
+  const siteUrl = decoFor("long", { ...deco, long: true }, null).qrUrl;
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-16 sm:px-6">
@@ -423,16 +426,8 @@ export function StudioClient() {
         <DecoStep deco={deco} onDeco={setDeco} phone={phone} videoUrl={videoUrl} />
       </Step>
 
-      <Step id="step-sns" n={6} title="SNS 에 올리기">
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <button disabled className="rounded-xl bg-foreground px-6 py-3 font-medium text-background opacity-40">
-            인스타그램 릴스에 올리기 · 연결 중
-          </button>
-          <button disabled className="rounded-xl border border-line px-6 py-3 font-medium opacity-40">
-            유튜브 쇼츠 · 준비 중
-          </button>
-        </div>
-        <p className="mt-3 text-sm text-muted">지금은 숏폼 카드의 «캡션 복사» 로 바로 붙여 넣을 수 있어요.</p>
+      <Step id="step-sns" n={6} title="SNS 에 올리기 (선택)">
+        <SnsStep key={videoUrl ?? "none"} highlights={highlights} siteUrl={siteUrl} onPosted={() => setPosted(true)} />
       </Step>
     </main>
   );
