@@ -224,9 +224,11 @@ export function StudioClient() {
 
   async function onFile(file: File | undefined) {
     if (!file) return;
+    clearTimers();
     setError(null);
-    setHighlights([]);
+    resetResult();
     setIsDemo(false);
+    setDemoId(null);
     setStage("uploading");
     setProgress(0);
     try {
