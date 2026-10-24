@@ -25,11 +25,11 @@ export const PRODUCTS: Product[] = [
     pitch: "매니저가 직접 만든, 치즈와 토마토를 아낌없이 넣은 수제 버거예요.",
   },
   {
-    id: "life-story-book",
-    name: "부모님 자서전 책",
-    nameEn: "Parents' Life Story Book",
-    price: 88000,
-    pitch: "부모님 목소리로 들은 인생 이야기를 글과 그림으로 엮어 드리는 책이에요.",
+    id: "seongsu-knit-cardigan",
+    name: "성수 니트 가디건",
+    nameEn: "Seongsu Knit Cardigan",
+    price: 39000,
+    pitch: "성수에서 직접 만든 도톰한 니트 가디건이에요. 크림·차콜·세이지 세 가지 색이 있어요.",
   },
 ];
 
@@ -42,6 +42,7 @@ export function findProduct(query: string): Product | undefined {
       q.includes(p.name.replace(/\s/g, "").toLowerCase().slice(0, 4)) ||
       (p.id === "uiq-cream-mist" && /유아이|ui|미스트|mist/i.test(query)) ||
       (p.id === "cry-cheeseburger" && /버거|burger/i.test(query)) ||
+      (p.id === "seongsu-knit-cardigan" && /니트|가디건|knit|cardigan/i.test(query)) ||
       p.nameEn.toLowerCase().includes(query.toLowerCase()),
   );
 }
