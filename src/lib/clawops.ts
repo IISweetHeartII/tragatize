@@ -31,13 +31,25 @@ export async function getAgent(): Promise<Agent> {
   return call<Agent>("GET", `/agents/${env("CLAWOPS_AGENT_ID")}`);
 }
 
+export type CallStatus = {
+  callId: string;
+  status: string; // queued | ringing | in-progress | completed | no-answer | busy | failed | canceled
+  duration: number | null;
+  hangupCause: string | null;
+};
+
+export async function getCall(callId: string): Promise<CallStatus> {
+  const d = await call<CallStatus>("GET", `/calls/${encodeURIComponent(callId)}`);
+  return { callId: d.callId, status: d.status, duration: d.duration ?? null, hangupCause: d.hangupCause ?? null };
+}
+
 export type DialInput = {
   to: string; // 받는 번호, 숫자만 (예: 01012345678)
   instruction: string; // 이번 통화에만 붙는 지시문, 4000자 이하
   timeoutSec?: number;
 };
 
-export async function dial({ to, instruction, timeoutSec = 30 }: DialInput): Promise<{ CallId?: string; callId?: string }> {
+export async function dial({ to, instruction, timeoutSec = 30 }: DialInput): Promise<CallStatus> {
   if (instruction.length > 4000) throw new Error("instruction exceeds 4000 chars");
   return call("POST", "/calls", {
     To: to.replace(/\D/g, ""),
