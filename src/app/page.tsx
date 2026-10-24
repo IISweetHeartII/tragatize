@@ -307,7 +307,7 @@ export default function Home() {
 
       <section className="border-t border-line py-12 text-center sm:py-20">
         <h2 className="text-2xl font-semibold leading-snug tracking-tight sm:text-4xl">
-          다음 라이브부터,
+          찍어도, 안 찍어도.
           <br />
           홍보는 AI 에게 맡기세요.
         </h2>
