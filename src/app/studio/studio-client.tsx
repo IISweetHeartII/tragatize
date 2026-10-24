@@ -2,7 +2,7 @@
 
 import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
-import { DEMO_HIGHLIGHTS, DEMO_PRODUCT, DEMO_SCRIPT, DEMO_VIDEO_URL } from "@/lib/demo";
+import { DEMO_PRESETS, type DemoPreset } from "@/lib/demo";
 import type { Highlight, LiveScript } from "@/lib/types";
 
 const input =
@@ -16,7 +16,17 @@ const EXAMPLES = [
   { product: "직접 볶은 원두 200g, 1만 8천 원", store: "성수동 로스터리 카페", audience: "국내 20~30대 홈카페족" },
 ];
 
-const HAS_DEMO = Boolean(DEMO_VIDEO_URL && DEMO_HIGHLIGHTS.length > 0);
+const READY_PRESETS = DEMO_PRESETS.filter((p) => p.videoUrl && p.highlights.length > 0);
+const HAS_DEMO = READY_PRESETS.length > 0;
+
+// 샘플은 미리 계산된 실제 AI 결과를 단계별로 보여 준다(대본 3초 → 컷 편집·추천 약 10초).
+const DEMO_STEPS = [
+  { label: "라이브 대본 쓰는 중", ms: 3000 },
+  { label: "말 받아쓰는 중", ms: 2500 },
+  { label: "장면 분석 중", ms: 2500 },
+  { label: "컷 편집·숏폼 추천 중", ms: 3000 },
+  { label: "자막·캡션 쓰는 중", ms: 2000 },
+];
 
 function fmt(sec: number): string {
   const s = Math.max(0, Math.round(sec));
@@ -108,21 +118,56 @@ export function StudioClient() {
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }));
   }
 
-  function showDemo() {
+  const [demoStep, setDemoStep] = useState<number | null>(null);
+  const [demoId, setDemoId] = useState<string | null>(null);
+  const demoTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  function runPreset(preset: DemoPreset) {
+    demoTimers.current.forEach(clearTimeout);
+    demoTimers.current = [];
     setError(null);
+    setDemoId(preset.id);
+    setProduct(preset.product);
+    setStore("");
+    setAudience("");
+    setScript(null);
+    setHighlights([]);
+    setVideoUrl(null);
+    setStage("idle");
+    setIsDemo(true);
+    setDemoStep(0);
+    let at = 0;
+    DEMO_STEPS.forEach((step, i) => {
+      at += step.ms;
+      demoTimers.current.push(
+        setTimeout(() => {
+          if (i === 0) {
+            setScript(preset.script);
+            setVideoUrl(preset.videoUrl);
+          }
+          if (i === DEMO_STEPS.length - 1) {
+            setHighlights(preset.highlights);
+            setStage("done");
+            setDemoStep(null);
+            scrollTo("step-shorts");
+          } else {
+            setDemoStep(i + 1);
+          }
+        }, at),
+      );
+    });
+  }
+
+  useEffect(() => () => demoTimers.current.forEach(clearTimeout), []);
+
+  function showDemo() {
     if (!HAS_DEMO) {
       // 샘플 결과가 아직 없으면 예시 상품만 채워 대본부터 보게 한다.
       fill(0);
       scrollTo("step-script");
       return;
     }
-    setProduct(DEMO_PRODUCT);
-    setScript(DEMO_SCRIPT);
-    setVideoUrl(DEMO_VIDEO_URL);
-    setHighlights(DEMO_HIGHLIGHTS);
-    setStage("done");
-    setIsDemo(true);
-    scrollTo("step-shorts");
+    runPreset(READY_PRESETS[0]);
   }
 
   // 랜딩의 «샘플로 바로 보기»(/studio?demo=1) — 첫 렌더 뒤에 한 번 실행한다.
@@ -197,17 +242,37 @@ export function StudioClient() {
       <div className="pt-8">
         <h1 className="text-3xl font-semibold tracking-tight">라이브 한 번으로 홍보까지</h1>
         <p className="mt-2 text-muted">대본 받기 → 카메라 하나로 찍기 → AI 가 숏폼을 골라 SNS 에 올립니다.</p>
-        <button
-          onClick={showDemo}
-          className="mt-5 flex w-full items-center justify-between gap-3 rounded-xl border border-foreground px-4 py-3 text-left sm:w-auto"
-        >
-          <span>
-            <span className="font-medium">▶ 샘플 라이브로 바로 보기</span>
-            <span className="block text-sm text-muted">
-              {HAS_DEMO ? "사장님이 찍은 라이브 예시로 결과를 바로 봐요" : "예시 상품으로 대본부터 만들어 봐요"}
-            </span>
-          </span>
-        </button>
+        <p className="mt-6 text-sm font-medium">샘플 라이브로 바로 보기</p>
+        <div className="mt-2 grid gap-2 sm:grid-cols-3">
+          {DEMO_PRESETS.map((p) => {
+            const ready = READY_PRESETS.includes(p);
+            const active = demoId === p.id;
+            return (
+              <button
+                key={p.id}
+                disabled={!ready || demoStep !== null}
+                onClick={() => runPreset(p)}
+                className={
+                  "min-h-11 rounded-xl border px-4 py-3 text-left disabled:opacity-50 " +
+                  (active ? "border-foreground bg-line/40" : "border-line hover:border-foreground")
+                }
+              >
+                <span className="block font-mono text-xs text-muted">{p.category}</span>
+                <span className="block font-medium">{p.title}</span>
+                <span className="block text-sm text-muted">{ready ? (active ? "선택됨" : "▶ 눌러서 보기") : "샘플 촬영 중"}</span>
+              </button>
+            );
+          })}
+        </div>
+        {demoStep !== null && (
+          <ol className="mt-4 space-y-1.5 rounded-xl border border-line p-4 text-sm">
+            {DEMO_STEPS.map((s, i) => (
+              <li key={s.label} className={i < demoStep ? "" : i === demoStep ? "text-accent" : "text-muted"}>
+                {i < demoStep ? "✓" : i === demoStep ? "◉" : "○"} {s.label}
+              </li>
+            ))}
+          </ol>
+        )}
         {error && <p className="mt-4 rounded-xl border border-accent/40 px-4 py-3 text-sm text-accent">{error}</p>}
       </div>
 
@@ -318,7 +383,7 @@ export function StudioClient() {
           <>
             {isDemo && (
               <p className="mb-3 inline-block rounded-full border border-line px-3 py-1 text-xs text-muted">
-                샘플 결과 · 실제 AI 실행본
+                샘플 결과 · 실제 AI 실행본(미리 계산)
               </p>
             )}
             <div className="grid gap-4 sm:grid-cols-3">

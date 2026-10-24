@@ -2,10 +2,20 @@
 // 배포된 /api/script·/api/highlights 에 그대로 돌린 응답이다(화면에 «샘플 결과» 라고 표시).
 import type { Highlight, LiveScript } from "@/lib/types";
 
-export const DEMO_PRODUCT = "크라이 치즈버거, 5천 원";
-export const DEMO_VIDEO_URL =
+export type DemoPreset = {
+  id: string;
+  category: string;
+  title: string;
+  product: string;
+  videoUrl: string;
+  script: LiveScript | null;
+  highlights: Highlight[];
+};
+
+const BURGER_PRODUCT = "크라이 치즈버거, 5천 원";
+const BURGER_VIDEO_URL =
   "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/KakaoTalk_Video_2026-10-24-11-56-19-yZcpUBw8kujMIQWASGjVKl9Dza5Tmg.mp4";
-export const DEMO_SCRIPT: LiveScript | null = {
+const BURGER_SCRIPT: LiveScript = {
   "title": "Cry Cheeseburger LIVE | 강남 수제버거 5,000원 한 입 먹방 (Seoul Burger / ソウルバーガー)",
   "target": "한국 여행 중이거나 여행을 계획하는 미국·일본 20~30대",
   "sections": [
@@ -55,7 +65,7 @@ export const DEMO_SCRIPT: LiveScript | null = {
     "미국·일본 시청자가 많이 보는 시간대를 고려해 방송 시간을 정하고, 제목에 영어와 일본어 키워드를 꼭 넣으세요."
   ]
 };
-export const DEMO_HIGHLIGHTS: Highlight[] = [
+const BURGER_HIGHLIGHTS: Highlight[] = [
   {
     "start": 0.2,
     "end": 21.4,
@@ -107,4 +117,11 @@ export const DEMO_HIGHLIGHTS: Highlight[] = [
     ],
     "why": "치즈와 토마토를 직접 보여주고 오천 원이라는 가격까지 나와 구매 욕구가 가장 크게 생기는 장면입니다."
   }
+];
+
+// 카테고리별 샘플 라이브. videoUrl 이 빈 칸은 «촬영 중» 으로 보인다(팀이 찍어 올리면 결과를 붙여 넣는다).
+export const DEMO_PRESETS: DemoPreset[] = [
+  { id: "food", category: "음식", title: "강남 수제버거 사장님", product: BURGER_PRODUCT, videoUrl: BURGER_VIDEO_URL, script: BURGER_SCRIPT, highlights: BURGER_HIGHLIGHTS },
+  { id: "beauty", category: "K-뷰티", title: "달팽이 크림 1인 브랜드", product: "달팽이 크림 50ml, 1만 9천 원", videoUrl: "", script: null, highlights: [] },
+  { id: "book", category: "책·선물", title: "부모님 자서전 책", product: "부모님 자서전 책, 8만 8천 원", videoUrl: "", script: null, highlights: [] },
 ];
