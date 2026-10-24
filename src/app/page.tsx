@@ -128,7 +128,7 @@ export default function Home() {
       </section>
 
       <section className="pb-12 sm:pb-16">
-        <p className="mb-3 font-mono text-xs text-accent">76초 데모</p>
+        <p className="mb-3 font-mono text-xs text-accent">87초 데모 · 소리 켜고 보세요</p>
         <video
           src={DEMO_VIDEO.src}
           poster={DEMO_VIDEO.poster}

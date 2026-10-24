@@ -8,6 +8,6 @@ export const BRAND_ACCENT = "#e5484d";
 export const ORDER_PHONE = "070-5276-7530";
 // 랜딩 데모 영상(Remotion 편집본, Vercel Blob 공개 파일)
 export const DEMO_VIDEO = {
-  src: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-cPWoIauovYQWB1vlqQf1Fi5O3KKMG4.mp4",
-  poster: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-poster-qsXUOUVmVvZz4U6vTTL3706OZd7FPg.png",
+  src: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-v3-Z83IfDHlAvPzRHeJ3t1RITPkmipaAn.mp4",
+  poster: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-v3-poster-vZapkxPKknfBKvnz4SKQxCqJqsiUJH.png",
 };
