@@ -2,7 +2,8 @@ import Link from "next/link";
 import { DEMO_PRESETS } from "@/lib/demo";
 import type { Dict } from "@/lib/dict";
 import { fill, highlightText, highlightWhy, localePath, type Locale } from "@/lib/i18n";
-import { DEMO_VIDEO, ORDER_PHONE } from "@/lib/site";
+import { ORDER_PHONE } from "@/lib/site";
+import { DemoVideos } from "@/components/demo-videos";
 
 // 랜딩 본문. 문구는 사전(src/lib/dict/*.json)에서, 구조·링크·숫자는 여기서.
 const MEMBERS = ["김해청", "김덕환", "김성재", "윤정민"];
@@ -72,18 +73,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
       </section>
 
       <section className="pb-12 sm:pb-16 lg:-mx-16">
-        <p className="mb-3 font-mono text-xs text-accent">{d.demoLabel}</p>
-        {/* 영상 바탕색(#faf8f4)을 그대로 써서 페이지에 스며들게, 데스크톱에서는 본문보다 넓게 보여 준다. */}
-        <div className="overflow-hidden rounded-2xl bg-[#faf8f4] shadow-[0_1px_2px_rgba(22,19,15,0.06),0_16px_40px_-16px_rgba(22,19,15,0.22)] ring-1 ring-line">
-          <video
-            src={DEMO_VIDEO.src}
-            poster={DEMO_VIDEO.poster}
-            controls
-            playsInline
-            preload="none"
-            className="block aspect-video w-full"
-          />
-        </div>
+        <DemoVideos label={d.demoLabel} tabs={dict.planTags} />
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">
