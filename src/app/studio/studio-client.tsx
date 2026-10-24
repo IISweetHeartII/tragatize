@@ -3,17 +3,21 @@
 import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset, type Plan } from "@/lib/demo";
+import type { StudioText } from "@/lib/dict";
+import { fill, type Locale } from "@/lib/i18n";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
-  AI_STEPS,
+  AI_STEP_COUNT,
   AiVideoPanel,
   DecoStep,
   MockBadge,
   NO_DECO,
   PhoneStep,
   SnsStep,
+  TextProvider,
   VideoOverlays,
   decoFor,
+  useT,
   type Deco,
 } from "./extras";
 
@@ -22,32 +26,15 @@ const input =
 const primary =
   "w-full rounded-xl bg-foreground py-3 font-medium text-background disabled:opacity-40 sm:w-auto sm:px-6";
 
-const EXAMPLES = [
-  { product: "수제 약과 선물세트 12개입, 2만 9천 원", store: "강남역 근처 전통 디저트 가게", audience: "한국 여행 온 미국·일본 20~30대" },
-  { product: "한복 대여 2시간 + 사진 촬영, 3만 5천 원", store: "경복궁 앞 한복 대여점", audience: "서울 여행 온 동남아·중국 관광객" },
-  { product: "직접 볶은 원두 200g, 1만 8천 원", store: "성수동 로스터리 카페", audience: "국내 20~30대 홈카페족" },
-];
-
 const READY_PRESETS = DEMO_PRESETS.filter((p) => p.videoUrl && p.highlights.length > 0);
 const HAS_DEMO = READY_PRESETS.length > 0;
 // Premium «AI 홍보 영상 만들기» 는 시연용이라 미리 만든 AI 영상 샘플을 결과로 보여 준다.
 const AI_SAMPLE = READY_PRESETS.find((p) => p.plan === "premium") ?? null;
 
-// 샘플은 미리 계산된 실제 AI 결과를 단계별로 보여 준다(대본 3초 → 컷 편집·추천 약 10초).
-const DEMO_STEPS: Record<Plan, { label: string; ms: number }[]> = {
-  lite: [
-    { label: "라이브 대본 쓰는 중", ms: 3000 },
-    { label: "말 받아쓰는 중", ms: 2500 },
-    { label: "장면 분석 중", ms: 2500 },
-    { label: "컷 편집·숏폼 추천 중", ms: 3000 },
-    { label: "자막·캡션 쓰는 중", ms: 2000 },
-  ],
-  premium: [
-    { label: "홍보 대본 쓰는 중", ms: 3000 },
-    { label: "AI 홍보 영상 만드는 중", ms: 4000 },
-    { label: "컷 편집·숏폼 추천 중", ms: 3000 },
-    { label: "자막·캡션 쓰는 중", ms: 2000 },
-  ],
+// 샘플은 미리 계산된 실제 AI 결과를 단계별로 보여 준다(대본 3초 → 컷 편집·추천 약 10초). 단계 이름은 사전 demoSteps.
+const DEMO_MS: Record<Plan, number[]> = {
+  lite: [3000, 2500, 2500, 3000, 2000],
+  premium: [3000, 4000, 3000, 2000],
 };
 
 function fmt(sec: number): string {
@@ -58,7 +45,7 @@ function fmt(sec: number): string {
 async function postJson<T>(url: string, body: unknown): Promise<T> {
   const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
   const data = (await res.json().catch(() => ({}))) as T & { error?: string };
-  if (!res.ok) throw new Error(data.error ?? "실패했어요.");
+  if (!res.ok) throw new Error(data.error ?? "");
   return data;
 }
 
@@ -76,8 +63,7 @@ function Step({ id, n, title, children }: { id: string; n: number; title: string
 
 type StepState = "done" | "active" | "todo";
 
-function Stepper({ states }: { states: StepState[] }) {
-  const labels = ["대본", "영상", "숏폼", "전화", "꾸미기", "SNS"];
+function Stepper({ states, labels }: { states: StepState[]; labels: string[] }) {
   const ids = ["step-script", "step-upload", "step-shorts", "step-phone", "step-deco", "step-sns"];
   return (
     <nav className="sticky top-14 z-10 -mx-4 border-b border-line bg-background/90 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6">
@@ -111,7 +97,7 @@ function Stepper({ states }: { states: StepState[] }) {
   );
 }
 
-export function StudioClient() {
+export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
   const [product, setProduct] = useState("");
   const [store, setStore] = useState("");
   const [audience, setAudience] = useState("");
@@ -176,10 +162,10 @@ export function StudioClient() {
     resetResult();
     setIsDemo(true);
     setDemoStep(0);
-    const steps = DEMO_STEPS[preset.plan];
+    const steps = DEMO_MS[preset.plan];
     let at = 0;
-    steps.forEach((step, i) => {
-      at += step.ms;
+    steps.forEach((ms, i) => {
+      at += ms;
       demoTimers.current.push(
         setTimeout(() => {
           if (i === 0) setScript(preset.script);
@@ -214,7 +200,7 @@ export function StudioClient() {
       demoTimers.current.push(
         setTimeout(() => {
           if (i === 3) setVideoUrl(AI_SAMPLE.videoUrl);
-          if (i === AI_STEPS.length - 1) {
+          if (i === AI_STEP_COUNT - 1) {
             setHighlights(AI_SAMPLE.highlights);
             setStage("done");
             setAiProgress(null);
@@ -232,7 +218,7 @@ export function StudioClient() {
   function showDemo() {
     if (!HAS_DEMO) {
       // 샘플 결과가 아직 없으면 예시 상품만 채워 대본부터 보게 한다.
-      fill(0);
+      fillExample(0);
       scrollTo("step-script");
       return;
     }
@@ -250,8 +236,14 @@ export function StudioClient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function fill(i: number) {
-    const e = EXAMPLES[i];
+  // 서버 오류 문구는 한국어라 다른 언어 화면에서는 사전 문구로 보여 준다.
+  function showError(err: unknown) {
+    const msg = err instanceof Error ? err.message : "";
+    setError(locale === "ko" && msg ? msg : t.failed);
+  }
+
+  function fillExample(i: number) {
+    const e = t.examples[i];
     setProduct(e.product);
     setStore(e.store);
     setAudience(e.audience);
@@ -265,7 +257,7 @@ export function StudioClient() {
       const { script } = await postJson<{ script: LiveScript }>("/api/script", { product, store, audience });
       setScript(script);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "실패했어요.");
+      showError(err);
     } finally {
       setScriptBusy(false);
     }
@@ -296,7 +288,7 @@ export function StudioClient() {
       setStage("done");
       scrollTo("step-shorts");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "실패했어요.");
+      showError(err);
       setStage("idle");
     }
   }
@@ -314,15 +306,17 @@ export function StudioClient() {
   const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? (videoUrl && videoUrl === AI_SAMPLE?.videoUrl ? AI_SAMPLE.qa : null);
   const shortDeco = decoFor("short", deco, phone);
   const siteUrl = decoFor("long", { ...deco, long: true }, null).qrUrl;
+  const sampleTitle = (p: DemoPreset) => t.samples[p.id as keyof StudioText["samples"]]?.title ?? p.title;
 
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-16 sm:px-6">
-      <Stepper states={states} />
+    <TextProvider value={t}>
+    <main lang={locale} className="mx-auto w-full max-w-3xl flex-1 px-4 pb-16 sm:px-6">
+      <Stepper states={states} labels={t.stepper} />
 
       <div className="pt-8">
-        <h1 className="text-3xl font-semibold tracking-tight">상품 하나로 홍보부터 주문까지</h1>
-        <p className="mt-2 text-muted">대본 받기 → 영상 준비(직접 찍기·AI 생성) → AI 숏폼 → 전화 응대 → QR·번호 넣기 → SNS 올리기</p>
-        <p className="mt-6 text-sm font-medium">샘플로 바로 보기</p>
+        <h1 className="text-3xl font-semibold tracking-tight">{t.title}</h1>
+        <p className="mt-2 text-muted">{t.subtitle}</p>
+        <p className="mt-6 text-sm font-medium">{t.samplesLabel}</p>
         <div className="mt-2 grid gap-2 sm:grid-cols-3">
           {DEMO_PRESETS.map((p) => {
             const ready = READY_PRESETS.includes(p);
@@ -337,18 +331,18 @@ export function StudioClient() {
                   (active ? "border-foreground bg-line/40" : "border-line hover:border-foreground")
                 }
               >
-                <span className={"block font-mono text-xs " + (p.plan === "premium" ? "text-accent" : "text-muted")}>{p.category}</span>
-                <span className="block font-medium">{p.title}</span>
-                <span className="block text-sm text-muted">{ready ? (active ? "선택됨" : "▶ 눌러서 보기") : "샘플 준비 중"}</span>
+                <span className={"block font-mono text-xs " + (p.plan === "premium" ? "text-accent" : "text-muted")}>{t.planTags[p.plan]}</span>
+                <span className="block font-medium">{sampleTitle(p)}</span>
+                <span className="block text-sm text-muted">{ready ? (active ? t.sampleSelected : t.samplePlay) : t.sampleSoon}</span>
               </button>
             );
           })}
         </div>
         {demoStep !== null && (
           <ol className="mt-4 space-y-1.5 rounded-xl border border-line p-4 text-sm">
-            {DEMO_STEPS[plan].map((s, i) => (
-              <li key={s.label} className={i < demoStep ? "" : i === demoStep ? "text-accent" : "text-muted"}>
-                {i < demoStep ? "✓" : i === demoStep ? "◉" : "○"} {s.label}
+            {t.demoSteps[plan].map((label, i) => (
+              <li key={label} className={i < demoStep ? "" : i === demoStep ? "text-accent" : "text-muted"}>
+                {i < demoStep ? "✓" : i === demoStep ? "◉" : "○"} {label}
               </li>
             ))}
           </ol>
@@ -356,53 +350,53 @@ export function StudioClient() {
         {error && <p className="mt-4 rounded-xl border border-accent/40 px-4 py-3 text-sm text-accent">{error}</p>}
       </div>
 
-      <Step id="step-script" n={1} title="대본 받기">
+      <Step id="step-script" n={1} title={t.steps.script}>
         <div className="mb-3 flex flex-wrap gap-2">
-          <span className="self-center text-sm text-muted">예시:</span>
-          {EXAMPLES.map((e, i) => (
-            <button key={i} onClick={() => fill(i)} className="min-h-9 rounded-full border border-line px-3 text-sm hover:border-foreground">
+          <span className="self-center text-sm text-muted">{t.examplesLabel}</span>
+          {t.examples.map((e, i) => (
+            <button key={i} onClick={() => fillExample(i)} className="min-h-9 rounded-full border border-line px-3 text-sm hover:border-foreground">
               {e.product.split(",")[0]}
             </button>
           ))}
         </div>
         <form onSubmit={makeScript} className="space-y-3">
           <label className="block">
-            <span className="text-sm text-muted">팔 상품</span>
-            <input value={product} onChange={(e) => setProduct(e.target.value)} placeholder="예: 수제 약과 선물세트 12개입, 2만 9천 원" className={input} />
+            <span className="text-sm text-muted">{t.productLabel}</span>
+            <input value={product} onChange={(e) => setProduct(e.target.value)} placeholder={t.productPlaceholder} className={input} />
           </label>
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="block">
-              <span className="text-sm text-muted">가게 (선택)</span>
-              <input value={store} onChange={(e) => setStore(e.target.value)} placeholder="예: 강남역 근처 디저트 가게" className={input} />
+              <span className="text-sm text-muted">{t.storeLabel}</span>
+              <input value={store} onChange={(e) => setStore(e.target.value)} placeholder={t.storePlaceholder} className={input} />
             </label>
             <label className="block">
-              <span className="text-sm text-muted">원하는 손님 (선택)</span>
-              <input value={audience} onChange={(e) => setAudience(e.target.value)} placeholder="예: 한국 여행 온 미국·일본 20~30대" className={input} />
+              <span className="text-sm text-muted">{t.audienceLabel}</span>
+              <input value={audience} onChange={(e) => setAudience(e.target.value)} placeholder={t.audiencePlaceholder} className={input} />
             </label>
           </div>
           <button disabled={scriptBusy || !product.trim()} className={primary}>
-            {scriptBusy ? "대본 쓰는 중… (20~30초)" : "대본 만들기"}
+            {scriptBusy ? t.scriptBusy : t.scriptCta}
           </button>
         </form>
         {script && (
           <div className="mt-6 space-y-3">
             <p className="font-medium">{script.title}</p>
-            <p className="text-sm text-muted">시청자: {script.target}</p>
+            <p className="text-sm text-muted">{fill(t.viewer, { target: script.target })}</p>
             <ol className="space-y-3">
               {script.sections.map((s, i) => (
                 <li key={i} className="rounded-xl border border-line p-4">
                   <p className="text-sm font-medium">
-                    {i + 1}. {s.name} <span className="text-muted">· {s.minutes}분</span>
+                    {i + 1}. {s.name} <span className="text-muted">{fill(t.minutes, { n: s.minutes })}</span>
                   </p>
                   <p className="mt-2 leading-relaxed">“{s.say}”</p>
-                  <p className="mt-2 text-sm text-muted">화면: {s.show}</p>
+                  <p className="mt-2 text-sm text-muted">{fill(t.screen, { show: s.show })}</p>
                 </li>
               ))}
             </ol>
             {script.tips.length > 0 && (
               <ul className="list-disc space-y-1 pl-5 text-sm text-muted">
-                {script.tips.map((t, i) => (
-                  <li key={i}>{t}</li>
+                {script.tips.map((tip, i) => (
+                  <li key={i}>{tip}</li>
                 ))}
               </ul>
             )}
@@ -410,24 +404,24 @@ export function StudioClient() {
         )}
       </Step>
 
-      <Step id="step-upload" n={2} title="영상 준비하기">
+      <Step id="step-upload" n={2} title={t.steps.video}>
         <div role="tablist" className="mb-4 grid grid-cols-2 gap-1 rounded-xl border border-line p-1">
           {(
             [
-              { id: "lite", title: "직접 찍어 올리기", tag: "Lite" },
-              { id: "premium", title: "AI 가 만들어 주기", tag: "Premium" },
+              { id: "lite", title: t.tabLite, tag: "Lite" },
+              { id: "premium", title: t.tabPremium, tag: "Premium" },
             ] as const
-          ).map((t) => (
+          ).map((tab) => (
             <button
-              key={t.id}
+              key={tab.id}
               role="tab"
-              aria-selected={plan === t.id}
+              aria-selected={plan === tab.id}
               disabled={busy}
-              onClick={() => setPlan(t.id)}
-              className={"min-h-11 rounded-lg px-3 py-2 text-sm font-medium " + (plan === t.id ? "bg-foreground text-background" : "text-muted hover:text-foreground")}
+              onClick={() => setPlan(tab.id)}
+              className={"min-h-11 rounded-lg px-3 py-2 text-sm font-medium " + (plan === tab.id ? "bg-foreground text-background" : "text-muted hover:text-foreground")}
             >
-              {t.title}
-              <span className={"block font-mono text-xs sm:ml-1.5 sm:inline " + (plan === t.id ? "opacity-70" : t.id === "premium" ? "text-accent" : "")}>{t.tag}</span>
+              {tab.title}
+              <span className={"block font-mono text-xs sm:ml-1.5 sm:inline " + (plan === tab.id ? "opacity-70" : tab.id === "premium" ? "text-accent" : "")}>{tab.tag}</span>
             </button>
           ))}
         </div>
@@ -450,13 +444,13 @@ export function StudioClient() {
                 (dragging ? "border-foreground bg-line/40" : "border-line")
               }
             >
-              <span className="font-medium">{dragging ? "여기에 놓으세요" : "찍은 영상을 끌어다 놓거나 눌러서 고르기"}</span>
-              <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지 · 2분 안팎 세로 영상 권장</span>
+              <span className="font-medium">{dragging ? t.dropHere : t.dropPrompt}</span>
+              <span className="text-sm text-muted">{t.dropHint}</span>
               <input type="file" accept="video/*,audio/*" className="hidden" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
             </label>
             {stage === "uploading" && (
               <div className="mt-4">
-                <p className="text-sm text-muted">올리는 중… {progress}%</p>
+                <p className="text-sm text-muted">{fill(t.uploading, { p: progress })}</p>
                 <div className="mt-2 h-1.5 rounded-full bg-line">
                   <div className="h-1.5 rounded-full bg-foreground transition-all" style={{ width: `${progress}%` }} />
                 </div>
@@ -464,14 +458,14 @@ export function StudioClient() {
             )}
             {stage === "analyzing" && (
               <ul className="mt-4 space-y-1.5 text-sm">
-                <li>✓ 업로드</li>
-                <li className={elapsed < 20 ? "text-accent" : ""}>{elapsed < 20 ? "◉" : "✓"} 말 받아쓰는 중 (ElevenLabs)</li>
-                <li className={elapsed < 20 ? "text-muted" : "text-accent"}>{elapsed < 20 ? "○" : "◉"} 사고 싶어지는 순간 고르는 중 (Claude)</li>
-                <li className="pt-1 font-mono text-xs text-muted">{fmt(elapsed)} 경과 · 보통 30초~2분</li>
+                <li>✓ {t.uploaded}</li>
+                <li className={elapsed < 20 ? "text-accent" : ""}>{elapsed < 20 ? "◉" : "✓"} {t.transcribing}</li>
+                <li className={elapsed < 20 ? "text-muted" : "text-accent"}>{elapsed < 20 ? "○" : "◉"} {t.picking}</li>
+                <li className="pt-1 font-mono text-xs text-muted">{fill(t.elapsed, { t: fmt(elapsed) })}</li>
                 {HAS_DEMO && (
                   <li>
                     <button onClick={showDemo} className="text-sm underline underline-offset-4">
-                      기다리는 동안 샘플 결과 보기
+                      {t.waitSample}
                     </button>
                   </li>
                 )}
@@ -481,13 +475,13 @@ export function StudioClient() {
         ) : (
           <>
             <p className="mb-4 text-sm text-muted">
-              촬영 없이 AI 가 대본대로 홍보 영상을 만들어요. <MockBadge>시연용 · 결과는 미리 만든 AI 영상</MockBadge>
+              {t.premiumLead} <MockBadge>{t.premiumBadge}</MockBadge>
             </p>
             <AiVideoPanel hasScript={!!script} progress={aiProgress} ready={!!videoUrl && isDemo && videoUrl === AI_SAMPLE?.videoUrl} onGenerate={runAiVideo} />
             {videoUrl && plan === "premium" && videoUrl === AI_SAMPLE?.videoUrl && (
               <div className="mt-5">
                 <p className="mb-2 text-sm text-muted">
-                  완성된 AI 홍보 영상 <MockBadge>«{AI_SAMPLE.title}» 샘플</MockBadge>
+                  {t.aiDone} <MockBadge>{fill(t.aiSampleBadge, { title: sampleTitle(AI_SAMPLE) })}</MockBadge>
                 </p>
                 <video src={videoUrl} controls playsInline preload="metadata" className="aspect-[9/16] w-full max-w-xs rounded-xl bg-black" />
               </div>
@@ -496,14 +490,14 @@ export function StudioClient() {
         )}
       </Step>
 
-      <Step id="step-shorts" n={3} title="AI 가 고른 숏폼 후보">
+      <Step id="step-shorts" n={3} title={t.steps.shorts}>
         {highlights.length === 0 ? (
-          <p className="text-muted">영상이 준비되면 여기 숏폼 후보 3개가 나와요.</p>
+          <p className="text-muted">{t.shortsEmpty}</p>
         ) : (
           <>
             {isDemo && (
               <p className="mb-3 inline-block rounded-full border border-line px-3 py-1 text-xs text-muted">
-                샘플 결과 · 실제 AI 실행본(미리 계산)
+                {t.sampleResult}
               </p>
             )}
             <div className="grid gap-4 sm:grid-cols-3">
@@ -515,25 +509,27 @@ export function StudioClient() {
         )}
       </Step>
 
-      <Step id="step-phone" n={4} title="전화 응대 (선택)">
+      <Step id="step-phone" n={4} title={t.steps.phone}>
         <PhoneStep product={product} presetQa={presetQa} phone={phone} onPhone={(n) => {
           setPhone(n);
           if (n) setDeco((d) => ({ ...d, phone: true }));
         }} />
       </Step>
 
-      <Step id="step-deco" n={5} title="영상에 QR·전화번호 넣기 (선택)">
+      <Step id="step-deco" n={5} title={t.steps.deco}>
         <DecoStep deco={deco} onDeco={setDeco} phone={phone} videoUrl={videoUrl} />
       </Step>
 
-      <Step id="step-sns" n={6} title="SNS 에 올리기 (선택)">
+      <Step id="step-sns" n={6} title={t.steps.sns}>
         <SnsStep key={videoUrl ?? "none"} highlights={highlights} siteUrl={siteUrl} onPosted={() => setPosted(true)} />
       </Step>
     </main>
+    </TextProvider>
   );
 }
 
 function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone: string | null; qrUrl: string | null }) {
+  const t = useT();
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -582,18 +578,18 @@ function ShortCard({ h, src, phone, qrUrl }: { h: Highlight; src: string; phone:
         )}
         <VideoOverlays phone={phone} qrUrl={qrUrl} belowHook />
         <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2 py-1 font-mono text-xs text-white">
-          {fmt(h.start)}–{fmt(h.end)} · {Math.round(h.end - h.start)}초
+          {fmt(h.start)}–{fmt(h.end)} · {fill(t.seconds, { n: Math.round(h.end - h.start) })}
         </span>
       </button>
       <div className="space-y-2 p-3 text-sm">
         <p className="font-medium">
-          <span className="mr-1 text-accent">왜 이 장면?</span>
+          <span className="mr-1 text-accent">{t.why}</span>
           {h.why}
         </p>
         <p className="leading-relaxed">{h.caption}</p>
         <p className="text-muted">{h.hashtags.join(" ")}</p>
         <button onClick={copy} className="min-h-11 w-full rounded-lg border border-line hover:border-foreground">
-          {copied ? "복사됨" : "캡션 복사"}
+          {copied ? t.copied : t.copy}
         </button>
       </div>
     </div>

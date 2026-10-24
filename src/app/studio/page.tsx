@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import { getDict, studioText } from "@/lib/dict";
 import { StudioClient } from "./studio-client";
 
+const meta = getDict("ko").meta;
+
 export const metadata: Metadata = {
-  title: "스튜디오",
-  description: "라이브 대본을 받고, 찍은 영상을 올리면 AI 가 숏폼 하이라이트를 골라 줍니다.",
+  title: meta.studioTitle,
+  description: meta.studioDescription,
 };
 
 export default function StudioPage() {
-  return <StudioClient />;
+  return <StudioClient locale="ko" t={studioText("ko")} />;
 }

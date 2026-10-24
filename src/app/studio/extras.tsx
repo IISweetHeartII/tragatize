@@ -3,8 +3,10 @@
 // 스튜디오의 «시연용» 단계들: AI 홍보 영상(Premium), 전화 응대, 영상 꾸미기, SNS 올리기.
 // 실제 생성·발급·게시는 하지 않는다. 화면마다 «시연용» 배지를 붙여 미리 만든 결과임을 밝힌다.
 import QRCode from "qrcode";
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { QA } from "@/lib/demo";
+import type { StudioText } from "@/lib/dict";
+import { fill } from "@/lib/i18n";
 import { ORDER_PHONE } from "@/lib/site";
 import type { Highlight } from "@/lib/types";
 
@@ -17,8 +19,18 @@ const primary =
   "min-h-11 w-full rounded-xl bg-foreground px-6 py-3 font-medium text-background disabled:opacity-40 sm:w-auto";
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
-export function MockBadge({ children = "시연용" }: { children?: React.ReactNode }) {
-  return <span className="inline-block rounded-full border border-line px-2 py-0.5 text-xs font-normal text-muted">{children}</span>;
+// 화면 문구(사전). StudioClient 가 TextProvider 로 내려 준다.
+const TextContext = createContext<StudioText | null>(null);
+export const TextProvider = TextContext.Provider;
+export function useT(): StudioText {
+  const t = useContext(TextContext);
+  if (!t) throw new Error("TextProvider 가 없어요");
+  return t;
+}
+
+export function MockBadge({ children }: { children?: React.ReactNode }) {
+  const t = useT();
+  return <span className="inline-block rounded-full border border-line px-2 py-0.5 text-xs font-normal text-muted">{children ?? t.mock}</span>;
 }
 
 function Toggle({ on, onChange, label, disabled }: { on: boolean; onChange: (v: boolean) => void; label: string; disabled?: boolean }) {
@@ -52,12 +64,13 @@ function QrImage({ value, className }: { value: string; className?: string }) {
 // 영상 위에 얹는 전화번호·QR. 숏폼 카드와 롱폼 미리보기가 같이 쓴다.
 // QR 은 오른쪽 위(숏폼은 후킹 문구 아래)에 둔다 — 영상 아래쪽 자막을 가리지 않게.
 export function VideoOverlays({ phone, qrUrl, belowHook = false }: { phone: string | null; qrUrl: string | null; belowHook?: boolean }) {
+  const t = useT();
   return (
     <>
       {qrUrl && (
         <span className={"absolute right-2 rounded-md bg-white p-0.5 shadow " + (belowHook ? "top-[5.5rem]" : "top-2")}>
           <QrImage value={qrUrl} className="size-10" />
-          <span className="block text-center text-[8px] font-medium leading-tight text-black">제품 보기</span>
+          <span className="block text-center text-[8px] font-medium leading-tight text-black">{t.qrLabel}</span>
         </span>
       )}
       {phone && (
@@ -72,13 +85,8 @@ export function VideoOverlays({ phone, qrUrl, belowHook = false }: { phone: stri
 // ── Premium: AI 홍보 영상 만들기 ─────────────────────────────────────────────
 export type AiTemplate = "avatar" | "persona" | "product";
 
-const TEMPLATES: { id: AiTemplate; title: string; body: string; need: string }[] = [
-  { id: "avatar", title: "내 얼굴 아바타", body: "사장님 사진·영상으로 만든 AI 아바타가 대본대로 소개해요.", need: "얼굴 정면 사진 3장 + 10초 이상 말하는 영상 1개, 제품 사진" },
-  { id: "persona", title: "AI 페르소나", body: "원하는 진행자·등장인물을 골라 대본대로 소개해요.", need: "제품 사진·영상 3~5개 (진행자는 고른 페르소나로)" },
-  { id: "product", title: "제품만", body: "사람 없이 제품 사진·영상으로 광고 영상을 만들어요.", need: "제품 사진·영상 3~5개" },
-];
-const PERSONAS = ["다정한 가족 이야기", "친근한 20대 크리에이터", "차분한 쇼호스트", "외국인 여행 유튜버"];
-export const AI_STEPS = ["올린 자료 분석", "대본에 맞춰 장면 구성", "장면 영상 생성", "목소리·자막 입히기", "숏폼으로 자르기"];
+const TEMPLATE_IDS: AiTemplate[] = ["avatar", "persona", "product"];
+export const AI_STEP_COUNT = 5; // 사전의 aiSteps 개수
 
 export function AiVideoPanel({
   hasScript,
@@ -87,33 +95,33 @@ export function AiVideoPanel({
   onGenerate,
 }: {
   hasScript: boolean;
-  progress: number | null; // AI_STEPS 중 진행 중인 단계, 없으면 null
+  progress: number | null; // aiSteps 중 진행 중인 단계, 없으면 null
   ready: boolean;
   onGenerate: () => void;
 }) {
   const [template, setTemplate] = useState<AiTemplate>("persona");
-  const [persona, setPersona] = useState(PERSONAS[0]);
+  const t = useT();
+  const [persona, setPersona] = useState(0);
   const [files, setFiles] = useState<string[]>([]);
   const [consent, setConsent] = useState(false);
-  const t = TEMPLATES.find((x) => x.id === template)!;
   const busy = progress !== null;
   const canGo = files.length > 0 && (template !== "avatar" || consent) && !busy;
 
   return (
     <div className="space-y-5">
       <div>
-        <p className="text-sm text-muted">홍보 영상 템플릿</p>
+        <p className="text-sm text-muted">{t.templatesLabel}</p>
         <div className="mt-2 grid gap-2 sm:grid-cols-3">
-          {TEMPLATES.map((x) => (
+          {TEMPLATE_IDS.map((id) => (
             <button
-              key={x.id}
+              key={id}
               type="button"
               disabled={busy}
-              onClick={() => setTemplate(x.id)}
-              className={"min-h-11 rounded-xl border px-4 py-3 text-left " + (template === x.id ? "border-foreground bg-line/40" : "border-line hover:border-foreground")}
+              onClick={() => setTemplate(id)}
+              className={"min-h-11 rounded-xl border px-4 py-3 text-left " + (template === id ? "border-foreground bg-line/40" : "border-line hover:border-foreground")}
             >
-              <span className="block font-medium">{x.title}</span>
-              <span className="mt-1 block text-sm leading-relaxed text-muted">{x.body}</span>
+              <span className="block font-medium">{t.templates[id].title}</span>
+              <span className="mt-1 block text-sm leading-relaxed text-muted">{t.templates[id].body}</span>
             </button>
           ))}
         </div>
@@ -121,15 +129,15 @@ export function AiVideoPanel({
 
       {template === "persona" && (
         <div>
-          <p className="text-sm text-muted">페르소나</p>
+          <p className="text-sm text-muted">{t.personaLabel}</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            {PERSONAS.map((p) => (
+            {t.personas.map((p, i) => (
               <button
                 key={p}
                 type="button"
                 disabled={busy}
-                onClick={() => setPersona(p)}
-                className={"min-h-11 rounded-full border px-4 text-sm " + (persona === p ? "border-foreground bg-foreground text-background" : "border-line hover:border-foreground")}
+                onClick={() => setPersona(i)}
+                className={"min-h-11 rounded-full border px-4 text-sm " + (persona === i ? "border-foreground bg-foreground text-background" : "border-line hover:border-foreground")}
               >
                 {p}
               </button>
@@ -139,10 +147,10 @@ export function AiVideoPanel({
       )}
 
       <div>
-        <p className="text-sm text-muted">AI 가 배울 자료 올리기</p>
+        <p className="text-sm text-muted">{t.materialsLabel}</p>
         <label className="mt-2 flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-line px-4 py-6 text-center hover:border-foreground">
-          <span className="font-medium">사진·영상 고르기</span>
-          <span className="text-sm text-muted">{t.need}</span>
+          <span className="font-medium">{t.pickFiles}</span>
+          <span className="text-sm text-muted">{t.templates[template].need}</span>
           <input
             type="file"
             multiple
@@ -159,7 +167,7 @@ export function AiVideoPanel({
                 ✓ {f}
               </li>
             ))}
-            <li className="text-xs text-muted">시연용이라 파일은 서버로 올리지 않아요.</li>
+            <li className="text-xs text-muted">{t.notUploaded}</li>
           </ul>
         )}
       </div>
@@ -167,19 +175,19 @@ export function AiVideoPanel({
       {template === "avatar" && (
         <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm">
           <input type="checkbox" className="mt-1 size-4" checked={consent} disabled={busy} onChange={(e) => setConsent(e.target.checked)} />
-          <span>제 얼굴과 목소리로 AI 영상을 만드는 데 동의해요. 만든 영상에는 «AI 생성» 표시가 붙어요.</span>
+          <span>{t.consent}</span>
         </label>
       )}
 
-      {!hasScript && <p className="text-sm text-muted">1단계에서 대본을 받으면 그 대본대로 영상을 만들어요.</p>}
+      {!hasScript && <p className="text-sm text-muted">{t.scriptFirst}</p>}
 
       <button type="button" disabled={!canGo} onClick={onGenerate} className={primary}>
-        {busy ? "AI 홍보 영상 만드는 중…" : ready ? "다시 만들기" : "AI 홍보 영상 만들기"}
+        {busy ? t.aiBusy : ready ? t.aiAgain : t.aiCta}
       </button>
 
       {busy && (
         <ul className="space-y-1.5 text-sm">
-          {AI_STEPS.map((s, i) => (
+          {t.aiSteps.map((s, i) => (
             <li key={s} className={i < progress ? "" : i === progress ? "text-accent" : "text-muted"}>
               {i < progress ? "✓" : i === progress ? "◉" : "○"} {s}
             </li>
@@ -191,13 +199,13 @@ export function AiVideoPanel({
 }
 
 // ── 전화 응대 ────────────────────────────────────────────────────────────
-function draftQa(product: string): QA[] {
+function draftQa(product: string, d: StudioText["qaDraft"]): QA[] {
   const [name, ...rest] = product.split(",").map((s) => s.trim());
   const price = rest.join(", ");
   return [
-    { q: "가격이 얼마예요?", a: price ? `${name || "상품"} 가격은 ${price}이에요.` : "" },
-    { q: "어떻게 주문해요?", a: "원하시는 상품을 말씀해 주시면 주문 확인 문자를 보내 드려요. 주소는 문자로 답장해 주세요." },
-    { q: "영업시간·위치가 어떻게 돼요?", a: "" },
+    { q: d.priceQ, a: price ? fill(d.priceA, { name: name || d.productFallback, price }) : "" },
+    { q: d.orderQ, a: d.orderA },
+    { q: d.hoursQ, a: "" },
   ];
 }
 
@@ -212,6 +220,7 @@ export function PhoneStep({
   phone: string | null;
   onPhone: (n: string | null) => void;
 }) {
+  const t = useT();
   const [on, setOn] = useState(false);
   const [qa, setQa] = useState<QA[]>([]);
   const [drafting, setDrafting] = useState(false);
@@ -220,7 +229,7 @@ export function PhoneStep({
   async function draft() {
     setDrafting(true);
     await sleep(1200);
-    setQa(presetQa ?? draftQa(product));
+    setQa(presetQa ?? draftQa(product, t.qaDraft));
     setDrafting(false);
   }
   async function issue() {
@@ -241,26 +250,26 @@ export function PhoneStep({
           setOn(v);
           if (!v) onPhone(null);
         }}
-        label="AI 판매원 «티제» 전화 응대 켜기"
+        label={t.phoneToggle}
       />
       {!on ? (
-        <p className="text-sm text-muted">켜면 손님이 자주 묻는 질문의 답을 적고 내 가게 전용 070 번호를 받아요. 숏폼을 본 손님의 전화를 AI 가 받아 주문까지 접수해요.</p>
+        <p className="text-sm text-muted">{t.phoneOff}</p>
       ) : (
         <>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-sm text-muted">질문·답변 리스트 (AI 가 이대로 답해요)</p>
+            <p className="text-sm text-muted">{t.qaLabel}</p>
             <button type="button" onClick={draft} disabled={drafting} className="min-h-11 rounded-full border border-line px-4 text-sm hover:border-foreground disabled:opacity-40">
-              {drafting ? "초안 쓰는 중…" : "✨ AI 로 초안 만들기"}
+              {drafting ? t.drafting : t.draftCta}
             </button>
           </div>
           <ol className="space-y-3">
             {qa.map((x, i) => (
               <li key={i} className="space-y-2 rounded-xl border border-line p-3">
-                <input value={x.q} onChange={(e) => edit(i, "q", e.target.value)} placeholder="손님 질문" className={input + " mt-0 font-medium"} />
+                <input value={x.q} onChange={(e) => edit(i, "q", e.target.value)} placeholder={t.qPlaceholder} className={input + " mt-0 font-medium"} />
                 <textarea
                   value={x.a}
                   onChange={(e) => edit(i, "a", e.target.value)}
-                  placeholder="답변을 적어 주세요"
+                  placeholder={t.aPlaceholder}
                   rows={2}
                   className={input + " mt-0 resize-none"}
                 />
@@ -268,27 +277,27 @@ export function PhoneStep({
             ))}
           </ol>
           <button type="button" onClick={() => setQa((xs) => [...xs, { q: "", a: "" }])} className="min-h-11 text-sm underline underline-offset-4">
-            + 질문 추가
+            {t.addQ}
           </button>
           <div className="rounded-xl border border-line p-4">
             {phone ? (
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-sm text-muted">
-                    내 가게 전화번호 <MockBadge />
+                    {t.myNumber} <MockBadge />
                   </p>
                   <p className="mt-1 font-mono text-2xl font-semibold text-accent">{phone}</p>
-                  <p className="mt-1 text-xs text-muted">시연용으로 데모 번호를 보여 드려요. 실제로 걸면 AI 티제가 받아요.</p>
+                  <p className="mt-1 text-xs text-muted">{t.numberNote}</p>
                 </div>
                 <a href={`tel:${phone.replace(/-/g, "")}`} className="flex min-h-11 items-center rounded-xl border border-line px-4 text-sm font-medium hover:border-foreground">
-                  걸어 보기 →
+                  {t.callTry}
                 </a>
               </div>
             ) : (
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <p className="text-sm text-muted">{filled > 0 ? `질문 ${filled}개로 AI 판매원을 만들어요.` : "질문·답변을 하나 이상 채워 주세요."}</p>
+                <p className="text-sm text-muted">{filled > 0 ? fill(t.qaCount, { n: filled }) : t.qaEmpty}</p>
                 <button type="button" onClick={issue} disabled={filled === 0 || issuing} className={primary}>
-                  {issuing ? "번호 받는 중…" : "070 번호 받기"}
+                  {issuing ? t.issuing : t.issueCta}
                 </button>
               </div>
             )}
@@ -301,6 +310,7 @@ export function PhoneStep({
 
 // ── 영상 꾸미기 ───────────────────────────────────────────────────────────
 export function DecoStep({ deco, onDeco, phone, videoUrl }: { deco: Deco; onDeco: (d: Deco) => void; phone: string | null; videoUrl: string | null }) {
+  const t = useT();
   const set = (patch: Partial<Deco>) => onDeco({ ...deco, ...patch });
   const qrUrl = deco.qr && /^https?:\/\/\S+\.\S+/.test(deco.url) ? deco.url : null;
   const showPhone = deco.phone && phone ? phone : null;
@@ -308,44 +318,44 @@ export function DecoStep({ deco, onDeco, phone, videoUrl }: { deco: Deco; onDeco
     <div className="grid gap-6 sm:grid-cols-[1fr_12rem]">
       <div className="space-y-4">
         <div>
-          <Toggle on={deco.qr} onChange={(v) => set({ qr: v })} label="QR 코드 넣기 (내 제품 사이트)" />
+          <Toggle on={deco.qr} onChange={(v) => set({ qr: v })} label={t.qrToggle} />
           {deco.qr && (
             <label className="block">
-              <span className="text-sm text-muted">제품 사이트 주소</span>
+              <span className="text-sm text-muted">{t.siteLabel}</span>
               <input
                 value={deco.url}
                 onChange={(e) => set({ url: e.target.value })}
                 inputMode="url"
-                placeholder="https://smartstore.naver.com/내가게"
+                placeholder={t.sitePlaceholder}
                 className={input}
               />
             </label>
           )}
         </div>
         <div>
-          <Toggle on={deco.phone} onChange={(v) => set({ phone: v })} label="전화 주문 번호 넣기" disabled={!phone} />
-          {!phone && <p className="text-sm text-muted">4단계에서 번호를 받으면 켤 수 있어요.</p>}
+          <Toggle on={deco.phone} onChange={(v) => set({ phone: v })} label={t.phoneOverlayToggle} disabled={!phone} />
+          {!phone && <p className="text-sm text-muted">{t.phoneFirst}</p>}
         </div>
         <div>
-          <p className="text-sm text-muted">넣을 영상</p>
+          <p className="text-sm text-muted">{t.targetVideos}</p>
           <div className="mt-1 flex gap-4">
             {(["short", "long"] as const).map((k) => (
               <label key={k} className="flex min-h-11 cursor-pointer items-center gap-2">
                 <input type="checkbox" className="size-4" checked={deco[k]} onChange={(e) => set({ [k]: e.target.checked })} />
-                {k === "short" ? "숏폼 3개" : "롱폼(원본 영상)"}
+                {k === "short" ? t.shortsTarget : t.longTarget}
               </label>
             ))}
           </div>
         </div>
-        <p className="text-sm text-muted">위 숏폼 카드와 옆 롱폼 미리보기에 바로 반영돼요.</p>
+        <p className="text-sm text-muted">{t.decoNote}</p>
       </div>
       <div>
-        <p className="mb-2 text-sm text-muted">롱폼 미리보기</p>
+        <p className="mb-2 text-sm text-muted">{t.longPreview}</p>
         <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-black">
           {videoUrl ? (
             <video src={`${videoUrl}#t=1`} muted playsInline preload="metadata" className="absolute inset-0 size-full object-cover" />
           ) : (
-            <span className="absolute inset-0 flex items-center justify-center p-4 text-center text-sm text-white/70">영상을 준비하면 여기에 보여요</span>
+            <span className="absolute inset-0 flex items-center justify-center p-4 text-center text-sm text-white/70">{t.longEmpty}</span>
           )}
           {deco.long && <VideoOverlays phone={showPhone} qrUrl={qrUrl} />}
         </div>
@@ -364,14 +374,15 @@ export function decoFor(target: "short" | "long", deco: Deco, phone: string | nu
 
 // ── SNS 올리기 ───────────────────────────────────────────────────────────
 const CHANNELS = [
-  { id: "instagram", label: "인스타그램 릴스", handle: "@my_store" },
-  { id: "youtube", label: "유튜브 쇼츠·롱폼", handle: "My Store" },
-  { id: "tiktok", label: "틱톡", handle: "@my_store" },
+  { id: "instagram", handle: "@my_store" },
+  { id: "youtube", handle: "My Store" },
+  { id: "tiktok", handle: "@my_store" },
 ] as const;
 type ChannelId = (typeof CHANNELS)[number]["id"];
 type ConnState = "off" | "connecting" | "on";
 
 export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlight[]; siteUrl: string | null; onPosted: () => void }) {
+  const t = useT();
   const [conn, setConn] = useState<Record<ChannelId, ConnState>>({ instagram: "off", youtube: "off", tiktok: "off" });
   const [picked, setPicked] = useState<boolean[]>([true, true, true, false]); // 숏폼 3개 + 롱폼
   const [link, setLink] = useState(true);
@@ -380,7 +391,7 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
-  const items = [...highlights.map((h, i) => `숏폼 ${i + 1} · ${h.hook}`), "롱폼(원본 영상) · 유튜브"];
+  const items = [...highlights.map((h, i) => fill(t.shortItem, { i: i + 1, hook: h.hook })), t.longItem];
   const connected = CHANNELS.filter((c) => conn[c.id] === "on");
   const jobs = items
     .map((label, i) => ({ label, i }))
@@ -388,7 +399,7 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
     .flatMap(({ label, i }) =>
       connected
         .filter((c) => (i === items.length - 1 ? c.id === "youtube" : true))
-        .map((c) => `${c.label.split(" ")[0]} · ${label}`),
+        .map((c) => `${t.channels[c.id].short} · ${label}`),
     );
 
   function connect(id: ChannelId) {
@@ -411,13 +422,13 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
     );
   }
 
-  if (highlights.length === 0) return <p className="text-muted">숏폼이 나오면 연결한 채널에 바로 올릴 수 있어요.</p>;
+  if (highlights.length === 0) return <p className="text-muted">{t.snsEmpty}</p>;
 
   return (
     <div className="space-y-5">
       <div>
         <p className="text-sm text-muted">
-          채널 연결 <MockBadge />
+          {t.channelsLabel} <MockBadge />
         </p>
         <ul className="mt-2 grid gap-2 sm:grid-cols-3">
           {CHANNELS.map((c) => (
@@ -428,9 +439,9 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
                 onClick={() => connect(c.id)}
                 className={"min-h-11 w-full rounded-xl border px-4 py-3 text-left " + (conn[c.id] === "on" ? "border-foreground" : "border-line hover:border-foreground")}
               >
-                <span className="block font-medium">{c.label}</span>
+                <span className="block font-medium">{t.channels[c.id].label}</span>
                 <span className="block text-sm text-muted">
-                  {conn[c.id] === "on" ? `✓ 연결됨 ${c.handle}` : conn[c.id] === "connecting" ? "연결 중…" : "눌러서 연결"}
+                  {conn[c.id] === "on" ? fill(t.connected, { handle: c.handle }) : conn[c.id] === "connecting" ? t.connecting : t.connect}
                 </span>
               </button>
             </li>
@@ -438,7 +449,7 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
         </ul>
       </div>
       <div>
-        <p className="text-sm text-muted">올릴 영상</p>
+        <p className="text-sm text-muted">{t.postItems}</p>
         <ul className="mt-1">
           {items.map((label, i) => (
             <li key={label}>
@@ -451,23 +462,23 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
         </ul>
         <label className={"flex min-h-11 items-center gap-3 " + (siteUrl ? "cursor-pointer" : "opacity-40")}>
           <input type="checkbox" className="size-4" checked={link && !!siteUrl} disabled={!siteUrl} onChange={(e) => setLink(e.target.checked)} />
-          <span>캡션에 제품 사이트 링크 넣기{siteUrl ? "" : " (5단계에서 주소를 넣으면 켤 수 있어요)"}</span>
+          <span>{t.linkInCaption}{siteUrl ? "" : t.linkNeedsSite}</span>
         </label>
-        <p className="text-xs text-muted">인스타그램 캡션 링크는 눌리지 않아 «프로필 링크 참고» 문구로 넣어요. 영상 속 QR·전화번호가 그래서 중요해요.</p>
+        <p className="text-xs text-muted">{t.igNote}</p>
       </div>
       <button type="button" disabled={jobs.length === 0 || (posting !== null && !done)} onClick={post} className={primary}>
-        {connected.length === 0 ? "채널을 먼저 연결해 주세요" : `${jobs.length}건 올리기`}
+        {connected.length === 0 ? t.connectFirst : fill(t.postCta, { n: jobs.length })}
       </button>
       {posting !== null && (
         <ul className="space-y-1.5 rounded-xl border border-line p-4 text-sm">
           {jobs.map((j, i) => (
             <li key={j} className={i < posting ? "" : i === posting ? "text-accent" : "text-muted"}>
-              {i < posting ? "✓ 게시됨" : i === posting ? "◉ 올리는 중" : "○ 대기"} · {j}
+              {i < posting ? t.posted : i === posting ? t.posting : t.waiting} · {j}
             </li>
           ))}
           {done && (
             <li className="pt-2 text-muted">
-              <MockBadge /> 실제 계정에는 올라가지 않았어요.
+              <MockBadge /> {t.notReallyPosted}
             </li>
           )}
         </ul>
