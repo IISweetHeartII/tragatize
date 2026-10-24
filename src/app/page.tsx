@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DEMO_PRESETS } from "@/lib/demo";
+import { ORDER_PHONE } from "@/lib/site";
 
 const MEMBERS = ["김해청", "김덕환", "김성재", "윤정민"];
 
@@ -114,6 +115,16 @@ export default function Home() {
           </Link>
         </div>
         <p className="mt-3 text-sm text-muted">가입 없이 15초 안에 결과를 볼 수 있어요.</p>
+        <a
+          href={`tel:${ORDER_PHONE.replace(/-/g, "")}`}
+          className="mt-6 flex items-center justify-between gap-4 rounded-xl border border-accent bg-accent/5 px-5 py-4"
+        >
+          <span>
+            <span className="block text-sm text-muted">지금 전화해 보세요 · AI 판매원 «티제» 가 받아요 (한국어·English·日本語)</span>
+            <span className="mt-0.5 block font-mono text-xl font-semibold text-accent">📞 {ORDER_PHONE}</span>
+          </span>
+          <span className="shrink-0 text-sm font-medium">걸기 →</span>
+        </a>
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">
