@@ -354,13 +354,14 @@ export function DecoStep({ deco, onDeco, phone, videoUrl }: { deco: Deco; onDeco
         </div>
         <p className="text-sm text-muted">{t.decoNote}</p>
       </div>
-      <div>
+      {/* 모바일에서는 화면 폭 전체를 차지하지 않게 폭을 줄이고, 영상이 없을 때는 흰 화면에 맞는 옅은 빈칸으로 둔다. */}
+      <div className="mx-auto w-full max-w-56 sm:max-w-none">
         <p className="mb-2 text-sm text-muted">{t.longPreview}</p>
-        <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-black">
+        <div className={"relative aspect-[9/16] w-full overflow-hidden rounded-xl " + (videoUrl ? "bg-black" : "border border-dashed border-line bg-line/30")}>
           {videoUrl ? (
             <video src={`${videoUrl}#t=1`} muted playsInline preload="metadata" className="absolute inset-0 size-full object-cover" />
           ) : (
-            <span className="absolute inset-0 flex items-center justify-center p-4 text-center text-sm text-white/70">{t.longEmpty}</span>
+            <span className="absolute inset-0 flex items-center justify-center p-4 text-center text-sm text-muted">{t.longEmpty}</span>
           )}
           {deco.long && <VideoOverlays phone={showPhone} qrUrl={qrUrl} />}
         </div>
