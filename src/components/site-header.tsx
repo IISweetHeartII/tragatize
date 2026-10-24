@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const LINKS = [
+  { href: "/studio", label: "스튜디오" },
   { href: "/chat", label: "채팅" },
   { href: "/call", label: "전화" },
 ];
