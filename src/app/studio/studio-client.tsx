@@ -315,7 +315,9 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
     decorated ? "done" : "todo",
     posted ? "done" : "todo",
   ];
-  const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? (videoUrl && videoUrl === AI_SAMPLE?.videoUrl ? AI_SAMPLE.qa : null);
+  const qaOf = (p: DemoPreset) => p.qaI18n?.[locale] ?? p.qa;
+  const presetDemo = DEMO_PRESETS.find((p) => p.id === demoId);
+  const presetQa = presetDemo ? qaOf(presetDemo) : videoUrl && videoUrl === AI_SAMPLE?.videoUrl ? qaOf(AI_SAMPLE) : null;
   const shortDeco = decoFor("short", deco, phone);
   const siteUrl = decoFor("long", { ...deco, long: true }, null).qrUrl;
   // 숏폼 카드 언어: 고른 손님 나라 중 문구가 있는 언어만
