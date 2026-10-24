@@ -348,7 +348,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
                   (active ? "border-foreground bg-line/40" : "border-line hover:border-foreground")
                 }
               >
-                <span className={"block font-mono text-xs " + (p.plan === "premium" ? "text-accent" : "text-muted")}>{t.planTags[p.plan]}</span>
+                <span className={"block text-xs font-semibold " + (p.plan === "premium" ? "text-accent" : "text-muted")}>{t.planTags[p.plan]}</span>
                 <span className="block font-medium">{sampleTitle(p)}</span>
                 <span className="block text-sm text-muted">{ready ? (active ? t.sampleSelected : t.samplePlay) : t.sampleSoon}</span>
               </button>
@@ -445,8 +445,8 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
         <div role="tablist" className="mb-4 grid grid-cols-2 gap-1 rounded-xl border border-line p-1">
           {(
             [
-              { id: "lite", title: t.tabLite, tag: "Lite" },
-              { id: "premium", title: t.tabPremium, tag: "Premium" },
+              { id: "lite", title: t.tabLite },
+              { id: "premium", title: t.tabPremium },
             ] as const
           ).map((tab) => (
             <button
@@ -458,7 +458,6 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
               className={"min-h-11 rounded-lg px-3 py-2 text-sm font-medium " + (plan === tab.id ? "bg-foreground text-background" : "text-muted hover:text-foreground")}
             >
               {tab.title}
-              <span className={"block font-mono text-xs sm:ml-1.5 sm:inline " + (plan === tab.id ? "opacity-70" : tab.id === "premium" ? "text-accent" : "")}>{tab.tag}</span>
             </button>
           ))}
         </div>

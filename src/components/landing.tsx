@@ -17,9 +17,10 @@ const secondary =
 
 const OPTIONAL_STEPS = [false, false, false, true, true, true];
 
-// 가격은 docs/business.md §2 추천안(C 혼합) 금액을 Lite·Premium 으로 옮긴 것. QR·SNS·전화 응대는 포함(켜고 끄는 선택).
+// 가격·포함 내역은 docs/business.md «요금제별 매출총이익» 표(Basic·Lite·Premium)를 옮긴 것. 전화 응대는 Premium 만.
 const PLAN_META = [
-  { name: "Lite", main: false, href: "/studio" },
+  { name: "Basic", main: false, href: "/studio" },
+  { name: "Lite", main: false, href: "/studio?plan=premium" },
   { name: "Premium", main: true, href: "/studio?plan=premium" },
 ];
 
@@ -31,7 +32,7 @@ function fmt(sec: number): string {
 function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="font-mono text-xs text-accent">{eyebrow}</p>
+      <p className="text-xs font-semibold tracking-wide text-accent">{eyebrow}</p>
       <h2 className="mt-2 text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">{title}</h2>
     </div>
   );
@@ -44,7 +45,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
   return (
     <main lang={locale} className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 sm:px-6">
       <section className="py-12 sm:py-20">
-        <p className="mb-4 inline-block rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">{d.badge}</p>
+        <p className="mb-4 inline-block rounded-full border border-line px-3 py-1 text-xs font-medium text-muted">{d.badge}</p>
         <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
           {d.heroLine1}
           <br />
@@ -162,31 +163,31 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
       <section className="border-t border-line py-12 sm:py-16">
         <SectionTitle eyebrow={d.pricingEyebrow} title={d.pricingTitle} />
         <p className="mt-3 text-sm text-muted">{d.pricingNote}</p>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        <div className="mt-8 grid gap-3 lg:-mx-16 lg:grid-cols-3">
           {PLAN_META.map((meta, i) => {
             const p = d.plans[i];
             return (
-              <div key={meta.name} className={"rounded-xl p-5 " + (meta.main ? "border-2 border-foreground" : "border border-line")}>
+              <div key={meta.name} className={"flex flex-col rounded-xl p-5 " + (meta.main ? "border-2 border-foreground" : "border border-line")}>
                 <p className="flex flex-wrap items-center gap-2 text-sm text-muted">
                   {meta.name}
                   {meta.main && <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-white">{d.recommended}</span>}
                 </p>
                 <p className="mt-1 font-medium">{p.tagline}</p>
-                <p className="mt-2 text-3xl font-semibold">{p.price}</p>
+                <p className="mt-2 whitespace-nowrap text-3xl font-semibold">{p.price}</p>
                 <p className="mt-1 text-sm text-muted">{p.priceNote}</p>
-                <ul className="mt-4 space-y-1.5 text-sm">
+                <ul className="mt-4 mb-5 space-y-1.5 text-sm">
                   {p.items.map((item) => (
                     <li key={item}>✓ {item}</li>
                   ))}
                 </ul>
-                <Link href={href(meta.href)} className={(meta.main ? primary : secondary) + " mt-5"}>
+                <Link href={href(meta.href)} className={(meta.main ? primary : secondary) + " mt-auto"}>
                   {p.cta}
                 </Link>
               </div>
             );
           })}
         </div>
-        <p className="mt-3 text-sm text-muted">{d.pricingFoot}</p>
+        <p className="mt-3 text-sm text-muted lg:-mx-16">{d.pricingFoot}</p>
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">

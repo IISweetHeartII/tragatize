@@ -15,8 +15,8 @@
     "th": "Thailand"
   },
   "planTags": {
-    "lite": "Lite · Film it yourself",
-    "premium": "Premium · AI promo video"
+    "lite": "Film it yourself",
+    "premium": "AI promo video"
   },
   "samples": {
     "food": {
@@ -72,7 +72,7 @@
       },
       {
         "title": "Video",
-        "body": "With Lite, film the script on your phone and upload it. With Premium, AI makes the promo video for you, no filming needed."
+        "body": "Film on your phone following the script, or let AI make a promo video with no filming."
       },
       {
         "title": "Short-form",
@@ -104,7 +104,7 @@
       },
       {
         "title": "Can't film? AI makes it for you",
-        "body": "With Premium, just pick a template and upload photos. AI makes a promo video from your script with your own face avatar, an AI persona of your choice, or just your product."
+        "body": "Pick a template and upload a few photos. AI makes a promo video from your script with your own face avatar, an AI persona of your choice, or just the product."
       },
       {
         "title": "Calls to the number in your shorts go to AI phone assistant “Tije”",
@@ -117,37 +117,49 @@
     "whyLabel": "Why AI picked it",
     "resultCta": "See it all, from script to shorts",
     "pricingEyebrow": "Pricing",
-    "pricingTitle": "Film it: Lite. Skip filming: Premium.",
-    "pricingNote": "Marketing agencies for small businesses charge ₩300,000–₩1,800,000 a month (based on public quotes). Even Premium costs about 1/5 of a ₩1,000,000 agency.",
+    "pricingTitle": "From $29 a month. Pick what you need",
+    "pricingNote": "Marketing agencies for small businesses charge ₩300,000–₩1,800,000 a month (based on public quotes). Even our biggest plan, Premium, costs about 1/5 of a ₩1,000,000 agency.",
     "recommended": "Recommended",
     "plans": [
       {
         "tagline": "For owners who film themselves",
-        "price": "$99 / month",
-        "priceNote": "In Korea: ₩99,000 / month",
+        "price": "$29 / month",
+        "priceNote": "In Korea: ₩29,000 / month",
         "cta": "Try with my video",
         "items": [
-          "AI scripts + 4 self-filmed videos turned into shorts per month",
+          "AI live scripts",
+          "Self-filmed videos turned into shorts, up to 2 hours a month",
           "Hooks, captions, and hashtags in 7 languages",
-          "QR code, product site, and phone number on your videos",
-          "Post straight to Instagram, YouTube, and TikTok",
-          "Your shop's own 070 number + 100 min of AI assistant calls"
+          "QR code and product site on your videos",
+          "Post straight to Instagram, YouTube, and TikTok"
         ]
       },
       {
-        "tagline": "No filming, AI makes it",
-        "price": "$199 / month",
-        "priceNote": "In Korea: ₩199,000 / month",
+        "tagline": "Hard to film? Add AI videos",
+        "price": "$49 / month",
+        "priceNote": "In Korea: ₩49,000 / month",
         "cta": "Make an AI promo video",
         "items": [
+          "Everything in Basic",
+          "2 promo videos (long-form) per month, made by AI with no filming",
+          "Cut AI videos into shorts too"
+        ]
+      },
+      {
+        "tagline": "Videos and phone inquiries, all by AI",
+        "price": "$199 / month",
+        "priceNote": "In Korea: ₩199,000 / month",
+        "cta": "Try phone answering too",
+        "items": [
           "Everything in Lite",
-          "2 AI promo videos per month (your face avatar, AI persona, or product only)",
-          "12 short-form conversions per month",
-          "300 min of multilingual calls with AI phone assistant “Tije”"
+          "Short-form conversion up to 4 hours a month",
+          "8 template AI promo videos per month (your face avatar, AI persona, or product only)",
+          "Your shop's own 070 number + AI phone assistant “Tije” answering in many languages, 100 calls a month",
+          "Inquiry phone number on your videos"
         ]
       }
     ],
-    "pricingFoot": "QR codes, social posting, and phone answering are included in both plans. Turn on only what you need. Calls beyond your included minutes are ₩300 per minute ($0.25 outside Korea).",
+    "pricingFoot": "QR codes and social posting are included in every plan. Your shop's 070 number and AI phone answering come with Premium.",
     "faqEyebrow": "FAQ",
     "faqTitle": "What shop owners ask most",
     "faqs": [
@@ -165,7 +177,7 @@
       },
       {
         "q": "I'm not comfortable on camera.",
-        "a": "Go with Premium. Pick a template, upload product photos, and AI makes a promo video from your script. Want to use your own face? Just upload a face photo and a short video too."
+        "a": "You can start with Lite. Upload product photos and AI makes a promo video from your script. To make more with templates, your own face avatar, or an AI persona, go with Premium. To use your own face, just upload a face photo and a short video too."
       },
       {
         "q": "Is an AI video made with my face OK?",
@@ -173,7 +185,7 @@
       },
       {
         "q": "How do I start phone answering?",
-        "a": "Write down common customer questions and answers (AI drafts them for you), and you'll get a dedicated 070 number for your shop. Put that number in your videos, and AI phone assistant Tije will handle phone inquiries."
+        "a": "On Premium, write down common customer questions and answers (AI drafts them for you), and you'll get a dedicated 070 number for your shop. Put that number in your videos, and AI phone assistant Tije will handle phone inquiries."
       },
       {
         "q": "Does it take orders and payments too?",

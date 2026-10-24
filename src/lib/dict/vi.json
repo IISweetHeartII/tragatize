@@ -15,8 +15,8 @@
     "th": "Thái Lan"
   },
   "planTags": {
-    "lite": "Lite · Tự quay",
-    "premium": "Premium · Video quảng cáo AI"
+    "lite": "Tự quay",
+    "premium": "Video quảng cáo AI"
   },
   "samples": {
     "food": {
@@ -72,7 +72,7 @@
       },
       {
         "title": "Video",
-        "body": "Với Lite, bạn quay bằng điện thoại theo kịch bản rồi tải lên. Với Premium, AI tạo video quảng cáo mà không cần quay."
+        "body": "Quay bằng điện thoại theo kịch bản rồi tải lên, hoặc để AI tạo video quảng cáo mà không cần quay."
       },
       {
         "title": "Video ngắn",
@@ -104,7 +104,7 @@
       },
       {
         "title": "Khó quay thì AI làm thay",
-        "body": "Với Premium, chỉ cần chọn mẫu và tải ảnh lên. AI tạo video quảng cáo theo kịch bản bằng avatar khuôn mặt của bạn, persona AI bạn thích, hoặc chỉ với sản phẩm."
+        "body": "Chỉ cần chọn mẫu và tải vài tấm ảnh lên. AI tạo video quảng cáo theo kịch bản bằng avatar khuôn mặt bạn, persona AI bạn chọn, hoặc chỉ với sản phẩm."
       },
       {
         "title": "Gọi số trong video ngắn là gặp trợ lý điện thoại AI “Tije”",
@@ -117,37 +117,49 @@
     "whyLabel": "Lý do AI chọn",
     "resultCta": "Tự xem từ kịch bản đến video ngắn",
     "pricingEyebrow": "Bảng giá",
-    "pricingTitle": "Tự quay thì Lite, không quay thì Premium",
-    "pricingNote": "Dịch vụ marketing cho cửa hàng nhỏ thường từ ₩300.000 đến ₩1.800.000 / tháng (theo báo giá công khai). Premium chỉ bằng khoảng 1/5 dịch vụ ₩1 triệu / tháng.",
+    "pricingTitle": "Từ $29 / tháng, cần bao nhiêu chọn bấy nhiêu",
+    "pricingNote": "Dịch vụ marketing cho cửa hàng nhỏ thường từ ₩300.000 đến ₩1.800.000 / tháng (theo báo giá công khai). Gói cao nhất Premium cũng chỉ bằng khoảng 1/5 dịch vụ ₩1 triệu / tháng.",
     "recommended": "Đề xuất",
     "plans": [
       {
         "tagline": "Cho chủ tiệm tự quay",
-        "price": "$99 / tháng",
-        "priceNote": "Tại Hàn Quốc: ₩99.000 / tháng",
+        "price": "$29 / tháng",
+        "priceNote": "Tại Hàn Quốc: ₩29.000 / tháng",
         "cta": "Thử với video của tôi",
         "items": [
-          "Kịch bản AI + chuyển video tự quay thành video ngắn, 4 video / tháng",
+          "Kịch bản livestream AI",
+          "Chuyển video tự quay thành video ngắn, tối đa 2 giờ / tháng",
           "Câu mở đầu thu hút, chú thích, hashtag bằng 7 ngôn ngữ",
-          "Chèn QR, trang sản phẩm, số điện thoại vào video",
-          "Đăng ngay lên Instagram, YouTube, TikTok",
-          "Số 070 riêng cho cửa hàng + 100 phút gọi với trợ lý điện thoại AI"
+          "Chèn QR, trang sản phẩm vào video",
+          "Đăng ngay lên Instagram, YouTube, TikTok"
         ]
       },
       {
-        "tagline": "AI làm, không cần quay",
-        "price": "$199 / tháng",
-        "priceNote": "Tại Hàn Quốc: ₩199.000 / tháng",
+        "tagline": "Khó quay? Thêm video AI",
+        "price": "$49 / tháng",
+        "priceNote": "Tại Hàn Quốc: ₩49.000 / tháng",
         "cta": "Thử tạo video quảng cáo AI",
         "items": [
+          "Toàn bộ tính năng của Basic",
+          "2 video quảng cáo (dài) / tháng do AI tự tạo, không cần quay",
+          "Cắt cả video AI thành video ngắn để đăng"
+        ]
+      },
+      {
+        "tagline": "Video lẫn cuộc gọi hỏi đáp đều do AI lo",
+        "price": "$199 / tháng",
+        "priceNote": "Tại Hàn Quốc: ₩199.000 / tháng",
+        "cta": "Thử cả nghe điện thoại",
+        "items": [
           "Toàn bộ tính năng của Lite",
-          "2 video quảng cáo AI / tháng (avatar khuôn mặt, persona AI, chỉ sản phẩm)",
-          "Chuyển thành video ngắn 12 video / tháng",
-          "300 phút gọi đa ngôn ngữ với trợ lý điện thoại AI “Tije”"
+          "Chuyển thành video ngắn tối đa 4 giờ / tháng",
+          "8 video quảng cáo AI theo mẫu / tháng (avatar khuôn mặt, persona AI, chỉ sản phẩm)",
+          "Số 070 riêng cho cửa hàng + trợ lý điện thoại AI “Tije” nghe máy đa ngôn ngữ, 100 cuộc / tháng",
+          "Chèn số điện thoại hỏi đáp vào video"
         ]
       }
     ],
-    "pricingFoot": "Cả hai gói đều có QR, đăng SNS và nghe điện thoại. Chỉ bật những gì bạn cần. Cuộc gọi vượt thời gian trong gói tính ₩300 / phút (nước ngoài $0.25).",
+    "pricingFoot": "Mọi gói đều có QR và đăng SNS. Số 070 riêng của cửa hàng và nghe điện thoại bằng AI có trong gói Premium.",
     "faqEyebrow": "Câu hỏi thường gặp",
     "faqTitle": "Các chủ tiệm hay hỏi",
     "faqs": [
@@ -165,7 +177,7 @@
       },
       {
         "q": "Tôi ngại quay video thì sao?",
-        "a": "Hãy dùng Premium. Chọn mẫu và tải ảnh sản phẩm lên, AI sẽ tạo video quảng cáo theo kịch bản. Muốn dùng khuôn mặt mình thì tải thêm ảnh khuôn mặt và một video ngắn."
+        "a": "Bạn có thể dùng từ gói Lite. Tải ảnh sản phẩm lên, AI sẽ tạo video quảng cáo theo kịch bản. Muốn tạo nhiều hơn bằng mẫu với avatar khuôn mặt hay persona AI thì dùng Premium. Muốn dùng khuôn mặt mình thì tải thêm ảnh khuôn mặt và một video ngắn."
       },
       {
         "q": "Video AI làm từ khuôn mặt tôi có ổn không?",
@@ -173,7 +185,7 @@
       },
       {
         "q": "Bắt đầu nghe điện thoại thế nào?",
-        "a": "Điền các câu hỏi khách hay hỏi kèm câu trả lời (AI sẽ viết bản nháp giúp bạn) là bạn có ngay số 070 riêng cho cửa hàng. Chèn số này vào video, trợ lý điện thoại AI Tije sẽ nghe các cuộc gọi hỏi đáp."
+        "a": "Với gói Premium, điền các câu hỏi khách hay hỏi kèm câu trả lời (AI sẽ viết bản nháp giúp bạn) là bạn có ngay số 070 riêng cho cửa hàng. Chèn số này vào video, trợ lý điện thoại AI Tije sẽ nghe các cuộc gọi hỏi đáp."
       },
       {
         "q": "Tije có nhận đặt hàng và thanh toán không?",

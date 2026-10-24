@@ -5,7 +5,7 @@ import { DEMO_VIDEOS } from "@/lib/site";
 
 type Plan = keyof typeof DEMO_VIDEOS;
 
-// 랜딩 데모: Lite·Premium 사용 화면 녹화를 탭으로 바꿔 본다.
+// 랜딩 데모: 직접 촬영·AI 홍보 영상 두 흐름의 사용 화면 녹화를 탭으로 바꿔 본다.
 // 녹화본은 양옆 빈 여백을 잘라 5:4 로 만들었다(본문이 더 크게 보이게). 영상 바탕색(#faf8f4)이 페이지와 거의 같아서 틀 없이 옅은 테두리·그림자만 준다.
 export function DemoVideos({ label, tabs }: { label: string; tabs: Record<Plan, string> }) {
   const [plan, setPlan] = useState<Plan>("lite");
@@ -13,7 +13,7 @@ export function DemoVideos({ label, tabs }: { label: string; tabs: Record<Plan, 
   return (
     <>
       <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-        <p className="font-mono text-xs text-accent">{label}</p>
+        <p className="text-xs font-semibold tracking-wide text-accent">{label}</p>
         <div className="flex gap-2" role="tablist">
           {(Object.keys(DEMO_VIDEOS) as Plan[]).map((k) => (
             <button
