@@ -58,11 +58,11 @@ function Step({ id, n, title, children }: { id: string; n: number; title: string
   );
 }
 
-type StepState = "done" | "active" | "todo" | "soon";
+type StepState = "done" | "active" | "todo";
 
 function Stepper({ states }: { states: StepState[] }) {
-  const labels = ["대본", "촬영·업로드", "AI 숏폼", "SNS 올리기"];
-  const ids = ["step-script", "step-upload", "step-shorts", "step-sns"];
+  const labels = ["대본", "영상", "숏폼", "전화", "꾸미기", "SNS"];
+  const ids = ["step-script", "step-upload", "step-shorts", "step-phone", "step-deco", "step-sns"];
   return (
     <nav className="sticky top-14 z-10 -mx-4 border-b border-line bg-background/90 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6">
       <ol className="flex items-center justify-between gap-1">
@@ -83,7 +83,7 @@ function Stepper({ states }: { states: StepState[] }) {
                 >
                   {s === "done" ? "✓" : i + 1}
                 </span>
-                <span className={(s === "active" ? "inline" : "hidden sm:inline") + (s === "todo" || s === "soon" ? " text-muted" : "")}>
+                <span className={(s === "active" ? "inline" : "hidden sm:inline") + (s === "todo" ? " text-muted" : "")}>
                   {label}
                 </span>
               </a>
@@ -242,7 +242,9 @@ export function StudioClient() {
     script ? "done" : "active",
     busy ? "active" : videoUrl ? "done" : script ? "active" : "todo",
     highlights.length > 0 ? "done" : "todo",
-    "soon",
+    "todo",
+    "todo",
+    "todo",
   ];
   const shortDeco = decoFor("short", deco, phone);
 
@@ -406,7 +408,7 @@ export function StudioClient() {
         )}
       </Step>
 
-      <Step id="step-sns" n={4} title="SNS 에 올리기">
+      <Step id="step-sns" n={6} title="SNS 에 올리기">
         <div className="flex flex-col gap-3 sm:flex-row">
           <button disabled className="rounded-xl bg-foreground px-6 py-3 font-medium text-background opacity-40">
             인스타그램 릴스에 올리기 · 연결 중
