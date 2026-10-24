@@ -1,0 +1,393 @@
+{
+  "meta": {
+    "title": "Tragatize — From Korea to the World",
+    "description": "One product is all it takes to promote and sell. AI scripts, AI promo videos, short-form clips, social posting, and AI phone orders: promo on autopilot for small businesses.",
+    "studioTitle": "Studio",
+    "studioDescription": "Get a script, then upload your own video or have AI make one. We cut it into short-form clips, post them to social media, and even take phone orders."
+  },
+  "countries": {
+    "ko": "Korea",
+    "en": "USA",
+    "ja": "Japan",
+    "zh-CN": "China",
+    "zh-TW": "Taiwan",
+    "vi": "Vietnam",
+    "th": "Thailand"
+  },
+  "planTags": {
+    "lite": "Lite · Film it yourself",
+    "premium": "Premium · AI promo video"
+  },
+  "samples": {
+    "food": {
+      "title": "Handmade burger shop in Gangnam",
+      "product": "Cry Cheeseburger, ₩5,000"
+    },
+    "beauty": {
+      "title": "Couple Cream Mist Live",
+      "product": "UIQ Biome Barrier Cream Mist, buy 1 get 1, ₩5,000"
+    },
+    "book": {
+      "title": "withby autobiography books for parents",
+      "product": "Autobiography book for your parents, ₩88,000"
+    }
+  },
+  "landing": {
+    "badge": "Short-form promo for small shops · AI promo videos · AI phone orders",
+    "heroLine1": "One product.",
+    "heroLine2": "Promo and orders, done.",
+    "heroSub": "Whether you film it or AI makes it, we find the moments that make people want to buy, cut them into short-form clips, add your QR code and phone number, and post them to social media. When viewers call, an AI salesperson picks up.",
+    "ctaSample": "See a sample now",
+    "ctaTry": "Try with my product",
+    "ctaNote": "No sign-up. See results in 15 seconds.",
+    "callLead": "Call now · AI salesperson “Tije” will answer (한국어·English·日本語)",
+    "callCta": "Call →",
+    "demoLabel": "87-second demo · Turn the sound on",
+    "painsEyebrow": "The problem",
+    "painsTitle": "You need to promote, but there's no time or money",
+    "pains": [
+      {
+        "label": "Marketing agency",
+        "value": "₩1M / month",
+        "body": "Blog reviews and social media management. Results are hard to see."
+      },
+      {
+        "label": "Your time",
+        "value": "5 hrs / week",
+        "body": "Filming, editing, writing captions, posting. Less time to run your shop."
+      },
+      {
+        "label": "Foreign customers",
+        "value": "Locals only",
+        "body": "No one to promote in English, so foreign customers walk right past."
+      }
+    ],
+    "stepsEyebrow": "How it works",
+    "stepsTitle": "From script to order calls, all in one place",
+    "optional": "Optional",
+    "steps": [
+      {
+        "title": "Script",
+        "body": "Just enter your product and price. AI writes a promo script with lines and shot directions for each section."
+      },
+      {
+        "title": "Video",
+        "body": "With Lite, film the script on your phone and upload it. With Premium, AI makes the promo video for you, no filming needed."
+      },
+      {
+        "title": "Short-form",
+        "body": "AI picks the 3 moments that make people want to buy, cuts them, and adds hooks and captions in your customers' languages."
+      },
+      {
+        "title": "Phone answering",
+        "body": "Write answers to common questions and get your shop's own 070 number. Calls are answered by AI salesperson “Tije.”"
+      },
+      {
+        "title": "Add QR & number",
+        "body": "Add a QR code for your product site and your order phone number to your long and short videos."
+      },
+      {
+        "title": "Post to social",
+        "body": "Post to your connected Instagram, YouTube, and TikTok all at once, with a product link in the caption."
+      }
+    ],
+    "edgesEyebrow": "Why us",
+    "edgesTitle": "We don't stop at cutting clips",
+    "edges": [
+      {
+        "title": "AI that explains why it picked each scene",
+        "body": "Reasons, not scores. Like “The cheese and the price show up together, so this is when buying desire peaks,” so you can choose with confidence."
+      },
+      {
+        "title": "Hooks in your customers' languages, all at once",
+        "body": "Get copy for the same scene in the languages of the countries you pick: USA, Japan, China, Taiwan, Vietnam, Thailand, and Korea. Reach traveling tourists right away."
+      },
+      {
+        "title": "Can't film? AI makes it for you",
+        "body": "With Premium, just pick a template and upload photos. AI makes a promo video from your script with your own face avatar, an AI persona of your choice, or just your product."
+      },
+      {
+        "title": "Calls to the number in your clips go to AI salesperson “Tije”",
+        "body": "When viewers call the number in your short, Tije takes the order in their language and even texts an order confirmation. You just run your shop."
+      }
+    ],
+    "resultEyebrow": "Sample result",
+    "resultTitle": "Shorts AI picked from the “{product}” live stream",
+    "resultNote": "This is the actual output from a real sample live stream of about 1 min 40 sec.",
+    "whyLabel": "Why AI picked it",
+    "resultCta": "See it all, from script to shorts",
+    "pricingEyebrow": "Pricing",
+    "pricingTitle": "Film it: Lite. Skip filming: Premium.",
+    "pricingNote": "Marketing agencies for small businesses charge ₩300,000–₩1,800,000 a month (based on public quotes). Even Premium costs about 1/5 of a ₩1,000,000 agency.",
+    "recommended": "Recommended",
+    "plans": [
+      {
+        "tagline": "For owners who film themselves",
+        "price": "$99 / month",
+        "priceNote": "In Korea: ₩99,000 / month",
+        "cta": "Try with my video",
+        "items": [
+          "AI scripts + 4 self-filmed videos turned into shorts per month",
+          "Hooks, captions, and hashtags in 7 languages",
+          "QR code, product site, and phone number on your videos",
+          "Post straight to Instagram, YouTube, and TikTok",
+          "Your shop's 070 number + 100 min of AI salesperson calls"
+        ]
+      },
+      {
+        "tagline": "No filming, AI makes it",
+        "price": "$199 / month",
+        "priceNote": "In Korea: ₩199,000 / month",
+        "cta": "Make an AI promo video",
+        "items": [
+          "Everything in Lite",
+          "2 AI promo videos per month (your face avatar, AI persona, or product only)",
+          "12 short-form conversions per month",
+          "300 min of multilingual calls with AI salesperson “Tije”",
+          "Order confirmation texts"
+        ]
+      }
+    ],
+    "pricingFoot": "QR codes, social posting, and phone answering are included in both plans. Turn on only what you need. Calls beyond your included minutes are ₩300 per minute ($0.25 outside Korea).",
+    "faqEyebrow": "FAQ",
+    "faqTitle": "What shop owners ask most",
+    "faqs": [
+      {
+        "q": "What if I can't edit video at all?",
+        "a": "No problem. Just upload a video filmed from the script. AI transcribes it, picks the scenes, and adds the copy. No editing software needed."
+      },
+      {
+        "q": "I don't speak English. Can I still serve foreign customers?",
+        "a": "Yes. AI writes your short-form hooks and captions in your customers' languages, and AI salesperson Tije takes phone orders in their language. You just check everything in your own language."
+      },
+      {
+        "q": "Which languages are supported?",
+        "a": "Korean, English, Japanese, Chinese (Simplified and Traditional), Vietnamese, and Thai. We create copy for customers from the USA, Korea, Japan, China, Taiwan, Vietnam, and Thailand, and this site is available in the same 7 languages."
+      },
+      {
+        "q": "I'm not comfortable on camera.",
+        "a": "Go with Premium. Pick a template, upload product photos, and AI makes a promo video from your script. Want to use your own face? Just upload a face photo and a short video too."
+      },
+      {
+        "q": "Is an AI video made with my face OK?",
+        "a": "We only use photos and videos you've consented to, and finished videos are labeled “AI-generated.” If you'd rather not use your face, choose the AI persona or product-only template."
+      },
+      {
+        "q": "How do I start phone answering?",
+        "a": "Write down common customer questions and answers (AI can draft them for you), and you'll get your shop's own 070 number. Put it in your videos, and AI salesperson Tije answers the calls."
+      },
+      {
+        "q": "Does it post to Instagram and YouTube automatically?",
+        "a": "Connect your accounts and we'll post to Instagram, YouTube, and TikTok all at once. Instagram caption links aren't clickable, so we guide customers with the QR code and phone number in the video."
+      },
+      {
+        "q": "Is there a contract?",
+        "a": "Nope. It's month to month, and you can cancel anytime. Try a sample and your own product before you pay."
+      }
+    ],
+    "closingLine1": "Film it or skip it.",
+    "closingLine2": "Leave the promo to AI.",
+    "team": "Team Tragatize"
+  },
+  "studio": {
+    "examples": [
+      {
+        "product": "Handmade yakgwa (honey cookie) gift set, 12 pcs, ₩29,000",
+        "store": "Traditional dessert shop near Gangnam Station",
+        "audience": "American and Japanese travelers in Korea, ages 20–39"
+      },
+      {
+        "product": "2-hour hanbok rental + photo shoot, ₩35,000",
+        "store": "Hanbok rental shop by Gyeongbokgung Palace",
+        "audience": "Southeast Asian and Chinese tourists visiting Seoul"
+      },
+      {
+        "product": "House-roasted coffee beans, 200 g, ₩18,000",
+        "store": "Roastery café in Seongsu-dong",
+        "audience": "Home-café fans in Korea, ages 20–39"
+      }
+    ],
+    "demoSteps": {
+      "lite": [
+        "Writing live script",
+        "Transcribing speech",
+        "Analyzing scenes",
+        "Editing cuts & picking shorts",
+        "Writing subtitles & captions"
+      ],
+      "premium": [
+        "Writing promo script",
+        "Making AI promo video",
+        "Editing cuts & picking shorts",
+        "Writing subtitles & captions"
+      ]
+    },
+    "stepper": [
+      "Script",
+      "Video",
+      "Shorts",
+      "Phone",
+      "Design",
+      "Social"
+    ],
+    "title": "From promo to orders with one product",
+    "subtitle": "Get a script → Prep your video (film it or AI) → AI shorts → Phone answering → Add QR & number → Post to social",
+    "samplesLabel": "See a sample now",
+    "sampleSelected": "Selected",
+    "samplePlay": "▶ Tap to watch",
+    "sampleSoon": "Sample coming soon",
+    "steps": {
+      "script": "Get a script",
+      "video": "Prep your video",
+      "shorts": "Shorts picked by AI",
+      "phone": "Phone answering (optional)",
+      "deco": "Add QR code & phone number (optional)",
+      "sns": "Post to social (optional)"
+    },
+    "examplesLabel": "Examples:",
+    "productLabel": "Product to sell",
+    "productPlaceholder": "e.g. Handmade yakgwa gift set, 12 pcs, ₩29,000",
+    "storeLabel": "Shop (optional)",
+    "storePlaceholder": "e.g. Dessert shop near Gangnam Station",
+    "audienceLabel": "Target customers (optional)",
+    "audiencePlaceholder": "e.g. American and Japanese travelers in Korea, ages 20–39",
+    "targetsLabel": "Customer countries (pick any)",
+    "targetsHint": "We'll write script lines and short-form hooks and captions in the languages of the countries you pick.",
+    "scriptBusy": "Writing script… (20–30 sec)",
+    "scriptCta": "Create script",
+    "viewer": "Viewers: {target}",
+    "minutes": "· {n} min",
+    "screen": "On screen: {show}",
+    "tabLite": "Film & upload",
+    "tabPremium": "Let AI make it",
+    "dropHere": "Drop it here",
+    "dropPrompt": "Drag and drop your video, or tap to choose",
+    "dropHint": "mp4, mov, m4a, up to 500MB · Vertical video around 2 min recommended",
+    "uploading": "Uploading… {p}%",
+    "uploaded": "Uploaded",
+    "transcribing": "Transcribing speech (ElevenLabs)",
+    "picking": "Finding buy-me moments (Claude)",
+    "elapsed": "{t} elapsed · Usually 30 sec–2 min",
+    "waitSample": "See a sample result while you wait",
+    "premiumLead": "No filming needed. AI makes a promo video from your script.",
+    "premiumBadge": "Demo · Result is a pre-made AI video",
+    "aiDone": "Your finished AI promo video",
+    "aiSampleBadge": "“{title}” sample",
+    "shortsEmpty": "Once your video is ready, 3 short-form picks will show up here.",
+    "sampleResult": "Sample result · Real AI output (pre-computed)",
+    "shortsLang": "Shorts language",
+    "why": "Why this scene?",
+    "copied": "Copied",
+    "copy": "Copy caption",
+    "seconds": "{n} sec",
+    "failed": "Something went wrong. Please try again.",
+    "mock": "Demo",
+    "qrLabel": "View product",
+    "templatesLabel": "Promo video templates",
+    "templates": {
+      "avatar": {
+        "title": "My face avatar",
+        "body": "An AI avatar made from your photos and video presents your script.",
+        "need": "3 front-facing photos + 1 video of you talking (10+ sec), plus product photos"
+      },
+      "persona": {
+        "title": "AI persona",
+        "body": "Pick a host or character to present your script.",
+        "need": "3–5 product photos or videos (host is your chosen persona)"
+      },
+      "product": {
+        "title": "Product only",
+        "body": "No people. An ad made from your product photos and videos.",
+        "need": "3–5 product photos or videos"
+      }
+    },
+    "personaLabel": "Persona",
+    "personas": [
+      "Warm family story",
+      "Friendly creator in their 20s",
+      "Calm shopping host",
+      "Foreign travel YouTuber"
+    ],
+    "aiSteps": [
+      "Analyze uploads",
+      "Build scenes from script",
+      "Generate scene videos",
+      "Add voice & subtitles",
+      "Cut into shorts"
+    ],
+    "materialsLabel": "Upload materials for AI",
+    "pickFiles": "Choose photos & videos",
+    "notUploaded": "This is a demo, so files aren't uploaded to our server.",
+    "consent": "I agree to let AI make videos with my face and voice. These videos will be labeled “AI-generated.”",
+    "scriptFirst": "Get a script in Step 1, and the video will follow it.",
+    "aiBusy": "Making AI promo video…",
+    "aiAgain": "Make again",
+    "aiCta": "Make AI promo video",
+    "qaDraft": {
+      "priceQ": "How much is it?",
+      "priceA": "{name} is {price}.",
+      "productFallback": "This product",
+      "orderQ": "How do I order?",
+      "orderA": "Just tell us what you'd like and we'll text you an order confirmation. Please reply with your address by text.",
+      "hoursQ": "What are your hours and location?"
+    },
+    "phoneToggle": "Turn on phone answering by AI salesperson “Tije”",
+    "phoneOff": "Turn it on to write answers to common questions and get your shop's own 070 number. AI answers calls from viewers and takes their orders.",
+    "phoneLangs": "Answers in your customers' languages",
+    "qaLabel": "Q&A list (AI answers exactly like this)",
+    "drafting": "Drafting…",
+    "draftCta": "✨ Draft with AI",
+    "qPlaceholder": "Customer question",
+    "aPlaceholder": "Write your answer",
+    "addQ": "+ Add question",
+    "myNumber": "Your shop's phone number",
+    "numberNote": "This is a demo number. Call it for real and AI Tije will answer.",
+    "callTry": "Try calling →",
+    "qaCount": "Your AI salesperson will use {n} questions.",
+    "qaEmpty": "Please fill in at least one question and answer.",
+    "issuing": "Getting your number…",
+    "issueCta": "Get a 070 number",
+    "qrToggle": "Add QR code (your product site)",
+    "siteLabel": "Product site URL",
+    "sitePlaceholder": "https://myshop.com",
+    "phoneOverlayToggle": "Add phone order number",
+    "phoneFirst": "Available once you get a number in Step 4.",
+    "targetVideos": "Apply to",
+    "shortsTarget": "3 shorts",
+    "longTarget": "Long-form (original video)",
+    "decoNote": "Changes show up right away on the shorts cards above and the long-form preview.",
+    "longPreview": "Long-form preview",
+    "longEmpty": "Your video will show up here once it's ready",
+    "channels": {
+      "instagram": {
+        "label": "Instagram Reels",
+        "short": "Instagram"
+      },
+      "youtube": {
+        "label": "YouTube Shorts & long-form",
+        "short": "YouTube"
+      },
+      "tiktok": {
+        "label": "TikTok",
+        "short": "TikTok"
+      }
+    },
+    "snsEmpty": "Once your shorts are ready, you can post them to connected channels right away.",
+    "channelsLabel": "Connect channels",
+    "connected": "✓ Connected {handle}",
+    "connecting": "Connecting…",
+    "connect": "Tap to connect",
+    "postItems": "Videos to post",
+    "shortItem": "Short {i} · {hook}",
+    "longItem": "Long-form (original video) · YouTube",
+    "linkInCaption": "Add product site link to caption",
+    "linkNeedsSite": " (Available once you add a URL in Step 5)",
+    "igNote": "Instagram caption links aren't clickable, so we add “Link in bio” instead. That's why the QR code and phone number in your video matter.",
+    "connectFirst": "Connect a channel first",
+    "postCta": "Post {n}",
+    "posted": "✓ Posted",
+    "posting": "◉ Posting",
+    "waiting": "○ Waiting",
+    "notReallyPosted": "Nothing was actually posted to your accounts."
+  }
+}
