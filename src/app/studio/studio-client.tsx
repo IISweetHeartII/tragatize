@@ -239,10 +239,13 @@ export function StudioClient() {
     runPreset(READY_PRESETS[0]);
   }
 
-  // 랜딩의 «샘플로 바로 보기»(/studio?demo=1) — 첫 렌더 뒤에 한 번 실행한다.
+  // 랜딩 링크: /studio?demo=1 은 샘플 바로 보기, /studio?plan=premium 은 AI 영상 탭으로 시작
   useEffect(() => {
-    if (new URLSearchParams(location.search).get("demo") !== "1") return;
-    const t = setTimeout(showDemo, 0);
+    const q = new URLSearchParams(location.search);
+    const t = setTimeout(() => {
+      if (q.get("plan") === "premium") setPlan("premium");
+      if (q.get("demo") === "1") showDemo();
+    }, 0);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
