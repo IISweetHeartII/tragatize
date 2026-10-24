@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Tragatize · Pitch (visual)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+ @page{size:1920px 1080px;margin:0}
+ *{margin:0;padding:0;box-sizing:border-box}
+ body{background:#555;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:'Pretendard Variable','Pretendard',sans-serif}
+ .s{width:1920px;height:1080px;position:relative;overflow:hidden;background:#FEFEF8;page-break-after:always;break-after:page;margin:0 auto 40px}
+ @media print{body{background:none}.s{margin:0}}
+ /* 생성 이미지(1672×941)를 높이 930 으로 맞춰 가운데 — 아래 띠 자리는 비운다 */
+ .art{position:absolute;top:0;left:134px;width:1652px;height:930px}
+ .foot{position:absolute;left:5%;right:5%;bottom:32px}
+ .foot img{width:100%;display:block}
+ /* 2장 왼쪽 빈자리에 실제 화면 */
+ .real{position:absolute;left:176px;width:740px}
+ .tgt{position:absolute;left:176px;right:176px;top:838px;display:flex;gap:28px;font-size:30px;line-height:1.3;color:#1f2340}
+ .tgt div{flex:1;background:#fff;border:2px solid #f0e6da;border-radius:18px;padding:16px 22px}
+ .tgt b{color:#FF5A36;margin-right:10px}
+ .real img{width:100%;display:block;border-radius:18px;border:2px solid #1f2340;box-shadow:0 10px 30px rgba(31,35,64,.18)}
+ .chip{position:absolute;left:0;top:-46px;background:#FF5A36;color:#fff;font-weight:800;font-size:24px;padding:6px 14px;border-radius:999px}
+</style></head>
+<body>
+<section class="s">
+  <img class="art" src="gen-slide-1.png" alt="Tragatize — 라이브 한 번이면, 홍보도 주문도 AI가">
+  <div class="tgt">
+    <div><b>TARGET</b>서울 K-뷰티 매장 → 미국 K-뷰티 고객</div>
+    <div><b>PROBLEM</b>대행비 부담 · 영어 숏폼·주문 불가</div>
+  </div>
+  <div class="foot"><img src="footer-for-light-slides.png" alt=""></div>
+</section>
+<section class="s">
+  <img class="art" src="gen-slide-2.png" alt="오늘 만든 것">
+  <div class="real" style="top:120px"><img src="shot-shorts.png" alt="AI가 고른 숏폼 3개(실제 화면)"><span class="chip">실제 화면 · AI 숏폼</span></div>
+  <div class="real" style="top:592px"><img src="sms-proof.png" alt="실제로 받은 주문 확인 문자"><span class="chip">실제 수신 문자</span></div>
+  <div class="foot"><img src="footer-for-light-slides.png" alt=""></div>
+</section>
+</body></html>
