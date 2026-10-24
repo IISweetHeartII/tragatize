@@ -3,9 +3,10 @@
 // 스튜디오의 «시연용» 단계들: AI 홍보 영상(Premium), 전화 응대, 영상 꾸미기, SNS 올리기.
 // 실제 생성·발급·게시는 하지 않는다. 화면마다 «시연용» 배지를 붙여 미리 만든 결과임을 밝힌다.
 import QRCode from "qrcode";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { QA } from "@/lib/demo";
 import { ORDER_PHONE } from "@/lib/site";
+import type { Highlight } from "@/lib/types";
 
 export type Deco = { qr: boolean; url: string; phone: boolean; long: boolean; short: boolean };
 export const NO_DECO: Deco = { qr: false, url: "", phone: false, long: true, short: true };
@@ -239,4 +240,118 @@ export function decoFor(target: "short" | "long", deco: Deco, phone: string | nu
     phone: deco.phone && phone ? phone : null,
     qrUrl: deco.qr && /^https?:\/\/\S+\.\S+/.test(deco.url) ? deco.url : null,
   };
+}
+
+// ── SNS 올리기 ───────────────────────────────────────────────────────────
+const CHANNELS = [
+  { id: "instagram", label: "인스타그램 릴스", handle: "@my_store" },
+  { id: "youtube", label: "유튜브 쇼츠·롱폼", handle: "My Store" },
+  { id: "tiktok", label: "틱톡", handle: "@my_store" },
+] as const;
+type ChannelId = (typeof CHANNELS)[number]["id"];
+type ConnState = "off" | "connecting" | "on";
+
+export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlight[]; siteUrl: string | null; onPosted: () => void }) {
+  const [conn, setConn] = useState<Record<ChannelId, ConnState>>({ instagram: "off", youtube: "off", tiktok: "off" });
+  const [picked, setPicked] = useState<boolean[]>([true, true, true, false]); // 숏폼 3개 + 롱폼
+  const [link, setLink] = useState(true);
+  const [posting, setPosting] = useState<number | null>(null); // 올린 개수
+  const [done, setDone] = useState(false);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+
+  const items = [...highlights.map((h, i) => `숏폼 ${i + 1} · ${h.hook}`), "롱폼(원본 영상) · 유튜브"];
+  const connected = CHANNELS.filter((c) => conn[c.id] === "on");
+  const jobs = items
+    .map((label, i) => ({ label, i }))
+    .filter(({ i }) => picked[i])
+    .flatMap(({ label, i }) =>
+      connected
+        .filter((c) => (i === items.length - 1 ? c.id === "youtube" : true))
+        .map((c) => `${c.label.split(" ")[0]} · ${label}`),
+    );
+
+  function connect(id: ChannelId) {
+    setConn((s) => ({ ...s, [id]: "connecting" }));
+    timers.current.push(setTimeout(() => setConn((s) => ({ ...s, [id]: "on" })), 1100));
+  }
+  function post() {
+    setDone(false);
+    setPosting(0);
+    jobs.forEach((_, i) =>
+      timers.current.push(
+        setTimeout(() => {
+          setPosting(i + 1);
+          if (i === jobs.length - 1) {
+            setDone(true);
+            onPosted();
+          }
+        }, 700 * (i + 1)),
+      ),
+    );
+  }
+
+  if (highlights.length === 0) return <p className="text-muted">숏폼이 나오면 연결한 채널에 바로 올릴 수 있어요.</p>;
+
+  return (
+    <div className="space-y-5">
+      <div>
+        <p className="text-sm text-muted">
+          채널 연결 <MockBadge />
+        </p>
+        <ul className="mt-2 grid gap-2 sm:grid-cols-3">
+          {CHANNELS.map((c) => (
+            <li key={c.id}>
+              <button
+                type="button"
+                disabled={conn[c.id] !== "off"}
+                onClick={() => connect(c.id)}
+                className={"min-h-11 w-full rounded-xl border px-4 py-3 text-left " + (conn[c.id] === "on" ? "border-foreground" : "border-line hover:border-foreground")}
+              >
+                <span className="block font-medium">{c.label}</span>
+                <span className="block text-sm text-muted">
+                  {conn[c.id] === "on" ? `✓ 연결됨 ${c.handle}` : conn[c.id] === "connecting" ? "연결 중…" : "눌러서 연결"}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p className="text-sm text-muted">올릴 영상</p>
+        <ul className="mt-1">
+          {items.map((label, i) => (
+            <li key={label}>
+              <label className="flex min-h-11 cursor-pointer items-center gap-3">
+                <input type="checkbox" className="size-4" checked={picked[i]} onChange={(e) => setPicked((p) => p.map((x, j) => (j === i ? e.target.checked : x)))} />
+                <span className="truncate">{label}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+        <label className={"flex min-h-11 items-center gap-3 " + (siteUrl ? "cursor-pointer" : "opacity-40")}>
+          <input type="checkbox" className="size-4" checked={link && !!siteUrl} disabled={!siteUrl} onChange={(e) => setLink(e.target.checked)} />
+          <span>캡션에 제품 사이트 링크 넣기{siteUrl ? "" : " (5단계에서 주소를 넣으면 켤 수 있어요)"}</span>
+        </label>
+        <p className="text-xs text-muted">인스타그램 캡션 링크는 눌리지 않아 «프로필 링크 참고» 문구로 넣어요. 영상 속 QR·전화번호가 그래서 중요해요.</p>
+      </div>
+      <button type="button" disabled={jobs.length === 0 || (posting !== null && !done)} onClick={post} className={primary}>
+        {connected.length === 0 ? "채널을 먼저 연결해 주세요" : `${jobs.length}건 올리기`}
+      </button>
+      {posting !== null && (
+        <ul className="space-y-1.5 rounded-xl border border-line p-4 text-sm">
+          {jobs.map((j, i) => (
+            <li key={j} className={i < posting ? "" : i === posting ? "text-accent" : "text-muted"}>
+              {i < posting ? "✓ 게시됨" : i === posting ? "◉ 올리는 중" : "○ 대기"} · {j}
+            </li>
+          ))}
+          {done && (
+            <li className="pt-2 text-muted">
+              <MockBadge /> 실제 계정에는 올라가지 않았어요.
+            </li>
+          )}
+        </ul>
+      )}
+    </div>
+  );
 }
