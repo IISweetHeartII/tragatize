@@ -37,3 +37,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), "Apple SD Gothic Neo", "Pretendard", system-ui, sans-serif;
 }
+
+/* 일본어·중국어·태국어는 띄어쓰기로 줄을 나누지 않아 keep-all 이면 글이 넘친다 → 기본 줄바꿈 */
+:lang(ja),
+:lang(zh),
+:lang(th) {
+  word-break: normal;
+}
