@@ -92,6 +92,7 @@ export function StudioClient() {
   const [elapsed, setElapsed] = useState(0);
   const [highlights, setHighlights] = useState<Highlight[]>([]);
   const [isDemo, setIsDemo] = useState(false);
+  const [dragging, setDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // 분석 중 경과 시간(실제 진행률이 없으므로 시간만 정직하게 보여 준다)
@@ -265,9 +266,24 @@ export function StudioClient() {
       </Step>
 
       <Step id="step-upload" n={2} title="찍은 라이브 영상 올리기">
-        <label className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-line px-4 py-10 text-center hover:border-foreground">
-          <span className="font-medium">영상 파일 고르기</span>
-          <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지 · 말소리가 있어야 해요</span>
+        <label
+          onDragOver={(e) => {
+            e.preventDefault();
+            if (!busy) setDragging(true);
+          }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragging(false);
+            if (!busy) void onFile(e.dataTransfer.files?.[0]);
+          }}
+          className={
+            "flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed px-4 py-10 text-center hover:border-foreground " +
+            (dragging ? "border-foreground bg-line/40" : "border-line")
+          }
+        >
+          <span className="font-medium">{dragging ? "여기에 놓으세요" : "영상을 끌어다 놓거나 눌러서 고르기"}</span>
+          <span className="text-sm text-muted">mp4·mov·m4a, 500MB 까지 · 2분 안팎 세로 영상 권장</span>
           <input type="file" accept="video/*,audio/*" className="hidden" disabled={busy} onChange={(e) => onFile(e.target.files?.[0])} />
         </label>
         {stage === "uploading" && (
@@ -284,6 +300,13 @@ export function StudioClient() {
             <li className={elapsed < 20 ? "text-accent" : ""}>{elapsed < 20 ? "◉" : "✓"} 말 받아쓰는 중 (ElevenLabs)</li>
             <li className={elapsed < 20 ? "text-muted" : "text-accent"}>{elapsed < 20 ? "○" : "◉"} 사고 싶어지는 순간 고르는 중 (Claude)</li>
             <li className="pt-1 font-mono text-xs text-muted">{fmt(elapsed)} 경과 · 보통 30초~2분</li>
+            {HAS_DEMO && (
+              <li>
+                <button onClick={showDemo} className="text-sm underline underline-offset-4">
+                  기다리는 동안 샘플 결과 보기
+                </button>
+              </li>
+            )}
           </ul>
         )}
       </Step>
@@ -339,7 +362,7 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
   }
 
   async function copy() {
-    await navigator.clipboard.writeText(`${h.caption}\n\n${h.hashtags.join(" ")}`);
+    await navigator.clipboard.writeText(`${h.hook}\n${h.hookEn}\n\n${h.caption}\n\n${h.hashtags.join(" ")}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   }
@@ -373,7 +396,10 @@ function ShortCard({ h, src }: { h: Highlight; src: string }) {
         </span>
       </button>
       <div className="space-y-2 p-3 text-sm">
-        <p className="text-muted">{h.why}</p>
+        <p className="font-medium">
+          <span className="mr-1 text-accent">왜 이 장면?</span>
+          {h.why}
+        </p>
         <p className="leading-relaxed">{h.caption}</p>
         <p className="text-muted">{h.hashtags.join(" ")}</p>
         <button onClick={copy} className="min-h-11 w-full rounded-lg border border-line hover:border-foreground">
