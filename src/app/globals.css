@@ -3,7 +3,7 @@
 :root {
   /* 기기가 다크 모드여도 흰 화면으로 고정한다(데모 영상·녹화본과 같은 화면). */
   color-scheme: light;
-  --background: #fbfaf8;
+  --background: #f3f2ef;
   --foreground: #16130f;
   --muted: #6f675d;
   --line: #e7e2da;
@@ -18,6 +18,32 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-anton), var(--font-bhs), "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+
+/* 랜딩 큰 제목: 영문은 Anton 대문자, 한글은 Black Han Sans. 그 밖의 언어는 시스템 굵은 서체 */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+:lang(ja) .font-display,
+:lang(zh) .font-display,
+:lang(th) .font-display {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
 }
 
 body {

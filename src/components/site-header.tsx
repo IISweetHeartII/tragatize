@@ -25,15 +25,15 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-10 border-b border-line bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex h-14 w-full max-w-3xl items-center justify-between gap-2 px-4 sm:px-6">
-        <Link href={localePath(locale, "/")} className="font-semibold tracking-tight">
+    <header className="sticky top-0 z-20 bg-background/80 backdrop-blur-md">
+      <nav className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-2 px-4 sm:px-6">
+        <Link href={localePath(locale, "/")} className="flex min-h-11 items-center gap-2 text-lg font-bold tracking-tight">
+          <span aria-hidden className="flex size-7 items-center justify-center rounded-lg bg-foreground font-display text-sm text-background">
+            T
+          </span>
           Tragatize
         </Link>
-        <div className="flex items-center gap-1 text-sm">
-          <Link href={localePath(locale, "/studio")} className="rounded-md px-3 py-1.5 text-muted hover:bg-line/60 hover:text-foreground">
-            {STUDIO_LABEL[locale]}
-          </Link>
+        <div className="flex items-center gap-2 text-sm">
           <label className="relative flex min-h-11 items-center">
             <span className="sr-only">Language</span>
             <span aria-hidden className="pointer-events-none absolute left-2 text-muted">
@@ -42,7 +42,7 @@ export function SiteHeader() {
             <select
               value={locale}
               onChange={(e) => change(e.target.value as Locale)}
-              className="min-h-9 appearance-none rounded-md border border-line bg-background py-1 pl-8 pr-2 text-base text-foreground sm:text-sm"
+              className="min-h-10 appearance-none rounded-full border border-line bg-white py-1 pl-8 pr-3 text-base text-foreground sm:text-sm"
             >
               {LOCALES.map((l) => (
                 <option key={l} value={l}>
@@ -51,6 +51,12 @@ export function SiteHeader() {
               ))}
             </select>
           </label>
+          <Link
+            href={localePath(locale, "/studio")}
+            className="flex min-h-11 items-center rounded-full bg-foreground px-5 font-semibold text-background hover:bg-foreground/85"
+          >
+            {STUDIO_LABEL[locale]}
+          </Link>
         </div>
       </nav>
     </header>

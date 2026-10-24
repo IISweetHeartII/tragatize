@@ -6,14 +6,15 @@ export const SITE_DESCRIPTION =
 export const BRAND_ACCENT = "#e5484d";
 // 숏폼에 넣는 AI 전화 문의 번호(ClawOps 070, AI 티제가 받는다)
 export const ORDER_PHONE = "070-5276-7530";
-// 랜딩 데모 영상: 배포 사이트를 실제로 쓰는 화면 녹화(Lite·Premium 흐름, 소리 없음). Vercel Blob 공개 파일
+// 랜딩 데모 영상: 스튜디오를 실제로 쓰는 화면 녹화(직접 촬영·AI 홍보 영상 흐름, 소리 없음). 대본·숏폼 분석은 실제 AI 호출
+// 영상은 Vercel Blob 공개 파일, 포스터는 public/demo
 export const DEMO_VIDEOS = {
   lite: {
-    src: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-lite-C7Zd313CGqw6vyjiNPQz9KFMCmFYxo.mp4",
-    poster: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-lite-poster-3QkflsQJbCknwAOP7YSmPpCRlHvbfI.jpg",
+    src: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-lite-h2ylA3OcqQms9W8Zj6dibEYh4rGpH0.mp4",
+    poster: "/demo/tragatize-demo-lite-poster.jpg",
   },
   premium: {
-    src: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-premium-eQIHFUrhZXZ8sWh3lyAulS3G3oKnZ6.mp4",
-    poster: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-premium-poster-DGpbZlpBj6qIuLP1V9gxZLaXxK3Gbl.jpg",
+    src: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/media/tragatize-demo-premium-qnlS6CtV63RMpwu5WI5e8hPTZgI43o.mp4",
+    poster: "/demo/tragatize-demo-premium-poster.jpg",
   },
 } as const;
