@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { DEMO_PRESETS, type DemoPreset } from "@/lib/demo";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
+  DecoStep,
   NO_DECO,
   PhoneStep,
   VideoOverlays,
@@ -239,12 +240,13 @@ export function StudioClient() {
   }
 
   const busy = stage === "uploading" || stage === "analyzing";
+  const decorated = (deco.qr && /^https?:\/\/\S+\.\S+/.test(deco.url)) || (deco.phone && !!phone);
   const states: StepState[] = [
     script ? "done" : "active",
     busy ? "active" : videoUrl ? "done" : script ? "active" : "todo",
     highlights.length > 0 ? "done" : "todo",
     phone ? "done" : "todo",
-    "todo",
+    decorated ? "done" : "todo",
     "todo",
   ];
   const presetQa = DEMO_PRESETS.find((p) => p.id === demoId)?.qa ?? null;
@@ -415,6 +417,10 @@ export function StudioClient() {
           setPhone(n);
           if (n) setDeco((d) => ({ ...d, phone: true }));
         }} />
+      </Step>
+
+      <Step id="step-deco" n={5} title="영상에 QR·전화번호 넣기 (선택)">
+        <DecoStep deco={deco} onDeco={setDeco} phone={phone} videoUrl={videoUrl} />
       </Step>
 
       <Step id="step-sns" n={6} title="SNS 에 올리기">
