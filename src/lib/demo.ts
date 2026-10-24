@@ -2,8 +2,11 @@
 // 배포된 /api/script·/api/highlights 에 그대로 돌린 응답이다(화면에 «샘플 결과» 라고 표시).
 import type { Highlight, LiveScript } from "@/lib/types";
 
+export type Plan = "lite" | "premium";
+
 export type DemoPreset = {
   id: string;
+  plan: Plan; // lite = 사장님이 직접 찍은 영상, premium = AI 가 만든 홍보 영상
   category: string;
   title: string;
   product: string;
@@ -331,7 +334,13 @@ const WITHBY_HIGHLIGHTS: Highlight[] = [
 
 // 카테고리별 샘플 라이브. videoUrl 이 빈 칸은 «촬영 중» 으로 보인다(팀이 찍어 올리면 결과를 붙여 넣는다).
 export const DEMO_PRESETS: DemoPreset[] = [
-  { id: "food", category: "음식", title: "강남 수제버거 사장님", product: BURGER_PRODUCT, videoUrl: BURGER_VIDEO_URL, script: BURGER_SCRIPT, highlights: BURGER_HIGHLIGHTS },
-  { id: "beauty", category: "K-뷰티", title: "커플 크림 미스트 라이브", product: "유아이큐 바이옴 베리어 크림 미스트 1+1, 5천 원", videoUrl: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/KakaoTalk_Video_2026-10-24-12-24-36-MrYEKMnbsd7sGQlbLHt07RCWo2KVwM.mp4", script: UIQ_SCRIPT, highlights: UIQ_HIGHLIGHTS },
-  { id: "book", category: "AI 홍보 영상", title: "withby 부모님 자서전 책", product: "부모님 자서전 책, 8만 8천 원", videoUrl: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/withby-promo-3Zz8oOpLydezdyUE3cwLijX2YDNAOU.mp4", script: WITHBY_SCRIPT, highlights: WITHBY_HIGHLIGHTS },
+  {
+    id: "food", plan: "lite", category: "Lite · 직접 촬영", title: "강남 수제버거 사장님", product: BURGER_PRODUCT, videoUrl: BURGER_VIDEO_URL, script: BURGER_SCRIPT, highlights: BURGER_HIGHLIGHTS,
+  },
+  {
+    id: "beauty", plan: "lite", category: "Lite · 직접 촬영", title: "커플 크림 미스트 라이브", product: "유아이큐 바이옴 베리어 크림 미스트 1+1, 5천 원", videoUrl: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/KakaoTalk_Video_2026-10-24-12-24-36-MrYEKMnbsd7sGQlbLHt07RCWo2KVwM.mp4", script: UIQ_SCRIPT, highlights: UIQ_HIGHLIGHTS,
+  },
+  {
+    id: "book", plan: "premium", category: "Premium · AI 홍보 영상", title: "withby 부모님 자서전 책", product: "부모님 자서전 책, 8만 8천 원", videoUrl: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/withby-promo-3Zz8oOpLydezdyUE3cwLijX2YDNAOU.mp4", script: WITHBY_SCRIPT, highlights: WITHBY_HIGHLIGHTS,
+  },
 ];
