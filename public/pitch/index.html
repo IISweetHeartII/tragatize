@@ -7,7 +7,7 @@
  body{font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;background:#555;-webkit-print-color-adjust:exact;print-color-adjust:exact}
  .s{width:1920px;height:1080px;position:relative;overflow:hidden;background:#140C09;color:#FFF4E8;page-break-after:always;break-after:page;margin:0 auto 40px}
  @media print{body{background:none}.s{margin:0}}
- @media screen{body{padding:24px 0}.s{zoom:min(1, calc((100vw - 32px) / 1920px))}}
+ @media screen{body{padding:24px 0}}
  .dl{display:block;text-align:center;margin:0 auto 24px;font:600 18px/1.4 'Pretendard Variable',sans-serif;color:#fff}
  @media print{.dl{display:none}}
  .team{position:absolute;top:52px;left:96px;font-size:26px;font-weight:700;color:rgba(255,244,232,.6)}
@@ -111,4 +111,5 @@
   </div>
   <div class="foot"><img src="footer-for-dark-slides.png" alt=""></div>
 </section>
+<script>function fit(){var z=Math.min(1,(innerWidth-32)/1920);document.querySelectorAll(".s").forEach(function(e){e.style.zoom=z})}fit();addEventListener("resize",fit);matchMedia("print").addEventListener("change",function(m){document.querySelectorAll(".s").forEach(function(e){e.style.zoom=m.matches?1:""});if(!m.matches)fit()});</script>
 </body></html>
