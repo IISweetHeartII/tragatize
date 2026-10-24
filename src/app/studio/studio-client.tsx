@@ -136,18 +136,27 @@ export function StudioClient() {
   const [demoId, setDemoId] = useState<string | null>(null);
   const demoTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  function runPreset(preset: DemoPreset) {
+  function clearTimers() {
     demoTimers.current.forEach(clearTimeout);
     demoTimers.current = [];
+  }
+
+  function resetResult() {
+    setHighlights([]);
+    setVideoUrl(null);
+    setStage("idle");
+    setPosted(false);
+  }
+
+  function runPreset(preset: DemoPreset) {
+    clearTimers();
     setError(null);
     setDemoId(preset.id);
     setProduct(preset.product);
     setStore("");
     setAudience("");
     setScript(null);
-    setHighlights([]);
-    setVideoUrl(null);
-    setStage("idle");
+    resetResult();
     setIsDemo(true);
     setDemoStep(0);
     let at = 0;
