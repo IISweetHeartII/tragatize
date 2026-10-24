@@ -45,21 +45,39 @@ const EDGES = [
   },
 ];
 
-// 요금은 docs/business.md §2 추천안(C 혼합)을 그대로 쓴다.
+// 가격은 docs/business.md §2 추천안(C 혼합) 금액을 Lite·Premium 으로 옮긴 것. QR·SNS·전화 응대는 포함(켜고 끄는 선택).
 const PLANS = [
   {
-    name: "Starter",
+    name: "Lite",
+    tagline: "직접 찍는 사장님",
     krw: "월 99,000원",
     usd: "월 $99",
     main: false,
-    items: ["라이브 대본·숏폼 월 4회 방송분", "한국어 캡션", "AI 판매원 통화 100분"],
+    href: "/studio",
+    cta: "내 영상으로 해보기",
+    items: [
+      "AI 대본 + 직접 찍은 영상 숏폼 변환 월 4편",
+      "한·영 후킹 문구·캡션·해시태그",
+      "영상에 QR·제품 사이트·전화번호 넣기",
+      "인스타그램·유튜브·틱톡 바로 올리기",
+      "내 가게 070 번호 + AI 판매원 통화 100분",
+    ],
   },
   {
-    name: "Pro",
+    name: "Premium",
+    tagline: "촬영 없이 AI 가 만들어요",
     krw: "월 199,000원",
     usd: "월 $199",
     main: true,
-    items: ["라이브 대본·숏폼 월 12회 방송분", "한·영 캡션", "AI 판매원 «티제» 다국어 통화 300분", "주문 확인 문자"],
+    href: "/studio?plan=premium",
+    cta: "AI 홍보 영상 만들어 보기",
+    items: [
+      "Lite 의 모든 기능",
+      "AI 홍보 영상 월 2편 (내 얼굴 아바타·AI 페르소나·제품만)",
+      "숏폼 변환 월 12편",
+      "AI 판매원 «티제» 다국어 통화 300분",
+      "주문 확인 문자",
+    ],
   },
 ];
 
@@ -229,8 +247,8 @@ export default function Home() {
       )}
 
       <section className="border-t border-line py-12 sm:py-16">
-        <SectionTitle eyebrow="가격" title="대행사 비용의 5분의 1" />
-        <p className="mt-3 text-sm text-muted">소상공인 마케팅 대행은 월 30만~180만 원대예요(공개 견적 기준). 월 100만 원 대행과 비교하면 약 5분의 1이에요.</p>
+        <SectionTitle eyebrow="가격" title="찍으면 Lite, 안 찍으면 Premium" />
+        <p className="mt-3 text-sm text-muted">소상공인 마케팅 대행은 월 30만~180만 원대예요(공개 견적 기준). Premium 도 월 100만 원 대행의 약 5분의 1이에요.</p>
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           {PLANS.map((p) => (
             <div key={p.name} className={"rounded-xl p-5 " + (p.main ? "border-2 border-foreground" : "border border-line")}>
@@ -238,17 +256,24 @@ export default function Home() {
                 {p.name}
                 {p.main && <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-white">추천</span>}
               </p>
-              <p className="mt-1 text-3xl font-semibold">{p.krw}</p>
+              <p className="mt-1 font-medium">{p.tagline}</p>
+              <p className="mt-2 text-3xl font-semibold">{p.krw}</p>
               <p className="mt-1 text-sm text-muted">해외 매장 {p.usd}</p>
               <ul className="mt-4 space-y-1.5 text-sm">
                 {p.items.map((item) => (
                   <li key={item}>✓ {item}</li>
                 ))}
               </ul>
+              <Link href={p.href} className={(p.main ? primary : secondary) + " mt-5"}>
+                {p.cta}
+              </Link>
             </div>
           ))}
         </div>
-        <p className="mt-3 text-sm text-muted">포함 시간을 넘긴 통화는 분당 300원(해외 $0.25)이에요.</p>
+        <p className="mt-3 text-sm text-muted">
+          QR·SNS 업로드·전화 응대는 두 요금제 모두 포함이에요. 필요한 것만 켜서 쓰세요. 포함 시간을 넘긴 통화는 분당
+          300원(해외 $0.25)이에요.
+        </p>
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">
