@@ -1,0 +1,393 @@
+{
+  "meta": {
+    "title": "Tragatize — 從韓國走向世界",
+    "description": "一個商品，宣傳和接單一次搞定。AI 腳本、AI 宣傳影片、短影音、SNS 發布到 AI 電話接單，專為小店家打造的宣傳自動化。",
+    "studioTitle": "工作室",
+    "studioDescription": "拿到腳本後，上傳影片或用 AI 生成，就能剪成短影音發到 SNS，連電話訂單都幫你接。"
+  },
+  "countries": {
+    "ko": "韓國",
+    "en": "美國",
+    "ja": "日本",
+    "zh-CN": "中國",
+    "zh-TW": "台灣",
+    "vi": "越南",
+    "th": "泰國"
+  },
+  "planTags": {
+    "lite": "Lite · 自己拍攝",
+    "premium": "Premium · AI 宣傳影片"
+  },
+  "samples": {
+    "food": {
+      "title": "江南手工漢堡店老闆",
+      "product": "Cry 起司漢堡，₩5,000"
+    },
+    "beauty": {
+      "title": "情侶乳霜噴霧直播",
+      "product": "UIQ 益生菌屏障乳霜噴霧 買一送一，₩5,000"
+    },
+    "book": {
+      "title": "withby 父母自傳書",
+      "product": "父母自傳書，₩88,000"
+    }
+  },
+  "landing": {
+    "badge": "小店家短影音宣傳 · AI 宣傳影片 · AI 電話接單",
+    "heroLine1": "一個商品，",
+    "heroLine2": "宣傳和接單一次搞定。",
+    "heroSub": "不管是自己拍的還是 AI 生成的影片，都能挑出「讓人想買的瞬間」剪成短影音，加上 QR 和電話號碼發到 SNS。看完影片打來的客人，由 AI 銷售員接聽。",
+    "ctaSample": "直接看範例",
+    "ctaTry": "用我的商品試試",
+    "ctaNote": "免註冊，15 秒內就能看到結果。",
+    "callLead": "現在就打打看 · AI 銷售員「Tije」接聽 (한국어·English·日本語)",
+    "callCta": "撥打 →",
+    "demoLabel": "87 秒示範 · 請開聲音觀看",
+    "painsEyebrow": "問題",
+    "painsTitle": "想做宣傳，卻沒錢也沒時間",
+    "pains": [
+      {
+        "label": "行銷代理商",
+        "value": "每月 ₩100萬",
+        "body": "部落格體驗、SNS 代操，效果卻不明顯。"
+      },
+      {
+        "label": "老闆的時間",
+        "value": "每週 5 小時",
+        "body": "拍攝、剪輯、寫文案、發文，做生意的時間都被吃掉了。"
+      },
+      {
+        "label": "外國客人",
+        "value": "只有附近熟客",
+        "body": "沒人能用外語宣傳，外國客人就這樣走過去了。"
+      }
+    ],
+    "stepsEyebrow": "運作方式",
+    "stepsTitle": "從腳本到訂單電話，一站完成",
+    "optional": "選用",
+    "steps": [
+      {
+        "title": "腳本",
+        "body": "只要填寫商品和價格，AI 就會寫出含分段台詞與畫面指示的宣傳腳本。"
+      },
+      {
+        "title": "影片",
+        "body": "Lite 用手機照腳本拍好上傳；Premium 不用拍攝，AI 幫你做宣傳影片。"
+      },
+      {
+        "title": "短影音",
+        "body": "AI 挑出 3 個「讓人想買的瞬間」剪好，並用客人國家的語言加上吸睛標語和字幕。"
+      },
+      {
+        "title": "電話接聽",
+        "body": "填好常見問題的答案，就會拿到店家專屬的 070 號碼。電話由 AI 銷售員「Tije」接聽。"
+      },
+      {
+        "title": "加上 QR 和號碼",
+        "body": "在長影片和短影音中加上商品網站 QR 和電話訂購號碼。"
+      },
+      {
+        "title": "SNS 發布",
+        "body": "一次發到已連結的 Instagram、YouTube、TikTok，說明文字也會附上商品連結。"
+      }
+    ],
+    "edgesEyebrow": "我們的不同",
+    "edgesTitle": "不只是幫你剪片而已",
+    "edges": [
+      {
+        "title": "會說明為什麼選這一幕的 AI",
+        "body": "不給分數，而是告訴你理由。像是「起司和價格同時出現，最能激起購買慾的畫面」，讓老闆看得懂、選得放心。"
+      },
+      {
+        "title": "一次做好客人語言的吸睛標語",
+        "body": "從美國、日本、中國、台灣、越南、泰國、韓國中選擇國家，同一個畫面一起產生各語言文案，觀光客也能馬上看懂。"
+      },
+      {
+        "title": "不方便拍攝，就讓 AI 代勞",
+        "body": "Premium 只要選範本、上傳照片就好。用你的臉做成虛擬分身、選喜歡的 AI 角色，或只用商品，照腳本做出宣傳影片。"
+      },
+      {
+        "title": "撥打短影音上的號碼，就由 AI 銷售員「Tije」接聽",
+        "body": "客人看完影片撥打短影音上的號碼，Tije 會用客人的語言接單，還會傳送訂單確認簡訊。老闆專心做生意就好。"
+      }
+    ],
+    "resultEyebrow": "成果範例",
+    "resultTitle": "AI 從「{product}」直播中挑出的短影音",
+    "resultNote": "這是直接用約 1 分 40 秒的真實範例直播跑出的結果。",
+    "whyLabel": "AI 選擇的理由",
+    "resultCta": "親自看看從腳本到短影音",
+    "pricingEyebrow": "方案價格",
+    "pricingTitle": "自己拍選 Lite，不想拍選 Premium",
+    "pricingNote": "小店家行銷代操每月約 ₩300,000~₩1,800,000（依公開報價）。Premium 也只要每月 ₩1,000,000 代操費用的約五分之一。",
+    "recommended": "推薦",
+    "plans": [
+      {
+        "tagline": "給自己拍攝的老闆",
+        "price": "每月 $99",
+        "priceNote": "韓國：每月 ₩99,000",
+        "cta": "用我的影片試試",
+        "items": [
+          "AI 腳本 + 自拍影片轉短影音 每月 4 支",
+          "7 種語言的吸睛標語、字幕、主題標籤",
+          "在影片中加上 QR、商品網站、電話號碼",
+          "直接發布到 Instagram、YouTube、TikTok",
+          "店家專屬 070 號碼 + AI 銷售員通話 100 分鐘"
+        ]
+      },
+      {
+        "tagline": "不用拍攝，AI 幫你做",
+        "price": "每月 $199",
+        "priceNote": "韓國：每月 ₩199,000",
+        "cta": "試做 AI 宣傳影片",
+        "items": [
+          "Lite 全部功能",
+          "AI 宣傳影片每月 2 支（我的臉虛擬分身、AI 角色、純商品）",
+          "短影音轉換每月 12 支",
+          "AI 銷售員「Tije」多語通話 300 分鐘",
+          "訂單確認簡訊"
+        ]
+      }
+    ],
+    "pricingFoot": "QR、SNS 發布、電話接聽兩種方案都有，需要什麼就開什麼。超過內含時數的通話，每分鐘 ₩300（海外 $0.25）。",
+    "faqEyebrow": "常見問題",
+    "faqTitle": "老闆們最常問的問題",
+    "faqs": [
+      {
+        "q": "完全不會剪片也可以嗎？",
+        "a": "可以。只要上傳照腳本拍的影片，AI 就會聽打、挑選畫面，連文案都幫你加好，不需要任何剪輯軟體。"
+      },
+      {
+        "q": "不會外語，也能接待外國客人嗎？",
+        "a": "短影音的吸睛標語和字幕由 AI 用客人國家的語言撰寫，電話訂單則由 AI 銷售員 Tije 用客人的語言接聽。老闆用自己熟悉的語言確認就好。"
+      },
+      {
+        "q": "支援哪些語言？",
+        "a": "韓文、英文、日文、中文（簡體、繁體）、越南文、泰文。可為美國、韓國、日本、中國、台灣、越南、泰國的客人製作文案，本網站介面也提供同樣 7 種語言。"
+      },
+      {
+        "q": "拍攝讓我很有壓力怎麼辦？",
+        "a": "請用 Premium。選好範本、上傳商品照片，AI 就會照腳本做出宣傳影片。想用自己的臉，只要一起上傳臉部照片和一段短影片即可。"
+      },
+      {
+        "q": "用我的臉做的 AI 影片，沒問題嗎？",
+        "a": "只會用本人同意的照片和影片製作，完成的影片會標示「AI 生成」。不想露臉的話，選 AI 角色或純商品範本就好。"
+      },
+      {
+        "q": "電話接聽要怎麼開始？",
+        "a": "填好客人常問的問題和答案（AI 會幫你寫草稿），就會拿到店家專屬的 070 號碼。把號碼放進影片，電話就由 AI 銷售員 Tije 接聽。"
+      },
+      {
+        "q": "會自動發布到 Instagram、YouTube 嗎？",
+        "a": "連結帳號後，就能一次發到 Instagram、YouTube、TikTok。Instagram 說明文字中的連結無法點擊，所以會用影片中的 QR 和電話號碼引導客人。"
+      },
+      {
+        "q": "有綁約嗎？",
+        "a": "沒有。按月使用，隨時都能取消。付款前，先用範例和自己的商品試試看吧。"
+      }
+    ],
+    "closingLine1": "自己拍也好，不拍也行。",
+    "closingLine2": "宣傳就交給 AI 吧。",
+    "team": "Tragatize 團隊"
+  },
+  "studio": {
+    "examples": [
+      {
+        "product": "手工藥果禮盒 12 入，₩29,000",
+        "store": "江南站附近的傳統甜點店",
+        "audience": "來韓國旅遊的美國、日本 20~30 歲客人"
+      },
+      {
+        "product": "韓服租借 2 小時 + 拍照，₩35,000",
+        "store": "景福宮前的韓服租借店",
+        "audience": "來首爾旅遊的東南亞、中國遊客"
+      },
+      {
+        "product": "自家烘焙咖啡豆 200g，₩18,000",
+        "store": "聖水洞烘豆咖啡廳",
+        "audience": "韓國 20~30 歲居家咖啡族"
+      }
+    ],
+    "demoSteps": {
+      "lite": [
+        "正在寫直播腳本",
+        "正在聽打語音",
+        "正在分析畫面",
+        "正在剪輯並推薦短影音",
+        "正在寫字幕和說明文字"
+      ],
+      "premium": [
+        "正在寫宣傳腳本",
+        "正在製作 AI 宣傳影片",
+        "正在剪輯並推薦短影音",
+        "正在寫字幕和說明文字"
+      ]
+    },
+    "stepper": [
+      "腳本",
+      "影片",
+      "短影音",
+      "電話",
+      "裝飾",
+      "SNS"
+    ],
+    "title": "一個商品，從宣傳到接單",
+    "subtitle": "取得腳本 → 準備影片（自己拍・AI 生成）→ AI 短影音 → 電話接聽 → 加上 QR 和號碼 → 發到 SNS",
+    "samplesLabel": "直接看範例",
+    "sampleSelected": "已選擇",
+    "samplePlay": "▶ 點擊觀看",
+    "sampleSoon": "範例準備中",
+    "steps": {
+      "script": "取得腳本",
+      "video": "準備影片",
+      "shorts": "AI 挑選的短影音候選",
+      "phone": "電話接聽（選用）",
+      "deco": "在影片加上 QR 和電話號碼（選用）",
+      "sns": "發布到 SNS（選用）"
+    },
+    "examplesLabel": "範例：",
+    "productLabel": "要賣的商品",
+    "productPlaceholder": "例：手工藥果禮盒 12 入，₩29,000",
+    "storeLabel": "店家（選填）",
+    "storePlaceholder": "例：江南站附近的甜點店",
+    "audienceLabel": "目標客群（選填）",
+    "audiencePlaceholder": "例：來韓國旅遊的美國、日本 20~30 歲客人",
+    "targetsLabel": "客人國家（可複選）",
+    "targetsHint": "會用所選國家的語言製作腳本台詞，以及短影音的吸睛標語和字幕。",
+    "scriptBusy": "正在寫腳本…（20~30 秒）",
+    "scriptCta": "產生腳本",
+    "viewer": "觀眾：{target}",
+    "minutes": "· {n} 分鐘",
+    "screen": "畫面：{show}",
+    "tabLite": "自己拍好上傳",
+    "tabPremium": "讓 AI 幫我做",
+    "dropHere": "放在這裡",
+    "dropPrompt": "將拍好的影片拖曳到這裡，或點擊選擇",
+    "dropHint": "mp4・mov・m4a，最大 500MB · 建議 2 分鐘左右的直式影片",
+    "uploading": "上傳中… {p}%",
+    "uploaded": "已上傳",
+    "transcribing": "正在聽打語音（ElevenLabs）",
+    "picking": "正在挑選讓人想買的瞬間（Claude）",
+    "elapsed": "已經過 {t} · 通常需 30 秒~2 分鐘",
+    "waitSample": "等待時先看範例成果",
+    "premiumLead": "不用拍攝，AI 照腳本幫你做宣傳影片。",
+    "premiumBadge": "示範用 · 結果為預先製作的 AI 影片",
+    "aiDone": "完成的 AI 宣傳影片",
+    "aiSampleBadge": "「{title}」範例",
+    "shortsEmpty": "影片準備好後，這裡會出現 3 個短影音候選。",
+    "sampleResult": "範例成果 · 實際 AI 執行結果（預先運算）",
+    "shortsLang": "短影音語言",
+    "why": "為什麼選這一幕？",
+    "copied": "已複製",
+    "copy": "複製說明文字",
+    "seconds": "{n} 秒",
+    "failed": "失敗了，請再試一次。",
+    "mock": "示範用",
+    "qrLabel": "查看商品",
+    "templatesLabel": "宣傳影片範本",
+    "templates": {
+      "avatar": {
+        "title": "我的臉虛擬分身",
+        "body": "用老闆照片和影片做成的 AI 分身，照腳本介紹商品。",
+        "need": "正臉照片 3 張 + 10 秒以上說話影片 1 支、商品照片"
+      },
+      "persona": {
+        "title": "AI 角色",
+        "body": "選擇喜歡的主持人或角色，照腳本介紹商品。",
+        "need": "商品照片或影片 3~5 個（主持人使用所選角色）"
+      },
+      "product": {
+        "title": "純商品",
+        "body": "不需要真人，用商品照片和影片做出廣告影片。",
+        "need": "商品照片或影片 3~5 個"
+      }
+    },
+    "personaLabel": "角色",
+    "personas": [
+      "溫馨的家庭故事",
+      "親切的 20 多歲創作者",
+      "沉穩的購物台主持人",
+      "外國旅遊 YouTuber"
+    ],
+    "aiSteps": [
+      "分析上傳的素材",
+      "依腳本安排畫面",
+      "生成畫面影片",
+      "加上配音和字幕",
+      "剪成短影音"
+    ],
+    "materialsLabel": "上傳讓 AI 學習的素材",
+    "pickFiles": "選擇照片或影片",
+    "notUploaded": "這是示範，檔案不會上傳到伺服器。",
+    "consent": "我同意用我的臉和聲音製作 AI 影片。製作的影片會標示「AI 生成」。",
+    "scriptFirst": "在第 1 步取得腳本後，就會照腳本製作影片。",
+    "aiBusy": "正在製作 AI 宣傳影片…",
+    "aiAgain": "重新製作",
+    "aiCta": "製作 AI 宣傳影片",
+    "qaDraft": {
+      "priceQ": "價格多少？",
+      "priceA": "{name} 的價格是 {price}。",
+      "productFallback": "商品",
+      "orderQ": "要怎麼訂購？",
+      "orderA": "告訴我們您想要的商品，我們會傳送訂單確認簡訊給您。地址請直接回覆簡訊。",
+      "hoursQ": "營業時間和地點是？"
+    },
+    "phoneToggle": "開啟 AI 銷售員「Tije」電話接聽",
+    "phoneOff": "開啟後，填好客人常問問題的答案，就能拿到店家專屬的 070 號碼。看完短影音打來的電話由 AI 接聽，連訂單都幫你處理。",
+    "phoneLangs": "用客人的語言接聽",
+    "qaLabel": "問答清單（AI 會照這個回答）",
+    "drafting": "正在寫草稿…",
+    "draftCta": "✨ 用 AI 產生草稿",
+    "qPlaceholder": "客人的問題",
+    "aPlaceholder": "請輸入回答",
+    "addQ": "+ 新增問題",
+    "myNumber": "我的店家電話",
+    "numberNote": "示範中顯示的是展示號碼。實際撥打會由 AI Tije 接聽。",
+    "callTry": "撥打看看 →",
+    "qaCount": "用 {n} 個問題建立 AI 銷售員。",
+    "qaEmpty": "請至少填寫一組問答。",
+    "issuing": "正在取得號碼…",
+    "issueCta": "取得 070 號碼",
+    "qrToggle": "加上 QR 碼（我的商品網站）",
+    "siteLabel": "商品網站網址",
+    "sitePlaceholder": "https://myshop.com",
+    "phoneOverlayToggle": "加上電話訂購號碼",
+    "phoneFirst": "在第 4 步取得號碼後即可開啟。",
+    "targetVideos": "要加入的影片",
+    "shortsTarget": "3 支短影音",
+    "longTarget": "長影片（原始影片）",
+    "decoNote": "會立即套用到上方短影音卡片和旁邊的長影片預覽。",
+    "longPreview": "長影片預覽",
+    "longEmpty": "影片準備好後會顯示在這裡",
+    "channels": {
+      "instagram": {
+        "label": "Instagram Reels",
+        "short": "Instagram"
+      },
+      "youtube": {
+        "label": "YouTube Shorts・長影片",
+        "short": "YouTube"
+      },
+      "tiktok": {
+        "label": "TikTok",
+        "short": "TikTok"
+      }
+    },
+    "snsEmpty": "短影音完成後，就能直接發到已連結的頻道。",
+    "channelsLabel": "連結頻道",
+    "connected": "✓ 已連結 {handle}",
+    "connecting": "連結中…",
+    "connect": "點擊連結",
+    "postItems": "要發布的影片",
+    "shortItem": "短影音 {i} · {hook}",
+    "longItem": "長影片（原始影片）· YouTube",
+    "linkInCaption": "在說明文字加上商品網站連結",
+    "linkNeedsSite": " （在第 5 步填入網址後即可開啟）",
+    "igNote": "Instagram 說明文字中的連結無法點擊，所以會改放「請見個人檔案連結」。這就是影片中的 QR 和電話號碼很重要的原因。",
+    "connectFirst": "請先連結頻道",
+    "postCta": "發布 {n} 則",
+    "posted": "✓ 已發布",
+    "posting": "◉ 發布中",
+    "waiting": "○ 等待中",
+    "notReallyPosted": "並未實際發布到帳號上。"
+  }
+}
