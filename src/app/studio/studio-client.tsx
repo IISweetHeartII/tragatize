@@ -69,7 +69,7 @@ function Stepper({ states }: { states: StepState[] }) {
         {labels.map((label, i) => {
           const s = states[i];
           return (
-            <li key={label} className="flex-1">
+            <li key={label} className={s === "active" ? "flex-[2] sm:flex-1" : "flex-1"}>
               <a href={`#${ids[i]}`} className="flex min-h-11 items-center gap-2 rounded-lg px-1 text-sm">
                 <span
                   className={
@@ -83,7 +83,7 @@ function Stepper({ states }: { states: StepState[] }) {
                 >
                   {s === "done" ? "✓" : i + 1}
                 </span>
-                <span className={(s === "active" ? "inline" : "hidden sm:inline") + (s === "todo" ? " text-muted" : "")}>
+                <span className={"whitespace-nowrap " + (s === "active" ? "inline" : "hidden sm:inline") + (s === "todo" ? " text-muted" : "")}>
                   {label}
                 </span>
               </a>
