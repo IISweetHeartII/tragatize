@@ -71,16 +71,19 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
         </a>
       </section>
 
-      <section className="pb-12 sm:pb-16">
+      <section className="pb-12 sm:pb-16 lg:-mx-16">
         <p className="mb-3 font-mono text-xs text-accent">{d.demoLabel}</p>
-        <video
-          src={DEMO_VIDEO.src}
-          poster={DEMO_VIDEO.poster}
-          controls
-          playsInline
-          preload="none"
-          className="aspect-video w-full rounded-xl border border-line bg-foreground"
-        />
+        {/* 영상 바탕색(#faf8f4)을 그대로 써서 페이지에 스며들게, 데스크톱에서는 본문보다 넓게 보여 준다. */}
+        <div className="overflow-hidden rounded-2xl bg-[#faf8f4] shadow-[0_1px_2px_rgba(22,19,15,0.06),0_16px_40px_-16px_rgba(22,19,15,0.22)] ring-1 ring-line">
+          <video
+            src={DEMO_VIDEO.src}
+            poster={DEMO_VIDEO.poster}
+            controls
+            playsInline
+            preload="none"
+            className="block aspect-video w-full"
+          />
+        </div>
       </section>
 
       <section className="border-t border-line py-12 sm:py-16">
