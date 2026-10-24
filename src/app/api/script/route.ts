@@ -1,4 +1,5 @@
 import { ask } from "@/lib/ai";
+import { LANGUAGE_FOR_AI, parseLanguages } from "@/lib/i18n";
 import { extractJson } from "@/lib/json";
 import { allow, clientIp } from "@/lib/rate-limit";
 import type { LiveScript } from "@/lib/types";
@@ -10,21 +11,25 @@ const SYSTEM = `당신은 소상공인 라이브 커머스 PD 입니다. 사장�
 반드시 JSON 하나만 출력하세요. 형식:
 {"title":"방송 제목","target":"주 시청자(국가·연령)","sections":[{"name":"구간 이름","minutes":숫자,"say":"사장님이 그대로 읽을 대사(2~4문장)","show":"화면에 보여줄 것·카메라 동작"}],"tips":["짧은 팁"]}
 구간은 5~6개: 오프닝 후킹 → 상품 소개 → 직접 시연/시식 → 가격·혜택 → 질문 답변 → 마무리 콜투액션.
-하이라이트 숏폼으로 잘리기 좋게 각 구간에 15~30초짜리 «한 문장 후킹» 이 들어가게 쓰세요. 과장 광고·효능 단정은 쓰지 마세요.`;
+하이라이트 숏폼으로 잘리기 좋게 각 구간에 15~30초짜리 «한 문장 후킹» 이 들어가게 쓰세요. 과장 광고·효능 단정은 쓰지 마세요.
+언어: title·target·show·tips 와 대사(say)의 기본 문장은 «사장님 언어» 로 씁니다. 대사에는 «손님 언어» 중 사장님 언어가 아닌 언어로 짧은 한 문장씩을 섞어, 그 나라 손님에게 바로 말을 거세요(손님 언어가 많으면 구간마다 돌아가며 1~2개).`;
 
 export async function POST(req: Request): Promise<Response> {
   if (!allow(`script:${clientIp(req)}`, 10, 60_000)) {
     return Response.json({ error: "잠시 후 다시 시도해 주세요." }, { status: 429 });
   }
   const body = (await req.json().catch(() => null)) as
-    | { product?: string; store?: string; audience?: string }
+    | { product?: string; store?: string; audience?: string; lang?: unknown; targets?: unknown }
     | null;
   const product = (body?.product ?? "").trim().slice(0, 500);
   if (!product) return Response.json({ error: "팔 상품을 적어 주세요." }, { status: 400 });
+  const { lang, targets } = parseLanguages(body?.lang, body?.targets);
   const prompt = [
     `상품: ${product}`,
     `가게: ${(body?.store ?? "").trim().slice(0, 300) || "(미입력)"}`,
     `원하는 손님: ${(body?.audience ?? "").trim().slice(0, 300) || "(미입력)"}`,
+    `사장님 언어: ${LANGUAGE_FOR_AI[lang]}`,
+    `손님 언어: ${targets.map((l) => LANGUAGE_FOR_AI[l]).join(", ")}`,
   ].join("\n");
   try {
     let script: LiveScript;
