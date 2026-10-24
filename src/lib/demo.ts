@@ -3,6 +3,7 @@
 import type { Highlight, LiveScript } from "@/lib/types";
 
 export type Plan = "lite" | "premium";
+export type QA = { q: string; a: string };
 
 export type DemoPreset = {
   id: string;
@@ -13,6 +14,7 @@ export type DemoPreset = {
   videoUrl: string;
   script: LiveScript | null;
   highlights: Highlight[];
+  qa: QA[]; // 전화 응대 단계에 미리 채우는 질문·답변
 };
 
 const BURGER_PRODUCT = "크라이 치즈버거, 5천 원";
@@ -336,11 +338,26 @@ const WITHBY_HIGHLIGHTS: Highlight[] = [
 export const DEMO_PRESETS: DemoPreset[] = [
   {
     id: "food", plan: "lite", category: "Lite · 직접 촬영", title: "강남 수제버거 사장님", product: BURGER_PRODUCT, videoUrl: BURGER_VIDEO_URL, script: BURGER_SCRIPT, highlights: BURGER_HIGHLIGHTS,
+    qa: [
+      { q: "가격이 얼마예요?", a: "크라이 치즈버거는 한 개 5천 원이에요." },
+      { q: "어디에 있어요?", a: "강남역 근처예요. 주문 확인 문자로 지도를 보내 드려요." },
+      { q: "포장도 돼요?", a: "네, 포장도 돼요. 전화로 주문하고 찾으러 오시면 돼요." },
+    ],
   },
   {
     id: "beauty", plan: "lite", category: "Lite · 직접 촬영", title: "커플 크림 미스트 라이브", product: "유아이큐 바이옴 베리어 크림 미스트 1+1, 5천 원", videoUrl: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/KakaoTalk_Video_2026-10-24-12-24-36-MrYEKMnbsd7sGQlbLHt07RCWo2KVwM.mp4", script: UIQ_SCRIPT, highlights: UIQ_HIGHLIGHTS,
+    qa: [
+      { q: "1+1 맞아요?", a: "네, 오늘 라이브 특가로 한 개 가격에 두 개예요." },
+      { q: "남자도 써도 돼요?", a: "성별 상관없이 쓰셔도 돼요. 예민하면 팔 안쪽에 먼저 테스트해 주세요." },
+      { q: "해외 배송도 돼요?", a: "주문 확인 문자에 주소를 보내 주시면 가능한 방법을 안내해 드려요." },
+    ],
   },
   {
     id: "book", plan: "premium", category: "Premium · AI 홍보 영상", title: "withby 부모님 자서전 책", product: "부모님 자서전 책, 8만 8천 원", videoUrl: "https://sogcl1qpjpnao31d.public.blob.vercel-storage.com/live/withby-promo-3Zz8oOpLydezdyUE3cwLijX2YDNAOU.mp4", script: WITHBY_SCRIPT, highlights: WITHBY_HIGHLIGHTS,
+    qa: [
+      { q: "부모님이 무엇을 하시면 돼요?", a: "AI 이야기 친구가 정해진 시간에 전화를 드리면 편하게 이야기만 하시면 돼요." },
+      { q: "책은 얼마나 걸려요?", a: "이야기가 다 모이면 글과 그림으로 엮어 책으로 보내 드려요." },
+      { q: "가격이 얼마예요?", a: "부모님 자서전 책은 8만 8천 원이에요." },
+    ],
   },
 ];
