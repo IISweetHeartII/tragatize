@@ -1,33 +1,72 @@
 import { createMcpHandler } from "mcp-handler";
 import { z } from "zod";
 import { activeCaller, sendSms } from "@/lib/clawops";
-import { PRODUCTS, findProduct, won } from "@/lib/products";
+import { PRODUCTS, findProduct, won, type Product } from "@/lib/products";
 
 // ClawOps 전화 에이전트(AI 티제)가 통화 중에 부르는 도구. Bearer MCP_AUTH_TOKEN 으로만 연다.
 const PHONE = /^01[016789]\d{7,8}$/;
 
-// 주문 확인 문자 — 손님과 통화한 언어로(미국·한국·일본·중국·대만·베트남·태국). "zh" 는 예전 지시문 호환용(간체).
+// 살 곳 안내 문자 — 손님과 통화한 언어로(미국·한국·일본·중국·대만·베트남·태국). "zh" 는 예전 지시문 호환용(간체).
+// 주문·결제·주소는 받지 않는다. 상품 이름·가격과 살 수 있는 곳(where)만 보낸다.
 const SMS_LANGS = ["ko", "en", "ja", "zh", "zh-CN", "zh-TW", "vi", "th"] as const;
 type SmsLang = (typeof SMS_LANGS)[number];
 
-function orderSms(lang: SmsLang, p: { name: string; nameEn: string; price: number }): string {
+function infoSms(lang: SmsLang, p: Product): string {
   const krw = p.price.toLocaleString("en-US");
   switch (lang) {
     case "ko":
-      return `[트라가티제] ${p.name} ${won(p.price)} 주문 확인 문자예요. 받으실 주소를 이 문자에 답장으로 보내 주세요. 감사합니다!`;
+      return `[트라가티제] ${p.name} ${won(p.price)} — ${p.where.ko} 문의해 주셔서 감사합니다!`;
     case "ja":
-      return `[Tragatize] ご注文確認：${p.nameEn}（₩${krw}）。お届け先の住所をこのメッセージに返信してください。ありがとうございます！`;
+      return `[Tragatize] ${p.nameEn}（₩${krw}）— ${p.where.ja} お問い合わせありがとうございます！`;
     case "zh":
     case "zh-CN":
-      return `[Tragatize] 订单确认：${p.nameEn}（₩${krw}）。请直接回复本短信告知收货地址。谢谢！`;
+      return `[Tragatize] ${p.nameEn}（₩${krw}）— ${p.where["zh-CN"]} 感谢您的来电咨询！`;
     case "zh-TW":
-      return `[Tragatize] 訂單確認：${p.nameEn}（₩${krw}）。請直接回覆本簡訊告知收件地址。謝謝！`;
+      return `[Tragatize] ${p.nameEn}（₩${krw}）— ${p.where["zh-TW"]} 感謝您的來電詢問！`;
     case "vi":
-      return `[Tragatize] Xác nhận đơn hàng: ${p.nameEn} (₩${krw}). Vui lòng trả lời tin nhắn này kèm địa chỉ nhận hàng. Cảm ơn bạn!`;
+      return `[Tragatize] ${p.nameEn} (₩${krw}) — ${p.where.vi} Cảm ơn bạn đã gọi hỏi!`;
     case "th":
-      return `[Tragatize] ยืนยันคำสั่งซื้อ: ${p.nameEn} (₩${krw}) กรุณาตอบกลับข้อความนี้พร้อมที่อยู่สำหรับจัดส่ง ขอบคุณ!`;
+      return `[Tragatize] ${p.nameEn} (₩${krw}) — ${p.where.th} ขอบคุณที่โทรมาสอบถาม!`;
     default:
-      return `[Tragatize] Order: ${p.nameEn} (KRW ${krw}). Please reply to this message with your delivery address. Thank you!`;
+      return `[Tragatize] ${p.nameEn} (₩${krw}) — ${p.where.en} Thanks for calling!`;
+  }
+}
+
+const smsInput = z.object({
+  product: z.string().describe("상품 id 또는 이름"),
+  language: z.enum(SMS_LANGS).default("ko").describe("손님과 통화한 언어(ko·en·ja·zh-CN·zh-TW·vi·th)"),
+  phone: z.string().optional().describe("손님이 다른 번호로 받겠다고 할 때만 그 번호(숫자만)"),
+});
+
+async function sendInfo({ product, language, phone }: z.infer<typeof smsInput>) {
+  let to = (phone ?? "").replace(/\D/g, "");
+  if (!to) {
+    try {
+      to = ((await activeCaller()) ?? "").replace(/\D/g, "");
+    } catch (err) {
+      console.error("caller lookup failed", err);
+    }
+  }
+  if (!PHONE.test(to)) {
+    return {
+      content: [{ type: "text" as const, text: "지금 거신 번호를 확인하지 못했어요. 손님에게 문자 받을 휴대폰 번호를 물어 phone 에 넣어 다시 부르세요." }],
+      isError: true,
+    };
+  }
+  const p = findProduct(product);
+  if (!p) {
+    return { content: [{ type: "text" as const, text: `없는 상품이에요. 가능한 상품: ${PRODUCTS.map((x) => x.name).join(", ")}` }], isError: true };
+  }
+  try {
+    await sendSms(to, infoSms(language, p), `info-${to}-${p.id}-${new Date().toISOString().slice(0, 13)}`);
+    return {
+      content: [
+        { type: "text" as const, text: `문자를 보냈어요(${p.name}, 받는 번호 끝자리 ${to.slice(-4)}). 손님에게 «끝자리 ${to.slice(-4)} 번호로 살 수 있는 곳을 문자로 보내 드렸다» 고 말하세요. 주문·주소는 받지 않아요.` },
+      ],
+    };
+  } catch (err) {
+    console.error("sms failed", err);
+    return { content: [{ type: "text" as const, text: "문자 발송에 실패했어요. 손님에게 사과하고 살 수 있는 곳을 말로 다시 알려 주세요." }], isError: true };
   }
 }
 
@@ -36,7 +75,7 @@ const handler = createMcpHandler((server) => {
     "list_products",
     {
       title: "상품 목록",
-      description: "판매 중인 상품 목록(이름·가격·한 줄 소개·추천 여부)을 돌려준다. 손님이 상품을 말하면 먼저 이걸로 확인한다.",
+      description: "상품 목록(이름·가격·한 줄 소개·추천 여부·살 수 있는 곳)을 돌려준다. 손님이 상품을 말하면 먼저 이걸로 확인한다.",
       inputSchema: z.object({}),
     },
     async () => ({
@@ -44,7 +83,7 @@ const handler = createMcpHandler((server) => {
         {
           type: "text",
           text: JSON.stringify(
-            PRODUCTS.map((p) => ({ id: p.id, name: p.name, nameEn: p.nameEn, price: won(p.price), pitch: p.pitch, featured: !!p.featured })),
+            PRODUCTS.map((p) => ({ id: p.id, name: p.name, nameEn: p.nameEn, price: won(p.price), pitch: p.pitch, featured: !!p.featured, where: p.where.ko, whereEn: p.where.en })),
           ),
         },
       ],
@@ -52,49 +91,25 @@ const handler = createMcpHandler((server) => {
   );
 
   server.registerTool(
+    "send_info_sms",
+    {
+      title: "살 곳 안내 문자 보내기",
+      description:
+        "손님이 사고 싶다고 하거나 어디서 사는지·위치를 물으면, 동의를 받고 부른다. 상품 이름·가격과 살 수 있는 곳(구매 링크·매장 위치)을 문자로 보낸다. 주문·결제·주소는 받지 않는다. phone 을 비우면 지금 전화를 건 번호로 보낸다(번호를 묻지 않는다). 결과에 받는 번호 끝자리 4개가 온다.",
+      inputSchema: smsInput,
+    },
+    sendInfo,
+  );
+
+  // 예전 이름(ClawOps 에이전트 설정을 바꾸는 동안만 유지). 동작은 send_info_sms 와 같다.
+  server.registerTool(
     "send_order_sms",
     {
-      title: "주문 확인 문자 보내기",
-      description:
-        "손님이 상품을 확정하면 부른다. phone 을 비우면 지금 전화를 건 번호로 자동 발송한다(손님에게 번호를 묻지 않는다). 결과에 받는 번호 뒷자리 4개가 온다.",
-      inputSchema: z.object({
-        product: z.string().describe("상품 id 또는 이름"),
-        language: z.enum(SMS_LANGS).default("ko").describe("손님과 통화한 언어(ko·en·ja·zh-CN·zh-TW·vi·th)"),
-        phone: z.string().optional().describe("손님이 다른 번호로 받겠다고 할 때만 그 번호(숫자만)"),
-      }),
+      title: "살 곳 안내 문자 보내기(예전 이름)",
+      description: "send_info_sms 와 같다. 새 통화에서는 send_info_sms 를 쓴다.",
+      inputSchema: smsInput,
     },
-    async ({ product, language, phone }) => {
-      let to = (phone ?? "").replace(/\D/g, "");
-      if (!to) {
-        try {
-          to = ((await activeCaller()) ?? "").replace(/\D/g, "");
-        } catch (err) {
-          console.error("caller lookup failed", err);
-        }
-      }
-      if (!PHONE.test(to)) {
-        return {
-          content: [{ type: "text", text: "지금 거신 번호를 확인하지 못했어요. 손님에게 문자 받을 휴대폰 번호를 물어 phone 에 넣어 다시 부르세요." }],
-          isError: true,
-        };
-      }
-      const p = findProduct(product);
-      if (!p) {
-        return { content: [{ type: "text", text: `없는 상품이에요. 가능한 상품: ${PRODUCTS.map((x) => x.name).join(", ")}` }], isError: true };
-      }
-      const body = orderSms(language, p);
-      try {
-        await sendSms(to, body, `order-${to}-${p.id}-${new Date().toISOString().slice(0, 13)}`);
-        return {
-          content: [
-            { type: "text", text: `문자를 보냈어요(${p.name}, 받는 번호 끝자리 ${to.slice(-4)}). 손님에게 «끝자리 ${to.slice(-4)} 번호로 보냈다» 고 말하고 주소를 문자로 답장해 달라고 안내하세요.` },
-          ],
-        };
-      } catch (err) {
-        console.error("sms failed", err);
-        return { content: [{ type: "text", text: "문자 발송에 실패했어요. 손님에게 사과하고 잠시 뒤 다시 시도한다고 안내하세요." }], isError: true };
-      }
-    },
+    sendInfo,
   );
 });
 
