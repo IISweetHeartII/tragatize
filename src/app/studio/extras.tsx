@@ -55,15 +55,14 @@ export function VideoOverlays({ phone, qrUrl, belowHook = false }: { phone: stri
   return (
     <>
       {qrUrl && (
-        <span className={"absolute right-3 rounded-lg bg-white p-1 shadow " + (belowHook ? "top-[5.5rem]" : "top-3")}>
-          <QrImage value={qrUrl} className="size-16" />
-          <span className="block text-center text-[10px] font-medium text-black">제품 보기</span>
+        <span className={"absolute right-2 rounded-md bg-white p-0.5 shadow " + (belowHook ? "top-[5.5rem]" : "top-2")}>
+          <QrImage value={qrUrl} className="size-10" />
+          <span className="block text-center text-[8px] font-medium leading-tight text-black">제품 보기</span>
         </span>
       )}
       {phone && (
-        <span className="absolute inset-x-3 bottom-12 rounded-lg bg-accent px-3 py-2 text-white">
-          <span className="block text-xs opacity-90">📞 전화 주문 · Call to order</span>
-          <span className="block font-mono text-base font-semibold">{phone}</span>
+        <span className="absolute bottom-10 left-2 rounded-md bg-accent/90 px-2 py-0.5 font-mono text-[11px] font-semibold text-white">
+          📞 {phone}
         </span>
       )}
     </>
