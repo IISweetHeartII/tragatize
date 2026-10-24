@@ -8,7 +8,6 @@ import type { QA } from "@/lib/demo";
 import type { StudioText } from "@/lib/dict";
 import { fill } from "@/lib/i18n";
 import { ORDER_PHONE } from "@/lib/site";
-import type { Highlight } from "@/lib/types";
 
 export type Deco = { qr: boolean; url: string; phone: boolean; long: boolean; short: boolean };
 export const NO_DECO: Deco = { qr: false, url: "", phone: false, long: true, short: true };
@@ -381,7 +380,8 @@ const CHANNELS = [
 type ChannelId = (typeof CHANNELS)[number]["id"];
 type ConnState = "off" | "connecting" | "on";
 
-export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlight[]; siteUrl: string | null; onPosted: () => void }) {
+// hooks: 숏폼 후보의 후킹(사장님 언어) — 올릴 영상 목록 이름으로 쓴다.
+export function SnsStep({ hooks, siteUrl, onPosted }: { hooks: string[]; siteUrl: string | null; onPosted: () => void }) {
   const t = useT();
   const [conn, setConn] = useState<Record<ChannelId, ConnState>>({ instagram: "off", youtube: "off", tiktok: "off" });
   const [picked, setPicked] = useState<boolean[]>([true, true, true, false]); // 숏폼 3개 + 롱폼
@@ -391,7 +391,7 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
-  const items = [...highlights.map((h, i) => fill(t.shortItem, { i: i + 1, hook: h.hook })), t.longItem];
+  const items = [...hooks.map((hook, i) => fill(t.shortItem, { i: i + 1, hook })), t.longItem];
   const connected = CHANNELS.filter((c) => conn[c.id] === "on");
   const jobs = items
     .map((label, i) => ({ label, i }))
@@ -422,7 +422,7 @@ export function SnsStep({ highlights, siteUrl, onPosted }: { highlights: Highlig
     );
   }
 
-  if (highlights.length === 0) return <p className="text-muted">{t.snsEmpty}</p>;
+  if (hooks.length === 0) return <p className="text-muted">{t.snsEmpty}</p>;
 
   return (
     <div className="space-y-5">

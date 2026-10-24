@@ -572,7 +572,7 @@ export function StudioClient({ locale, t }: { locale: Locale; t: StudioText }) {
       </Step>
 
       <Step id="step-sns" n={6} title={t.steps.sns}>
-        <SnsStep key={videoUrl ?? "none"} highlights={highlights} siteUrl={siteUrl} onPosted={() => setPosted(true)} />
+        <SnsStep key={videoUrl ?? "none"} hooks={highlights.map((h) => highlightText(h, locale).hook)} siteUrl={siteUrl} onPosted={() => setPosted(true)} />
       </Step>
     </main>
     </TextProvider>
