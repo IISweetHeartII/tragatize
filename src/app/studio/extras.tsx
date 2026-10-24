@@ -178,6 +178,61 @@ export function PhoneStep({
   );
 }
 
+// ── 영상 꾸미기 ───────────────────────────────────────────────────────────
+export function DecoStep({ deco, onDeco, phone, videoUrl }: { deco: Deco; onDeco: (d: Deco) => void; phone: string | null; videoUrl: string | null }) {
+  const set = (patch: Partial<Deco>) => onDeco({ ...deco, ...patch });
+  const qrUrl = deco.qr && /^https?:\/\/\S+\.\S+/.test(deco.url) ? deco.url : null;
+  const showPhone = deco.phone && phone ? phone : null;
+  return (
+    <div className="grid gap-6 sm:grid-cols-[1fr_12rem]">
+      <div className="space-y-4">
+        <div>
+          <Toggle on={deco.qr} onChange={(v) => set({ qr: v })} label="QR 코드 넣기 (내 제품 사이트)" />
+          {deco.qr && (
+            <label className="block">
+              <span className="text-sm text-muted">제품 사이트 주소</span>
+              <input
+                value={deco.url}
+                onChange={(e) => set({ url: e.target.value })}
+                inputMode="url"
+                placeholder="https://smartstore.naver.com/내가게"
+                className={input}
+              />
+            </label>
+          )}
+        </div>
+        <div>
+          <Toggle on={deco.phone} onChange={(v) => set({ phone: v })} label="전화 주문 번호 넣기" disabled={!phone} />
+          {!phone && <p className="text-sm text-muted">4단계에서 번호를 받으면 켤 수 있어요.</p>}
+        </div>
+        <div>
+          <p className="text-sm text-muted">넣을 영상</p>
+          <div className="mt-1 flex gap-4">
+            {(["short", "long"] as const).map((k) => (
+              <label key={k} className="flex min-h-11 cursor-pointer items-center gap-2">
+                <input type="checkbox" className="size-4" checked={deco[k]} onChange={(e) => set({ [k]: e.target.checked })} />
+                {k === "short" ? "숏폼 3개" : "롱폼(원본 영상)"}
+              </label>
+            ))}
+          </div>
+        </div>
+        <p className="text-sm text-muted">위 숏폼 카드와 옆 롱폼 미리보기에 바로 반영돼요.</p>
+      </div>
+      <div>
+        <p className="mb-2 text-sm text-muted">롱폼 미리보기</p>
+        <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl bg-black">
+          {videoUrl ? (
+            <video src={`${videoUrl}#t=1`} muted playsInline preload="metadata" className="absolute inset-0 size-full object-cover" />
+          ) : (
+            <span className="absolute inset-0 flex items-center justify-center p-4 text-center text-sm text-white/70">영상을 준비하면 여기에 보여요</span>
+          )}
+          {deco.long && <VideoOverlays phone={showPhone} qrUrl={qrUrl} />}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function decoFor(target: "short" | "long", deco: Deco, phone: string | null): { phone: string | null; qrUrl: string | null } {
   if (!deco[target]) return { phone: null, qrUrl: null };
   return {
