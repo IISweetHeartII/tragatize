@@ -12,10 +12,10 @@ import th from "./th.json";
 export type Dict = typeof ko;
 export type StudioDict = Dict["studio"];
 
-const DICTS: Partial<Record<Locale, Dict>> = { ko, en, ja, "zh-CN": zhCN, "zh-TW": zhTW, vi, th };
+const DICTS: Record<Locale, Dict> = { ko, en, ja, "zh-CN": zhCN, "zh-TW": zhTW, vi, th };
 
 export function getDict(locale: Locale): Dict {
-  return DICTS[locale] ?? ko;
+  return DICTS[locale];
 }
 
 // 스튜디오(클라이언트)에 넘기는 부분만 모은다.
