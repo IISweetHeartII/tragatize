@@ -6,6 +6,7 @@ import { fill, highlightText, highlightWhy, localePath, type Locale } from "@/li
 import { ORDER_PHONE } from "@/lib/site";
 import { DemoVideos } from "@/components/demo-videos";
 import { LoopVideo } from "@/components/loop-video";
+import { WaitlistForm } from "@/components/waitlist-form";
 
 // 랜딩 본문. 문구는 사전(src/lib/dict/*.json)에서, 구조·링크·숫자는 여기서.
 // 디자인 참고: ploy.ai(lapa.ninja AI·Marketing) — 시네마틱 히어로, 압축 대문자 큰 제목, 흰 패널+세로 구분선, 다크 라운드 푸터.
@@ -347,6 +348,9 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
               >
                 {d.ctaTry}
               </Link>
+            </div>
+            <div className="mt-12">
+              <WaitlistForm locale={locale} />
             </div>
           </div>
           <footer className={wrap + " flex flex-col gap-4 border-t border-white/10 py-8 text-sm text-white/55 sm:flex-row sm:items-center sm:justify-between"}>
