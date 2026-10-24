@@ -1,0 +1,393 @@
+{
+  "meta": {
+    "title": "Tragatize — 从韩国走向世界",
+    "description": "只要一件商品，推广和接单全搞定。AI 脚本、AI 宣传视频、短视频、社媒发布、AI 电话接单，专为小商户打造的推广自动化工具。",
+    "studioTitle": "工作室",
+    "studioDescription": "拿到脚本，上传自己拍的视频或用 AI 生成，剪成短视频发到社媒，还能接电话订单。"
+  },
+  "countries": {
+    "ko": "韩国",
+    "en": "美国",
+    "ja": "日本",
+    "zh-CN": "中国",
+    "zh-TW": "台湾",
+    "vi": "越南",
+    "th": "泰国"
+  },
+  "planTags": {
+    "lite": "Lite · 自己拍摄",
+    "premium": "Premium · AI 宣传视频"
+  },
+  "samples": {
+    "food": {
+      "title": "江南手工汉堡店老板",
+      "product": "Cry 芝士汉堡，₩5,000"
+    },
+    "beauty": {
+      "title": "情侣面霜喷雾直播",
+      "product": "UIQ 微生态屏障面霜喷雾 买一送一，₩5,000"
+    },
+    "book": {
+      "title": "withby 父母自传书",
+      "product": "父母自传书，₩88,000"
+    }
+  },
+  "landing": {
+    "badge": "小商户短视频推广 · AI 宣传视频 · AI 电话接单",
+    "heroLine1": "只要一件商品，",
+    "heroLine2": "推广接单全搞定。",
+    "heroSub": "无论是自己拍的还是 AI 生成的视频，都能挑出“让人想买的瞬间”剪成短视频，加上二维码和电话号码发到社媒。看完视频打来的电话，由 AI 销售员接听。",
+    "ctaSample": "直接看示例",
+    "ctaTry": "用我的商品试试",
+    "ctaNote": "无需注册，15 秒内就能看到结果。",
+    "callLead": "现在就打个电话试试 · AI 销售员“Tije”为您接听 (한국어·English·日本語)",
+    "callCta": "拨打 →",
+    "demoLabel": "87 秒演示 · 请打开声音观看",
+    "painsEyebrow": "痛点",
+    "painsTitle": "想做推广，却没钱也没时间",
+    "pains": [
+      {
+        "label": "营销代理公司",
+        "value": "每月 ₩1,000,000",
+        "body": "博客体验团、社媒代运营，效果却不明显。"
+      },
+      {
+        "label": "老板的时间",
+        "value": "每周 5 小时",
+        "body": "拍摄、剪辑、写文案、发布，做生意的时间越来越少。"
+      },
+      {
+        "label": "外国顾客",
+        "value": "只有街坊顾客",
+        "body": "没人会用外语做推广，外国顾客就这么走过去了。"
+      }
+    ],
+    "stepsEyebrow": "使用流程",
+    "stepsTitle": "从脚本到订单电话，一站搞定",
+    "optional": "可选",
+    "steps": [
+      {
+        "title": "脚本",
+        "body": "只需填写商品和价格，AI 就会写出分段台词和画面提示的宣传脚本。"
+      },
+      {
+        "title": "视频",
+        "body": "Lite：用手机照着脚本拍好上传。Premium：无需拍摄，AI 帮您生成宣传视频。"
+      },
+      {
+        "title": "短视频",
+        "body": "AI 挑出 3 个“让人想买的瞬间”剪好，并配上顾客母语的吸睛文案和字幕。"
+      },
+      {
+        "title": "电话接待",
+        "body": "填好常见问题的答案，就能获得店铺专属 070 号码。电话由 AI 销售员“Tije”接听。"
+      },
+      {
+        "title": "加二维码·号码",
+        "body": "在长视频和短视频里加入商品网站二维码和电话订购号码。"
+      },
+      {
+        "title": "社媒发布",
+        "body": "一键发布到已关联的 Instagram、YouTube、TikTok，文案里也会附上商品链接。"
+      }
+    ],
+    "edgesEyebrow": "我们的优势",
+    "edgesTitle": "不只是帮你剪视频",
+    "edges": [
+      {
+        "title": "会解释“为什么选这段”的 AI",
+        "body": "不打分，只讲理由。比如“芝士和价格同时出现，最能激发购买欲的画面”，让老板看得明白、选得放心。"
+      },
+      {
+        "title": "一次生成顾客母语的吸睛文案",
+        "body": "从美国、日本、中国、台湾、越南、泰国、韩国中选择国家，同一画面同时生成多语言文案，直接触达来旅游的外国顾客。"
+      },
+      {
+        "title": "不方便拍摄？AI 替你做",
+        "body": "Premium 只需选模板、传照片。可用本人形象数字人、喜欢的 AI 角色，或只用商品，按脚本生成宣传视频。"
+      },
+      {
+        "title": "拨打短视频里的号码，AI 销售员“Tije”接听",
+        "body": "顾客看完视频拨打短视频上的号码，Tije 会用顾客的语言接单，还会发送订单确认短信。老板只管做生意就好。"
+      }
+    ],
+    "resultEyebrow": "效果示例",
+    "resultTitle": "AI 从“{product}”直播中挑出的短视频",
+    "resultNote": "这是直接用约 1 分 40 秒的真实示例直播跑出的结果。",
+    "whyLabel": "AI 选择理由",
+    "resultCta": "亲自体验从脚本到短视频",
+    "pricingEyebrow": "价格",
+    "pricingTitle": "自己拍选 Lite，不想拍选 Premium",
+    "pricingNote": "小商户营销代理费约为每月 ₩300,000~₩1,800,000（按公开报价）。Premium 也只有每月 ₩1,000,000 代理费的约五分之一。",
+    "recommended": "推荐",
+    "plans": [
+      {
+        "tagline": "适合自己拍摄的老板",
+        "price": "每月 $99",
+        "priceNote": "韩国：每月 ₩99,000",
+        "cta": "用我的视频试试",
+        "items": [
+          "AI 脚本 + 自拍视频转短视频，每月 4 条",
+          "7 种语言的吸睛文案、字幕、话题标签",
+          "在视频中加入二维码、商品网站、电话号码",
+          "直接发布到 Instagram、YouTube、TikTok",
+          "店铺专属 070 号码 + AI 销售员通话 100 分钟"
+        ]
+      },
+      {
+        "tagline": "无需拍摄，AI 帮你做",
+        "price": "每月 $199",
+        "priceNote": "韩国：每月 ₩199,000",
+        "cta": "试做 AI 宣传视频",
+        "items": [
+          "包含 Lite 全部功能",
+          "AI 宣传视频每月 2 条（本人数字人·AI 角色·仅商品）",
+          "短视频转换每月 12 条",
+          "AI 销售员“Tije”多语言通话 300 分钟",
+          "订单确认短信"
+        ]
+      }
+    ],
+    "pricingFoot": "二维码、社媒发布、电话接待两个套餐都包含，按需开启即可。超出套餐时长的通话按每分钟 ₩300（海外 $0.25）计费。",
+    "faqEyebrow": "常见问题",
+    "faqTitle": "老板们常问的问题",
+    "faqs": [
+      {
+        "q": "完全不会剪辑也可以吗？",
+        "a": "可以。只要上传照着脚本拍的视频，AI 会自动转写、挑选画面、配好文案，不需要任何剪辑软件。"
+      },
+      {
+        "q": "不会外语，也能接待外国顾客吗？",
+        "a": "短视频的吸睛文案和字幕由 AI 用顾客的母语写好，电话订单由 AI 销售员 Tije 用顾客的语言接听，老板用自己的语言确认就行。"
+      },
+      {
+        "q": "支持哪些语言？",
+        "a": "支持韩语、英语、日语、中文（简体·繁体）、越南语、泰语。可为美国、韩国、日本、中国、台湾、越南、泰国的顾客生成文案，本网站界面也支持这 7 种语言。"
+      },
+      {
+        "q": "拍视频有压力怎么办？",
+        "a": "选 Premium 就好。选好模板、上传商品照片，AI 就会按脚本生成宣传视频。想用自己的形象，只需再上传正脸照片和一段短视频。"
+      },
+      {
+        "q": "用我的脸生成 AI 视频，安全吗？",
+        "a": "只使用本人同意提供的照片和视频，成片会标注“AI 生成”。不想露脸的话，选择 AI 角色或仅商品模板即可。"
+      },
+      {
+        "q": "电话接待怎么开通？",
+        "a": "填写顾客常问的问题和答案（AI 可帮您起草），即可获得店铺专属 070 号码。把号码放进视频，电话就由 AI 销售员 Tije 接听。"
+      },
+      {
+        "q": "能自动发布到 Instagram、YouTube 吗？",
+        "a": "关联账号后，可一键发布到 Instagram、YouTube、TikTok。Instagram 文案里的链接无法点击，所以会用视频中的二维码和电话号码引导顾客。"
+      },
+      {
+        "q": "有合约期吗？",
+        "a": "没有。按月使用，随时可以停用。付费前可以先用示例和自己的商品试一试。"
+      }
+    ],
+    "closingLine1": "拍不拍都行，",
+    "closingLine2": "推广交给 AI。",
+    "team": "Tragatize 团队"
+  },
+  "studio": {
+    "examples": [
+      {
+        "product": "手工药果礼盒 12 个装，₩29,000",
+        "store": "江南站附近的传统甜品店",
+        "audience": "来韩国旅游的 20~30 岁美国、日本游客"
+      },
+      {
+        "product": "韩服租赁 2 小时 + 拍照，₩35,000",
+        "store": "景福宫前的韩服租赁店",
+        "audience": "来首尔旅游的东南亚、中国游客"
+      },
+      {
+        "product": "自家烘焙咖啡豆 200g，₩18,000",
+        "store": "圣水洞烘焙咖啡馆",
+        "audience": "韩国本地 20~30 岁居家咖啡爱好者"
+      }
+    ],
+    "demoSteps": {
+      "lite": [
+        "正在写直播脚本",
+        "正在转写语音",
+        "正在分析画面",
+        "正在剪辑并推荐短视频",
+        "正在写字幕和文案"
+      ],
+      "premium": [
+        "正在写宣传脚本",
+        "正在生成 AI 宣传视频",
+        "正在剪辑并推荐短视频",
+        "正在写字幕和文案"
+      ]
+    },
+    "stepper": [
+      "脚本",
+      "视频",
+      "短视频",
+      "电话",
+      "装饰",
+      "社媒"
+    ],
+    "title": "一件商品，从推广到接单",
+    "subtitle": "获取脚本 → 准备视频（自己拍·AI 生成）→ AI 短视频 → 电话接待 → 加二维码·号码 → 发布社媒",
+    "samplesLabel": "直接看示例",
+    "sampleSelected": "已选择",
+    "samplePlay": "▶ 点击观看",
+    "sampleSoon": "示例准备中",
+    "steps": {
+      "script": "获取脚本",
+      "video": "准备视频",
+      "shorts": "AI 挑选的短视频候选",
+      "phone": "电话接待（可选）",
+      "deco": "在视频中加入二维码·电话号码（可选）",
+      "sns": "发布到社媒（可选）"
+    },
+    "examplesLabel": "示例：",
+    "productLabel": "要卖的商品",
+    "productPlaceholder": "例：手工药果礼盒 12 个装，₩29,000",
+    "storeLabel": "店铺（可选）",
+    "storePlaceholder": "例：江南站附近的甜品店",
+    "audienceLabel": "目标顾客（可选）",
+    "audiencePlaceholder": "例：来韩国旅游的 20~30 岁美国、日本游客",
+    "targetsLabel": "顾客国家（可多选）",
+    "targetsHint": "将用所选国家的语言生成脚本台词和短视频文案、字幕。",
+    "scriptBusy": "正在写脚本…（20~30 秒）",
+    "scriptCta": "生成脚本",
+    "viewer": "观众：{target}",
+    "minutes": "· {n} 分钟",
+    "screen": "画面：{show}",
+    "tabLite": "自己拍摄上传",
+    "tabPremium": "让 AI 来生成",
+    "dropHere": "拖到这里",
+    "dropPrompt": "拖入拍好的视频，或点击选择",
+    "dropHint": "mp4·mov·m4a，最大 500MB · 建议 2 分钟左右的竖屏视频",
+    "uploading": "上传中… {p}%",
+    "uploaded": "已上传",
+    "transcribing": "正在转写语音（ElevenLabs）",
+    "picking": "正在挑选让人想买的瞬间（Claude）",
+    "elapsed": "已用时 {t} · 通常需要 30 秒~2 分钟",
+    "waitSample": "等待时先看看示例结果",
+    "premiumLead": "无需拍摄，AI 按脚本生成宣传视频。",
+    "premiumBadge": "演示用 · 结果为预先生成的 AI 视频",
+    "aiDone": "已完成的 AI 宣传视频",
+    "aiSampleBadge": "“{title}”示例",
+    "shortsEmpty": "视频准备好后，这里会出现 3 个短视频候选。",
+    "sampleResult": "示例结果 · 真实 AI 运行结果（预先计算）",
+    "shortsLang": "短视频语言",
+    "why": "为什么选这段？",
+    "copied": "已复制",
+    "copy": "复制文案",
+    "seconds": "{n} 秒",
+    "failed": "失败了，请重试。",
+    "mock": "演示用",
+    "qrLabel": "查看商品",
+    "templatesLabel": "宣传视频模板",
+    "templates": {
+      "avatar": {
+        "title": "本人数字人",
+        "body": "用老板的照片和视频生成 AI 数字人，按脚本介绍商品。",
+        "need": "正脸照片 3 张 + 10 秒以上说话视频 1 段，商品照片"
+      },
+      "persona": {
+        "title": "AI 角色",
+        "body": "选择喜欢的主持人或角色，按脚本介绍商品。",
+        "need": "商品照片·视频 3~5 个（主持人使用所选角色）"
+      },
+      "product": {
+        "title": "仅商品",
+        "body": "无需出镜，用商品照片和视频制作广告视频。",
+        "need": "商品照片·视频 3~5 个"
+      }
+    },
+    "personaLabel": "角色",
+    "personas": [
+      "温馨的家庭故事",
+      "亲切的 20 多岁博主",
+      "沉稳的带货主播",
+      "外国旅行博主"
+    ],
+    "aiSteps": [
+      "分析上传的素材",
+      "按脚本编排画面",
+      "生成场景视频",
+      "配音并加字幕",
+      "剪成短视频"
+    ],
+    "materialsLabel": "上传供 AI 学习的素材",
+    "pickFiles": "选择照片·视频",
+    "notUploaded": "演示用，文件不会上传到服务器。",
+    "consent": "我同意使用我的面容和声音生成 AI 视频。生成的视频将标注“AI 生成”。",
+    "scriptFirst": "在第 1 步获取脚本后，将按该脚本生成视频。",
+    "aiBusy": "正在生成 AI 宣传视频…",
+    "aiAgain": "重新生成",
+    "aiCta": "生成 AI 宣传视频",
+    "qaDraft": {
+      "priceQ": "多少钱？",
+      "priceA": "{name} 的价格是 {price}。",
+      "productFallback": "商品",
+      "orderQ": "怎么下单？",
+      "orderA": "告诉我们您想要的商品，我们会发送订单确认短信。请回复短信告知收货地址。",
+      "hoursQ": "营业时间和地址是？"
+    },
+    "phoneToggle": "开启 AI 销售员“Tije”电话接待",
+    "phoneOff": "开启后，填写顾客常问问题的答案，即可获得店铺专属 070 号码。看过短视频的顾客打来电话，AI 会接听并完成接单。",
+    "phoneLangs": "用顾客的语言接待",
+    "qaLabel": "问答列表（AI 将按此回答）",
+    "drafting": "正在起草…",
+    "draftCta": "✨ 用 AI 生成草稿",
+    "qPlaceholder": "顾客问题",
+    "aPlaceholder": "请填写答案",
+    "addQ": "+ 添加问题",
+    "myNumber": "店铺电话号码",
+    "numberNote": "演示用，显示的是演示号码。真的拨打会由 AI Tije 接听。",
+    "callTry": "拨打试试 →",
+    "qaCount": "用 {n} 个问题打造 AI 销售员。",
+    "qaEmpty": "请至少填写一组问答。",
+    "issuing": "正在获取号码…",
+    "issueCta": "获取 070 号码",
+    "qrToggle": "加入二维码（商品网站）",
+    "siteLabel": "商品网站地址",
+    "sitePlaceholder": "https://myshop.com",
+    "phoneOverlayToggle": "加入电话订购号码",
+    "phoneFirst": "在第 4 步获取号码后即可开启。",
+    "targetVideos": "应用到的视频",
+    "shortsTarget": "3 条短视频",
+    "longTarget": "长视频（原视频）",
+    "decoNote": "会立即显示在上方短视频卡片和旁边的长视频预览中。",
+    "longPreview": "长视频预览",
+    "longEmpty": "准备好视频后会显示在这里",
+    "channels": {
+      "instagram": {
+        "label": "Instagram Reels",
+        "short": "Instagram"
+      },
+      "youtube": {
+        "label": "YouTube Shorts·长视频",
+        "short": "YouTube"
+      },
+      "tiktok": {
+        "label": "TikTok",
+        "short": "TikTok"
+      }
+    },
+    "snsEmpty": "短视频生成后，可直接发布到已关联的频道。",
+    "channelsLabel": "关联频道",
+    "connected": "✓ 已关联 {handle}",
+    "connecting": "正在关联…",
+    "connect": "点击关联",
+    "postItems": "要发布的视频",
+    "shortItem": "短视频 {i} · {hook}",
+    "longItem": "长视频（原视频）· YouTube",
+    "linkInCaption": "在文案中加入商品网站链接",
+    "linkNeedsSite": "（在第 5 步填写网址后即可开启）",
+    "igNote": "Instagram 文案里的链接无法点击，因此会写成“见主页链接”。所以视频里的二维码和电话号码很重要。",
+    "connectFirst": "请先关联频道",
+    "postCta": "发布 {n} 条",
+    "posted": "✓ 已发布",
+    "posting": "◉ 发布中",
+    "waiting": "○ 等待中",
+    "notReallyPosted": "并未真正发布到账号。"
+  }
+}
