@@ -198,7 +198,7 @@ export default function Home() {
 
       <section className="border-t border-line py-12 sm:py-16">
         <SectionTitle eyebrow="가격" title="대행사 비용의 5분의 1" />
-        <p className="mt-3 text-sm text-muted">마케팅 대행사는 보통 월 100만 원, 사장님 시간 주 5시간이 들어요.</p>
+        <p className="mt-3 text-sm text-muted">소상공인 마케팅 대행은 월 30만~180만 원대예요(공개 견적 기준). 월 100만 원 대행과 비교하면 약 5분의 1이에요.</p>
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           {PLANS.map((p) => (
             <div key={p.name} className={"rounded-xl p-5 " + (p.main ? "border-2 border-foreground" : "border border-line")}>
