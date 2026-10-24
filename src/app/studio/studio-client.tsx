@@ -2,7 +2,7 @@
 
 import { upload } from "@vercel/blob/client";
 import { useEffect, useRef, useState } from "react";
-import { DEMO_PRESETS, type DemoPreset } from "@/lib/demo";
+import { DEMO_PRESETS, type DemoPreset, type Plan } from "@/lib/demo";
 import type { Highlight, LiveScript } from "@/lib/types";
 import {
   DecoStep,
@@ -29,13 +29,21 @@ const READY_PRESETS = DEMO_PRESETS.filter((p) => p.videoUrl && p.highlights.leng
 const HAS_DEMO = READY_PRESETS.length > 0;
 
 // 샘플은 미리 계산된 실제 AI 결과를 단계별로 보여 준다(대본 3초 → 컷 편집·추천 약 10초).
-const DEMO_STEPS = [
-  { label: "라이브 대본 쓰는 중", ms: 3000 },
-  { label: "말 받아쓰는 중", ms: 2500 },
-  { label: "장면 분석 중", ms: 2500 },
-  { label: "컷 편집·숏폼 추천 중", ms: 3000 },
-  { label: "자막·캡션 쓰는 중", ms: 2000 },
-];
+const DEMO_STEPS: Record<Plan, { label: string; ms: number }[]> = {
+  lite: [
+    { label: "라이브 대본 쓰는 중", ms: 3000 },
+    { label: "말 받아쓰는 중", ms: 2500 },
+    { label: "장면 분석 중", ms: 2500 },
+    { label: "컷 편집·숏폼 추천 중", ms: 3000 },
+    { label: "자막·캡션 쓰는 중", ms: 2000 },
+  ],
+  premium: [
+    { label: "홍보 대본 쓰는 중", ms: 3000 },
+    { label: "AI 홍보 영상 만드는 중", ms: 4000 },
+    { label: "컷 편집·숏폼 추천 중", ms: 3000 },
+    { label: "자막·캡션 쓰는 중", ms: 2000 },
+  ],
+};
 
 function fmt(sec: number): string {
   const s = Math.max(0, Math.round(sec));
@@ -105,6 +113,7 @@ export function StudioClient() {
   const [script, setScript] = useState<LiveScript | null>(null);
   const [scriptBusy, setScriptBusy] = useState(false);
 
+  const [plan, setPlan] = useState<Plan>("lite");
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [stage, setStage] = useState<"idle" | "uploading" | "analyzing" | "done">("idle");
   const [progress, setProgress] = useState(0);
@@ -152,6 +161,7 @@ export function StudioClient() {
     clearTimers();
     setError(null);
     setDemoId(preset.id);
+    setPlan(preset.plan);
     setProduct(preset.product);
     setStore("");
     setAudience("");
@@ -159,16 +169,16 @@ export function StudioClient() {
     resetResult();
     setIsDemo(true);
     setDemoStep(0);
+    const steps = DEMO_STEPS[preset.plan];
     let at = 0;
-    DEMO_STEPS.forEach((step, i) => {
+    steps.forEach((step, i) => {
       at += step.ms;
       demoTimers.current.push(
         setTimeout(() => {
-          if (i === 0) {
-            setScript(preset.script);
-            setVideoUrl(preset.videoUrl);
-          }
-          if (i === DEMO_STEPS.length - 1) {
+          if (i === 0) setScript(preset.script);
+          if (i === 0 && preset.plan === "lite") setVideoUrl(preset.videoUrl);
+          if (i === 1 && preset.plan === "premium") setVideoUrl(preset.videoUrl);
+          if (i === steps.length - 1) {
             setHighlights(preset.highlights);
             setStage("done");
             setDemoStep(null);
@@ -297,7 +307,7 @@ export function StudioClient() {
         </div>
         {demoStep !== null && (
           <ol className="mt-4 space-y-1.5 rounded-xl border border-line p-4 text-sm">
-            {DEMO_STEPS.map((s, i) => (
+            {DEMO_STEPS[plan].map((s, i) => (
               <li key={s.label} className={i < demoStep ? "" : i === demoStep ? "text-accent" : "text-muted"}>
                 {i < demoStep ? "✓" : i === demoStep ? "◉" : "○"} {s.label}
               </li>
