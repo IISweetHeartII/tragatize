@@ -25,8 +25,9 @@ export function LoopVideo({
       if (start > 0) v.currentTime = start;
     };
     const onTime = () => {
-      if (end !== undefined && v.currentTime >= end) v.currentTime = start;
+      if ((end !== undefined && v.currentTime >= end) || v.currentTime < start - 0.3) v.currentTime = start;
     };
+    if (v.readyState >= 1) toStart();
     const onEnded = () => {
       v.currentTime = start;
       void v.play().catch(() => {});

@@ -14,6 +14,8 @@ const MEMBERS = ["김해청", "김덕환", "김성재", "윤정민"];
 const DEMO = DEMO_PRESETS[0];
 // 히어로 폰 화면: AI 가 만든 니트 가디건 홍보 영상(Premium 샘플)
 const HERO = DEMO_PRESETS.find((p) => p.id === "knit") ?? DEMO;
+// 앞부분(0~11초)엔 얼굴 없이 몸통만 잡힌 클로즈업이 있어 그 뒤부터 반복한다
+const HERO_START = 11.2;
 
 // 띠 배너: 숏폼 문구를 만드는 7개 언어 인사말 + 올리는 곳
 const MARQUEE = [
@@ -80,6 +82,7 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
         <div className="relative isolate overflow-hidden rounded-[28px] bg-[#120f0c] text-white">
           <LoopVideo
             src={HERO.videoUrl}
+            start={HERO_START}
             className="absolute inset-0 -z-10 size-full scale-125 object-cover opacity-60 blur-2xl"
           />
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
@@ -112,9 +115,9 @@ export function Landing({ locale, dict }: { locale: Locale; dict: Dict }) {
 
             <div className="relative mx-auto w-[min(72vw,280px)]">
               <div className="relative aspect-[9/16] overflow-hidden rounded-[2.25rem] border-[7px] border-black bg-black shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/20">
-                <LoopVideo src={HERO.videoUrl} className="absolute inset-0 size-full object-cover" />
+                <LoopVideo src={HERO.videoUrl} start={HERO_START} className="absolute inset-0 size-full object-cover" />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4 pt-16">
-                  <p className="text-xs font-semibold text-white/70">AI Shorts · {fmt(HERO.highlights[0]?.start ?? 0)}</p>
+                  <p className="text-xs font-semibold text-white/70">AI Shorts</p>
                   <p className="mt-1 text-lg font-bold leading-snug">{heroHook}</p>
                 </div>
               </div>
