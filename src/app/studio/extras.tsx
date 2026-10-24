@@ -70,6 +70,127 @@ export function VideoOverlays({ phone, qrUrl, belowHook = false }: { phone: stri
   );
 }
 
+// ── Premium: AI 홍보 영상 만들기 ─────────────────────────────────────────────
+export type AiTemplate = "avatar" | "persona" | "product";
+
+const TEMPLATES: { id: AiTemplate; title: string; body: string; need: string }[] = [
+  { id: "avatar", title: "내 얼굴 아바타", body: "사장님 사진·영상으로 만든 AI 아바타가 대본대로 소개해요.", need: "얼굴 정면 사진 3장 + 10초 이상 말하는 영상 1개, 제품 사진" },
+  { id: "persona", title: "AI 페르소나", body: "원하는 진행자·등장인물을 골라 대본대로 소개해요.", need: "제품 사진·영상 3~5개 (진행자는 고른 페르소나로)" },
+  { id: "product", title: "제품만", body: "사람 없이 제품 사진·영상으로 광고 영상을 만들어요.", need: "제품 사진·영상 3~5개" },
+];
+const PERSONAS = ["다정한 가족 이야기", "친근한 20대 크리에이터", "차분한 쇼호스트", "외국인 여행 유튜버"];
+export const AI_STEPS = ["올린 자료 분석", "대본에 맞춰 장면 구성", "장면 영상 생성", "목소리·자막 입히기", "숏폼으로 자르기"];
+
+export function AiVideoPanel({
+  hasScript,
+  progress,
+  ready,
+  onGenerate,
+}: {
+  hasScript: boolean;
+  progress: number | null; // AI_STEPS 중 진행 중인 단계, 없으면 null
+  ready: boolean;
+  onGenerate: () => void;
+}) {
+  const [template, setTemplate] = useState<AiTemplate>("persona");
+  const [persona, setPersona] = useState(PERSONAS[0]);
+  const [files, setFiles] = useState<string[]>([]);
+  const [consent, setConsent] = useState(false);
+  const t = TEMPLATES.find((x) => x.id === template)!;
+  const busy = progress !== null;
+  const canGo = files.length > 0 && (template !== "avatar" || consent) && !busy;
+
+  return (
+    <div className="space-y-5">
+      <div>
+        <p className="text-sm text-muted">홍보 영상 템플릿</p>
+        <div className="mt-2 grid gap-2 sm:grid-cols-3">
+          {TEMPLATES.map((x) => (
+            <button
+              key={x.id}
+              type="button"
+              disabled={busy}
+              onClick={() => setTemplate(x.id)}
+              className={"min-h-11 rounded-xl border px-4 py-3 text-left " + (template === x.id ? "border-foreground bg-line/40" : "border-line hover:border-foreground")}
+            >
+              <span className="block font-medium">{x.title}</span>
+              <span className="mt-1 block text-sm leading-relaxed text-muted">{x.body}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {template === "persona" && (
+        <div>
+          <p className="text-sm text-muted">페르소나</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {PERSONAS.map((p) => (
+              <button
+                key={p}
+                type="button"
+                disabled={busy}
+                onClick={() => setPersona(p)}
+                className={"min-h-11 rounded-full border px-4 text-sm " + (persona === p ? "border-foreground bg-foreground text-background" : "border-line hover:border-foreground")}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div>
+        <p className="text-sm text-muted">AI 가 배울 자료 올리기</p>
+        <label className="mt-2 flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-line px-4 py-6 text-center hover:border-foreground">
+          <span className="font-medium">사진·영상 고르기</span>
+          <span className="text-sm text-muted">{t.need}</span>
+          <input
+            type="file"
+            multiple
+            accept="image/*,video/*"
+            className="hidden"
+            disabled={busy}
+            onChange={(e) => setFiles(Array.from(e.target.files ?? []).map((f) => f.name))}
+          />
+        </label>
+        {files.length > 0 && (
+          <ul className="mt-2 space-y-1 text-sm">
+            {files.map((f) => (
+              <li key={f} className="truncate">
+                ✓ {f}
+              </li>
+            ))}
+            <li className="text-xs text-muted">시연용이라 파일은 서버로 올리지 않아요.</li>
+          </ul>
+        )}
+      </div>
+
+      {template === "avatar" && (
+        <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm">
+          <input type="checkbox" className="mt-1 size-4" checked={consent} disabled={busy} onChange={(e) => setConsent(e.target.checked)} />
+          <span>제 얼굴과 목소리로 AI 영상을 만드는 데 동의해요. 만든 영상에는 «AI 생성» 표시가 붙어요.</span>
+        </label>
+      )}
+
+      {!hasScript && <p className="text-sm text-muted">1단계에서 대본을 받으면 그 대본대로 영상을 만들어요.</p>}
+
+      <button type="button" disabled={!canGo} onClick={onGenerate} className={primary}>
+        {busy ? "AI 홍보 영상 만드는 중…" : ready ? "다시 만들기" : "AI 홍보 영상 만들기"}
+      </button>
+
+      {busy && (
+        <ul className="space-y-1.5 text-sm">
+          {AI_STEPS.map((s, i) => (
+            <li key={s} className={i < progress ? "" : i === progress ? "text-accent" : "text-muted"}>
+              {i < progress ? "✓" : i === progress ? "◉" : "○"} {s}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 // ── 전화 응대 ────────────────────────────────────────────────────────────
 function draftQa(product: string): QA[] {
   const [name, ...rest] = product.split(",").map((s) => s.trim());
